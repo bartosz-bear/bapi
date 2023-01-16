@@ -84,13 +84,13 @@ Get information about all functions and cmdlets which can be invoked on the mach
 Get-Command
 ```
 
-### How do you create a new folder?
+## How do you create a new folder?
 
 ```ps
 New-Item -Path 'C:\Users\User\Desktop\TestFolder' -ItemType Directory
 ```
 
-### Special variables
+## Special variables
 
 - `$Error`- an array of the most recent error objects
 - `$Host` - name of the current hosting application
@@ -99,3 +99,29 @@ New-Item -Path 'C:\Users\User\Desktop\TestFolder' -ItemType Directory
 - `$Null` - contains a NULL value
 - `$False` - contains FALSE value
 - `$True` - contains TRUE value
+
+## Scripts Execution Policy
+
+`Get-ExecutionPolicy` - check what is the current set execution policy
+
+### Execution Policy Options
+
+- `Restricted` - no scripts are allowed. This is the default setting, so it will display first time when you run the command.
+- `AllSigned` - you can run scripts signed by a trusted developer. With the help of this setting, a script will ask for confirmation that you want to run it before executing.
+- `RemoteSigned` - scripts downloaded from elsewhere must be signed, but scripts you create locally on your machine (such as $profile) can run without a signature
+- `Unrestricted` - you can run any script which you want to run, including unsigned scripts downloaded from internet
+
+## How to change Execution Policy?
+
+`Set-ExecutionPolicy unrestricted`
+
+## PowerShell Startup Script
+
+This is a script which runs when PowerShell starts. It's defined in `$Profile` variable
+
+```ps
+$Profile
+
+C:\Users\User1\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
+
+```
