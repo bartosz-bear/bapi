@@ -73,3 +73,60 @@ WHERE another_column_name = 'Chester Ismay'
 DELETE from datacamp_courses
 WHERE course_name = 'Deep Learning in Python';
 ```
+
+## `\dt` - SHOW TABLES COMMAND LINE
+
+```
+\dt
+```
+
+# DATABASE RELATIONSHIPS
+
+## one-to-one relationship
+
+One record of the first table will be linked to zero or one records of second table.
+
+Eg. each employee in the `Employee` table will have a corresponding row in `EmployeeDetails` table that stores the current personal details of an employee. So each employee will have zero or on record in `EmployeeDetails` table.
+
+![](./images/postgresql/one-to-one.png)
+
+`EmployeeID` is a PRIMARY KEY in `Employee` table and a FOREIGN KEY in the `EmployeeDetails` table.
+
+Each employee has either one or zero records in the `EmployeeDetails' table.
+
+![](./images/postgresql/one-to-one2.png)
+
+## one-to-many relationship
+
+- one-to-many is the most common among tables relationships
+- a single column from one table can be linked to zero or more columns in another table
+
+`Employee` table stores employee records. `Address` table stores adresses of employees. Each employee will have only one record in the `Employee` table but it can have zero, one or several records in `Address` table. This is because each employee can have zero, one or several addresses (Home address, Office address, Vacations address).
+
+![](./images/postgresql/one-to-many2.png)
+
+`Employee` table and `Address` table are linked by the key column `EmployeeID`'. `EmployeeId` is a primary key in `Employee` table and a foreign key in `Address` table.
+
+![](./images/postgresql/one-to-many.png)
+
+## many-to-many relationship
+
+- many-to-many relationship allows you to relate each row in one table to many rows in another table, and vice versa
+- eg. an employee can have many skills, and a particular skill can be associated with one or more employees
+
+Many-to-many relationship is created using a JUNCTURE TABLE. `EmployySkill` is a junction table that contains `EmployeeID` and `SkillID` as foreign key columns, which allow formation of many-to-many relationship between `Employee` and `SkillDescription` tables.
+
+Indivindually, the `Employee` and `EmployeeSkill` have a one-to-many realtionship and `SkillDescription` and `EmployeeSkill` also have one-to-many relationship. But, they form form many-to-many relationshipo using a juncture table `EmployeeSkill`.
+
+![](./images/postgresql/many-to-many.png)
+
+
+![](./images/postgresql/many-to-many2.png)
+
+<https://www.tutorialsteacher.com/sqlserver/tables-relations>
+
+## What is a DATABASE SCHEMA?
+
+Database schema is the organization and structure of a database. A schema contains schema objects, which could be tables, columns, data types, views, stored procedures, relationships, primary keys, foreign keys, etc.
+
+![](./images/postgresql/database_schema.png)
