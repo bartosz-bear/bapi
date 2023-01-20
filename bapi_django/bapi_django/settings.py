@@ -35,6 +35,7 @@ ALLOWED_HOSTS = [config('PRODUCTION_HOST'),
 
 INSTALLED_APPS = [
     "bapi_django_app",
+    "bapi_scraping",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",

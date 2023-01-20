@@ -18,5 +18,6 @@ from django.urls import include, path
 
 urlpatterns = [
     path('bapi_django_app/', include('bapi_django_app.urls')),
+    path('bapi_scraping/', include('bapi_scraping.urls')),
     path("admin/", admin.site.urls),
 ]

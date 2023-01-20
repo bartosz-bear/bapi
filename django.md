@@ -112,3 +112,7 @@ URLconf maps URL patterns to views.
 ## `render()` shortcut
 
 `render()` is a very common idiom to load a template, fill a context and return an `HttpResponse` object with the result of the rendered template.
+
+## RESEARCH
+
+<https://www.toptal.com/django/django-top-10-mistakes>
