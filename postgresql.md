@@ -6,6 +6,155 @@
 
 Keywords are not case-sensitive in SQL, but data is.
 
+## KEYWORDS
+
+`SELECT` field/column
+
+`FROM` table
+
+```sql
+SELECT name, card_number FROM patrons;
+```
+
+```sql
+SELECT * FROM patrons;
+```
+
+## ALIASING
+
+```sql
+SELECT name AS first_name, year_hired
+FROM employees;
+```
+
+`name` is a name of a field in a table, while `first_name` will be a name of the field in the result set
+
+## SELECTING DISTINCT RECORDS
+
+```sql
+SELECT DISTINCT year_hired
+FROM employees;
+```
+
+## SELECTING A DISTINCT COMBINATION OF TWO FIELDS
+
+```sql
+SELECT DISTINCT dept_id, year_hired
+FROM employees;
+```
+
+## VIEWS
+
+View is a virtual table that is the result of a saved SQL `SELECT` statement
+
+Result set is not stored in the database. Views (saved queries) are stored.
+
+Views automatically update in response to updates in the underlying data.
+
+```sql
+CREATE VIEW employee_hire_years AS
+SELECT id, name, year_hired
+FROM employees;
+```
+
+While a view is created, we can query is as it was a normal table.
+
+```
+SELECT id, name
+FROM employee_hire_years;
+```
+
+## RESULT SET
+
+Result set is a result of a query.
+
+## COUNT()
+
+```sql
+SELECT COUNT(birthdate) AS count_birthdates
+FROM people;
+```
+
+```sql
+SELECT COUNT(name) AS count_names, COUNT(birthdate) AS count_birthdates
+FROM people;
+```
+
+## COUNT(*) TOTAL NUMBER OF RECORDS IN A TABLE
+
+```sql
+SELECT COUNT(*) AS total_records
+FROM people;
+```
+
+## COUNT() WITH DISTINCT
+
+- excludes duplicates
+
+```sql
+SELECT COUNT(DISTINCT birthdate) AS count_distinct_birthdates
+FROM people;
+```
+
+## ORDER OF QUERY EXECUTION
+
+- it's important to know query order for debugging and aliasing purposes
+
+1. TABLE SELECTION (`FROM people`)
+2. FIELDS SELECTION (`SELECT name`)
+3. SUBSELECTION OF A RESULT SET (`LIMIT 10`)
+
+## ALIAS DECLARATION AND REFERENCING
+
+Aliases can only be referenced by a futher code if the alias was declared earlier on in the code.
+
+## DEBUGGING SQL
+
+- Incorrect or missing punctuation, especially a comma error is a very common error
+- Misspelling
+- Incorrect capitalisation
+
+## SQL FORMATTING
+
+- new lines, capitalization, indentation and semi-colons are not required in SQL
+
+```sql
+select title, release_year, country from films limit 3
+```
+
+<https://www.sqlstyle.guide/>
+
+## SQL BEST PRACTICES
+
+- capitalized keywords
+- new lines between keywords
+- indentations for multiple fields
+- using semi-colons at the end of query
+- using lowercase letters only for table and field names
+- using underscore instead of space for table and field names
+
+## DEALING WITH NON-STANDARD FIELD NAMES
+
+```sql
+SELECT title, "release year", country
+FROM films
+LIMIT 3;
+```
+
+## Conventions
+
+Table names and field names should be named using small letters only and underscores. Table names should be called using plurals and field names using singulars.
+
+`customers`
+
+`customer_name`
+
+## Data Types
+
+Data types are SQL implementation based (eg. different in PostreSQL and MySQL).
+
+<https://www.postgresql.org/docs/current/datatype.html>
+
 ## Collation
 
 Collation specifies how data is sorted and compared in a database. Collation provides the sorting rules, case and accent sensitivity properties for the data in the database.
@@ -127,6 +276,47 @@ Indivindually, the `Employee` and `EmployeeSkill` have a one-to-many realtionshi
 
 ## What is a DATABASE SCHEMA?
 
-Database schema is the organization and structure of a database. A schema contains schema objects, which could be tables, columns, data types, views, stored procedures, relationships, primary keys, foreign keys, etc.
+Database schema is the organization and structure of a database. A schema contains schema objects, which could be tables, fields, data types, views, stored procedures, relationships, primary keys, foreign keys, etc.
 
 ![](./images/postgresql/database_schema.png)
+
+## SQL FLAVORS
+
+Standard keywords are the same for all SQL flavors. Only additional keywords on top of the standard set of keywords, make SQL flavors unique.
+
+Difference between different SQL flavors is similar to differences between British and American English.
+
+PostgresSQL
+
+```sql
+SELECT id, name
+FROM employees
+LIMIT 2;
+```
+
+SQL Server
+
+```sql
+SELECT id, name
+FROM employees
+TOP 2;
+```
+
+## LEARNING
+
+Basic: Datacamp, Introduction to SQL
+
+Intermediate: Udemy, SQL & Database Design A-Z
+<https://www.udemy.com/course/sqldatabases/?LSNPUBID=JVFxdTr9V80&ranEAID=JVFxdTr9V80&ranMID=39197&ranSiteID=JVFxdTr9V80-YaWKvZjwH58FdJLO_nQI4g&utm_medium=udemyads&utm_source=aff-campaign>
+
+Intermediate: Mode Intermediate SQL
+
+<https://mode.com/sql-tutorial/intro-to-intermediate-sql/>
+
+Advanced: Advanced SQL for Query Tuning and Performance Optimization
+
+<https://www.linkedin.com/learning/advanced-sql-for-query-tuning-and-performance-optimization>
+
+Advanced: High Performance SQL
+
+<https://vladmihalcea.teachable.com/p/high-performance-sql-online?coupon_code=HPSQLV150OFF&affcode=172599_kuoszt8s>
