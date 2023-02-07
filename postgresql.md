@@ -758,6 +758,62 @@ FULL JOIN users ON users.id = photos.user_id;
 
 ![](./images/postgresql/full_join.png)
 
+## COMBINING `WHERE` WITH `JOIN`
+
+```sql
+SELECT ulr, contents
+FROM comments
+JOIN photos ON photos.id = comments.photo_id
+WHERE comments.user_id = photos.user_id;
+```
+
+
+
+## THREE-WAY `JOINS`
+
+```sql
+SELECT url, contents, username
+FROM comments
+JOIN photos ON photos.id = comments.photo_id
+JOIN users ON users.id = comments.user_id AND users.id = photos.user_id
+```
+
+## GROUPING AND AGGREGATE FUNCTIONS
+
+## GROUPING USING `GROUP BY`
+
+- `GROUP BY` finds a set of UNIQUE records for a given field and creates groups (buckets) for each of these unique items
+- if there are several records for a particular group, these records are grouped into a subset and they are available from within the group
+- essentially, `GROUP BY` creates a new table but the number of records and its contents remain the same, the only thing which changes is the order of the records within the result set 
+
+Before
+
+![](./images/postgresql/group_by_before.png)
+
+After
+
+![](./images/postgresql/group_by_after.png)
+
+
+In `GROUP BY` we can only DIRECTLY select the same field which we define in `GROUP BY` clause. If we want to use other fields we need to use an AGGREGATE function.
+
+Example
+
+This is fine, because user_id is used twice
+
+```sql
+SELECT user_id
+FROM comments
+GROUP BY user_id;
+```
+
+And this one is going to raise an error:
+
+```sql
+SELECT contents
+FROM comments
+GROUP BY user_id;
+```
 
 ## SQL FLAVORS
 
