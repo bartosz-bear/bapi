@@ -957,6 +957,95 @@ LIMIT 20
 OFFSET 20;
 ```
 
+## `UNION`, `INTERSECT` AND `EXCEPT`
+
+- these three clauses are used on queries
+- they are used to somehow filter results of two queries (usually on the same table)
+- we can only use `UNION`, `INTERSECT` and `EXCEPT` if result sets of queries are the same of the same structure (same field names, and the same data types)
+
+## `UNION`
+
+- `UNION` joins result sets of two queries together
+- if results of two queries which are in `UNION` have duplicate records, this record will be included only once
+- parentheses around queries are not mandatory but recommended
+- we are only allowed to use `UNION` if result sets of queries are the same of the same structure (same field names, and the same data types)
+
+```sql
+(
+  SELECT * FROM products
+	ORDER BY price DESC
+	LIMIT 4
+)
+UNION
+(
+	SELECT * FROM products
+	ORDER BY price / weight DESC
+	LIMIT 4
+)
+```
+
+## `UNION ALL`
+
+- if we don't want to remove duplicates but we want to keep all records, we should use `UNION ALL` instead
+
+```sql
+(
+  SELECT * FROM products
+	ORDER BY price DESC
+	LIMIT 4
+)
+UNION ALL
+(
+	SELECT * FROM products
+	ORDER BY price / weight DESC
+	LIMIT 4
+)
+```
+
+## `INTERSECT`
+
+- `INTERSECT` returns only those records which exist in result sets of both queries
+
+```sql
+(
+  SELECT * FROM products
+	ORDER BY price DESC
+	LIMIT 4
+)
+INTERSECT
+(
+	SELECT * FROM products
+	ORDER BY price / weight DESC
+	LIMIT 4
+);
+```
+
+## `INTERSECT ALL`
+
+- `INTERSECT ALL` returns only those records which exist in result sets of both queries
+- if record 1 is present in result set 1 twice and in result set also 2 twice (so four records accross two different result sets), then the `INTERSECT ALL` will return this record twice, or 3 times for 6 records (3 per each result set)
+
+```sql
+(
+  SELECT * FROM products
+	ORDER BY price DESC
+	LIMIT 4
+)
+INTERSECT ALL
+(
+	SELECT * FROM products
+	ORDER BY price / weight DESC
+	LIMIT 4
+);
+```
+## `EXCEPT`
+
+- `EXCEPT` will return only those records which are present in the first query and ARE NOT present in the second query
+- if there are records which exists in the second query and don't exist in the first query, they will not be returned. For that reason, order of queries matter for the `EXCEPT` clause.
+
+![](./images/postgresql/except.png)
+
+
 ## SQL FLAVORS
 
 Standard keywords are the same for all SQL flavors. Only additional keywords on top of the standard set of keywords, make SQL flavors unique.
@@ -1013,3 +1102,9 @@ Diagrams
 PostgresSQL Online
 
 <https://www.pg-sql.com>
+
+## TOPICS TO REPEAT AND DO MORE EXERCISES
+
+- `UNION`
+- `INTERSECT`
+- `EXCEPT`
