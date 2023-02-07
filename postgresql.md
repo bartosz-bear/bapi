@@ -20,6 +20,14 @@ SELECT name, card_number FROM patrons;
 SELECT * FROM patrons;
 ```
 
+## KEYWORDS ORDER
+
+1. `FROM` - specifies a starting table to work with
+2. `JOIN` - merges data from multiple tables
+3. `WHERE` - filters the set of rows
+4. `GROUP BY` - groups rows by a unique set of values
+5. `HAVING` - filters the set of groups
+
 ## IDENTIFIERS
 
 Identifier is a name of a particular part of a database (table name, field name).
@@ -813,6 +821,140 @@ And this one is going to raise an error:
 SELECT contents
 FROM comments
 GROUP BY user_id;
+```
+
+## AGGREGATE FUNCTIONS
+
+- aggregate functions takes a range of values and reduces them into a single value
+- you can only use aggregate functions on a single field at once
+
+<https://www.postgresql.org/docs/15/functions-aggregate.html>
+
+- `COUNT()`
+- `SUM()`
+- `AVG()`
+- `MIN()`
+- `MAX()`
+
+```sql
+SELECT MAX(id)
+FROM comments;
+```
+
+## USING `GROUP BY` AND AGGREGATE FUNCTIONS TOGETHER
+
+```sql
+SELECT user_id, MAX(id)
+FROM comments
+GROUP BY user_id;
+```
+
+## `COUNT()`
+
+- `NULL` values don't count in `COUNT()`
+
+In order to count all records, also those including nulls, you `COUNT(*)`
+
+```sql
+SELECT COUNT(*) FROM photos;
+```
+
+```sql
+SELECT user_id, COUNT(*)
+FROM comments
+GROUP BY user_id;
+```
+
+## `HAVING`
+
+- `HAVING` is a filtering clause, similar to `WHERE`.
+- `HAVING` always works with `GROUP BY` while `WHERE` works on raw data
+- `HAVING` is used to filter set of groups (created by `GROUP BY`)
+- most of the time `HAVING` uses an aggregate function as part of it's clause
+
+```sql
+SELECT photo_id, COUNT(*)
+FROM comments
+WHERE photo_id < 3
+GROUP BY photo_id
+HAVING COUNT(*) > 2;
+```
+
+## SORTING USING `ORDER BY`
+
+- sorting is done in ascending order by default, however `ASC` keyword can be used for extra clarity
+- sorting works on both numbers and strings
+
+## `ASC` - SORTING BY ASCENDING ORDER (FROM SMALLEST TO LARGEST)
+
+```sql
+SELECT *
+FROM products
+ORDER BY price;
+```
+
+## `DESC` - SORTING BY DESCENDING ORDER (FROM LARGEST TO SMALLEST)
+
+```sql
+SELECT *
+FROM products
+ORDER BY price DESC;
+```
+
+## DOUBLE SORTING
+
+```sql
+SELECT *
+FROM products
+ORDER BY price, weight DESC;
+```
+
+## `OFFSET`
+
+- `OFFSET` is used to skip the first x number of records, where x is defined by `OFFSET`
+
+This query skips first 40 records from the result set.
+
+```sql
+SELECT *
+FROM users
+OFFSET 40;
+```
+
+## `LIMIT`
+
+- `LIMIT` is used to limit the number of records to the the number specified by `LIMIT`
+
+The following query skips the first 5 records from the result set
+
+```sql
+SELECT *
+FROM users
+LIMIT 5;
+```
+
+## USING `OFFSET` AND `LIMIT` TOGETHER
+
+- they can be used together to display products in an e-commerce shop
+
+Example: when we want to show the first page (first 20 products)
+
+```sql
+SELECT *
+FROM products
+ORDER BY price
+LIMIT 20
+OFFSET 0;
+```
+
+When we want to show the second page of products:
+
+```sql
+SELECT *
+FROM products
+ORDER BY price
+LIMIT 20
+OFFSET 20;
 ```
 
 ## SQL FLAVORS
