@@ -628,17 +628,136 @@ CREATE TABLE photos (
 
 `ON DELETE SET DEFAULT` - change foreign key values to a default value, if one is provided
 
-## JOINS AND AGGREGATIONS
+## `JOINS` AND AGGREGATIONS
 
-## JOINS
+## `JOINS`
 
-- produce values by merging together rows from multiple related tables
+- produce values by merging together rows from multiple (minimum 2) related tables
 - use joins most of the times when you're asked to find data that involves multiple resources
+- during `JOIN` operation an additional, virtual table is created which constists all rows of the selected table, merged together using a primary and a foreign key
+- in the last step, the virtual table is stripped of all fields but the ones defined in the `SELECT` statement
+- when there is no match between a foreign key and a primary key for a particular record, this record is not added to the results set
 
 ## AGGREGATIONS
 
 - aggregations take several rows and calculate a single value (like `groupBy` in `pandas` )
 - keywords like `most`, `average`, `least` are examples of aggregations
+
+## `JOINS` SYNTAX
+
+```sql
+SELECT contents, url
+FROM comments
+JOIN photos ON photos.id = comments.photo_id;
+```
+
+- in the `SELECT` statement we select fields from BOTH tables
+- in the `FROM` statement we specify the first table (the one with a foreign key)
+- in the `JOIN` statement we specify the second table (the one with a primary key which is referenced by a foreign key of the first table)
+- in the `ON` statement we define the primary key of the second table first, and then a foreign key in the first table
+
+## ALTERNATE FORMS OF `JOINS` SYNTAX
+
+- sometimes it makes a difference which table is defined first and which is defined as a second, and sometimes it doesn't
+
+## PRECISE FIELD REFERENCING SYNTAX
+
+- `id` field exists in both tables (photos and comments), therefore in order to avoid an error we must specify which field (from which table) we are looking for
+
+```sql
+SELECT photos.id
+FROM photos
+JOIN comments ON photos.id = comments.photo_id;
+```
+
+## RENAMING FIELD NAMES FOR EXTRA PRECISION
+
+```sql
+SELECT comments.id AS comments_id, photos.id AS photos_id
+FROM photos
+JOIN comments ON photos.id = comments.photo_id;
+```
+
+## RENAMING TABLE REFERENCES
+
+- if a table is renamed, it can be refered with a new name already in the same query
+- good practice
+
+```sql
+SELECT comments.id, p.id
+FROM photos AS p
+JOIN comments ON p.id = comments.photo_id;
+```
+
+## ALTERNATIVE SYNTAX FOR TABLE RENAMING
+
+- bad practice
+
+```sql
+SELECT comments.id, p.id
+FROM photos p
+JOIN comments ON p.id = comments.photo_id;
+```
+
+## ERROR: `COLUMN REFERENCE "ID" IS AMBIGOUS`
+
+`COLUMN REFERENCE "ID" IS AMBIGOUS` happens when two tables have the same field name and it's not clear which field we are refering to in our query.
+
+## FOUR TYPES OF `JOINS`
+
+## `INNER JOIN`
+
+- this is a default `JOIN`
+- `JOIN` is equal to `INNER JOIN`
+- when there is no match between a foreign key and a primary key, the record will not be included in the result set
+
+```sql
+SELECT url, username
+FROM photos
+JOIN users ON users.id = photos.user_id;
+```
+
+![](./images/postgresql/inner_join.png)
+
+## `LEFT OUTER JOIN`
+
+- when there is no match between a foreign key and a primary key, the record from the FIRST (LEFT) table (the one defined in the `FROM` statement) will be included in the set, and the rest of the fields in the result set will be populated with `NULL` values
+- order of the tables defined in the query MATTERS, switching tables will give different results
+
+```sql
+SELECT url, username
+FROM photos
+LEFT JOIN users ON users.id = photos.user_id;
+```
+
+![](./images/postgresql/left_outer_join.png)
+
+## `RIGHT OUTER JOIN`
+
+- when there is no match between a foreign key and a primary key, the record from the SECOND (RIGHT) table (the one defined in the `JOIN` statement) will be included in the set, and the rest of the fields in the result set will be populated with `NULL` values
+- order of the tables defined in the query MATTERS, switching tables will give different results
+
+
+```sql
+SELECT url, username
+FROM photos
+RIGHT JOIN users ON users.id = photos.user_id;
+```
+
+![](./images/postgresql/right_outer_join.png)
+
+## `FULL JOIN`
+
+- when there is no match between a foreign key and a primary key, both records from both tables will be included as two separate records, and the rest of the fields of the added records will be populated with `NULL` value
+
+```sql
+SELECT url, username
+FROM photos
+FULL JOIN users ON users.id = photos.user_id;
+```
+
+![](./images/postgresql/full_join.png)
+
 
 ## SQL FLAVORS
 
