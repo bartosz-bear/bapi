@@ -20,6 +20,12 @@ SELECT name, card_number FROM patrons;
 SELECT * FROM patrons;
 ```
 
+## IDENTIFIERS
+
+Identifier is a name of a particular part of a database (table name, field name).
+
+Identifiers are always lower case.
+
 ## ALIASING
 
 ```sql
@@ -28,6 +34,80 @@ FROM employees;
 ```
 
 `name` is a name of a field in a table, while `first_name` will be a name of the field in the result set
+
+## CREATING A DATABASE
+
+## DATABASE DESIGN QUESTIONS
+
+1. What kind of thing are we storing?
+
+cities
+
+2. What properties does this thing have?
+
+name, country, population, area
+
+3. What type of data does each of those properties contain?
+
+name (string)
+country (string)
+population (number)
+area (number)
+
+## CREATING A TABLE
+
+```sql
+CREATE TABLE cities (
+  name VARCHAR(50),
+  country VARCHAR(50),
+  population INTEGER,
+  area INTEGER
+);
+```
+
+Creating a table with auto-increment primary key.
+
+```sql
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  username VARCHAR(50)
+);
+```
+
+Creating a table with a foreign key
+
+```sql
+CREATE TABLE photos (
+  id SERIAL PRIMARY KEY,
+  url VARCHAR(200),
+  user_id INTEGER REFERENCES users(id)
+);
+```
+
+## DELETING A TABLE
+
+```sql
+DROP TABLE photos;
+```
+
+## INSERTING DATA
+
+- actual values are matching in the exact order of specified fields
+
+```sql
+INSERT INTO cities (name, country, population, area)
+VALUES ('Tokyo', 'Japan', 38505000, 8223);
+```
+
+## INSERTING SEVERAL ROWS AT THE TIME
+
+```sql
+INSERT INTO cities (name, country, population, area)
+VALUES
+	('Delhi', 'India', 28125000, 2240),
+  ('Shanghai', 'China', 22125000, 4015),
+  ('Sao Paulo', 'Brazil', 20935000, 3043);
+```
 
 ## SELECTING DISTINCT RECORDS
 
@@ -68,6 +148,69 @@ FROM employee_hire_years;
 
 Result set is a result of a query.
 
+## CALCULATED COLUMNS
+
+```sql
+SELECT name, population / area AS density
+FROM cities;
+```
+
+### OPERATORS FOR CALCULATED COLUMNS
+
+- +
+- -
+- *
+- /
+- ^ (exponent)
+- |/ (square root)
+- @ (absolute value)
+- % (remainder)
+
+```sql
+SELECT @area AS density FROM cities;
+```
+
+```sql
+SELECT |/area AS density FROM cities;
+```
+
+## STRING OPERATORS AND FUNCTIONS
+
+- || - join two strings
+- CONCAT() - join two strings
+- LOWER() - gives a lower case string
+- LENGTH() - gives number of characters in a string
+- UPPER() - gives and upper case string
+
+## CONCATANATING STRINGS
+
+```sql
+SELECT name || ' ' || country
+FROM cities;
+```
+
+```sql
+SELECT CONCAT(name, ' ', country) AS location
+FROM cities;
+```
+
+## UPPER()
+
+```sql
+SELECT UPPER(name) FROM cities;
+```
+
+```sql
+SELECT CONCAT(UPPER(name), ' ', UPPER(country)) AS location FROM cities;
+```
+
+```sql
+SELECT
+  UPPER(CONCAT(name, ' ', country)) AS location
+FROM
+  cities;
+```
+
 ## COUNT()
 
 ```sql
@@ -94,6 +237,114 @@ FROM people;
 ```sql
 SELECT COUNT(DISTINCT birthdate) AS count_distinct_birthdates
 FROM people;
+```
+
+## FILTERING WITH WHERE()
+
+- it works like Excel filter
+
+```sql
+SELECT *
+FROM tutorial.us_housing_units
+WHERE month = 1
+```
+
+Order of filtering:
+
+- FIRST: `FROM cities`
+- SECOND: `WHERE area > 4000`
+- THIRD: `SELECT name`
+
+## WHERE COMPARISON OPERATORS
+
+- `=` (comparison using single equal sign)
+- `>`
+- `<`
+- `>=`
+- `<=`
+- `IN` (values present in a list)
+- `<>` (not equal)
+- `!=` (not equal)
+- `BETWEEN` (values between two numbers)
+- `NOT` (values not present in a list)
+
+## `BETWEEN` OPERATOR
+
+```sql
+SELECT name, area
+FROM cities
+WHERE area BETWEEN 2000 AND 4000;
+```
+
+## `IN` AND `NOT IN` OPERATORS
+
+```sql
+SELECT name, area
+FROM cities
+WHERE
+  name IN ('Tokyo', 'Shanghai');
+```
+
+```sql
+SELECT name, area
+FROM cities
+WHERE
+  name NOT IN ('Delhi', 'Tokyo');
+```
+
+## COMBINING `NOT IN` AND `AND`
+
+Filter for all records where area IS NOT 8223 or 3044 AND where name of the city is Dehli.
+
+```sql
+SELECT
+  name,
+  area
+FROM
+  cities
+WHERE
+  area NOT IN (8223, 3044) AND name = 'Delhi';
+```
+
+We can chain as many AND, OR statements as well like.
+
+```sql
+SELECT
+  name,
+  area
+FROM
+  cities
+WHERE
+  area NOT IN (8223, 3043)
+  OR name = 'Delhi'
+  OR name = 'Tokyo';
+```
+
+## COMBINING CALCULATED COLUMNS WITH `WHERE` CLAUSE
+
+```sql
+SELECT
+  name,
+  population / area AS population_density
+FROM
+  cities
+WHERE
+  population / area > 6000;
+```
+
+## UPDATING RECORDS
+
+```sql
+UPDATE cities
+SET population = 3505000
+WHERE name = 'Tokyo';
+```
+
+## DELETING RECORDS
+
+```sql
+DELETE FROM cities
+WHERE name = 'Tokyo';
 ```
 
 ## ORDER OF QUERY EXECUTION
@@ -155,6 +406,25 @@ Data types are SQL implementation based (eg. different in PostreSQL and MySQL).
 
 <https://www.postgresql.org/docs/current/datatype.html>
 
+## POSTGRESQL DATA TYPES
+
+## VARCHAR
+
+- variable length character
+
+```sql
+VARCHAR(50)
+```
+
+## INTEGER
+
+- signed integer number
+- from -2.1B to 2.1B
+
+## NULL
+
+- no value, nothing
+
 ## Collation
 
 Collation specifies how data is sorted and compared in a database. Collation provides the sorting rules, case and accent sensitivity properties for the data in the database.
@@ -167,7 +437,24 @@ For example, when you run a query using the `ORDER BY` clause, collation determi
 
 ## PRIMARY KEY
 
-`PRIMARY KEY` is a constraint which enforces the column values to be non-null and unique. It lets you uniquely identify a specific set of instanced present in the table.
+Primary key uniquely identifies each record in a particular table.
+
+- each row in every table has one primary key
+- not other row in the same table can have the same primary key
+- 99% of the time primary key is called `id`
+- either an integer or a UUID
+- will never change
+
+## FOREIGN KEY
+
+Foreign key identifies a record (usually in an another table) that this row is associated with. Foreign key in table A is a primary key in table B.
+
+- in one-to-many relationship, the 'many' side of the relationship gets the foreign key column
+- rows only have a foreign key if they 'belong' to another record in a different table
+- many rows in the same table can have the same foreign key
+- name of a foreign key varies, usually they are called something like `user_id` or `department_id`
+- foreign keys are referring to concrete primary keys in a different table
+- foreign keys will change when a relationship changes (eg. an employee changes a department)
 
 ## GENERAL STRUCTURE OF A TABLE CREATION QUERY IN POSTGRESQL
 
@@ -231,6 +518,8 @@ WHERE course_name = 'Deep Learning in Python';
 
 # DATABASE RELATIONSHIPS
 
+There are 4 different kinds of relationships
+
 ## one-to-one relationship
 
 One record of the first table will be linked to zero or one records of second table.
@@ -249,6 +538,7 @@ Each employee has either one or zero records in the `EmployeeDetails' table.
 
 - one-to-many is the most common among tables relationships
 - a single column from one table can be linked to zero or more columns in another table
+- 'employee has many addresses'
 
 `Employee` table stores employee records. `Address` table stores adresses of employees. Each employee will have only one record in the `Employee` table but it can have zero, one or several records in `Address` table. This is because each employee can have zero, one or several addresses (Home address, Office address, Vacations address).
 
@@ -256,7 +546,15 @@ Each employee has either one or zero records in the `EmployeeDetails' table.
 
 `Employee` table and `Address` table are linked by the key column `EmployeeID`'. `EmployeeId` is a primary key in `Employee` table and a foreign key in `Address` table.
 
+In one-to-many relationship, the 'many' side of the relationship gets the foreign key column
+
 ![](./images/postgresql/one-to-many.png)
+
+## many-to-one relationship
+
+- vice versa of one-to-many relationship
+- 'many addresses belong to one employee'
+- 'many employees work in one department'
 
 ## many-to-many relationship
 
@@ -279,6 +577,68 @@ Indivindually, the `Employee` and `EmployeeSkill` have a one-to-many realtionshi
 Database schema is the organization and structure of a database. A schema contains schema objects, which could be tables, fields, data types, views, stored procedures, relationships, primary keys, foreign keys, etc.
 
 ![](./images/postgresql/database_schema.png)
+
+## FOREIGN KEY CONSTRAINT ERROR DURING INSERTION
+
+This error pops up when we try to enter a record with a foreign key, and the foreign key specified by us doesn't exist as a primary key in a different table.
+
+```sql
+INSERT INTO photos (ulr, user_id)
+VALUES ('http://df.jpg', 999);
+```
+
+This query will results in an error because there is no user with `id` 999.
+
+`insert or update on table "photos" violates foreign key constraint "photos_user_id_fkey"`
+
+## FOREIGN KEY CONSTRAINT ERROR DURING DELETION
+
+```sql
+DELETE FROM users
+WHERE id = 1;
+```
+
+`update or delete on table "users" violates foreign key constraint "photos_user_id_fkey" on table "photos"`
+
+## DATA CONSISTENCY DURING INSERTION 
+
+We are not allowed to add a record with a foreign key when this foreign key doesn't exist as a primary key in a different table.
+
+However, we are allowed to insert a record with a `NULL` value as a foreign key.
+
+## DATA CONSISTENCY DURING DELETION
+
+- we can `ON DELETE` parameter to define a default behavior of the records with foreign key, in case records with the corresponding primary keys are being deleted
+
+```sql
+CREATE TABLE photos (
+  id SERIAL PRIMARY KEY,
+  url VARCHAR(200),
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
+);
+```
+
+`ON DELETE RESTRICT` - throw an error
+
+`ON DELETE NO ACTION` - throw an error
+
+`ON DELETE CASCADE` - delete the corresponding items in the second table Eg. when you delete a post in a blog, you also want to delete all corresponding comments on that post.
+
+`ON DELETE SET NULL` - change foreign key values to `NULL`. Eg. when a user wants to delete his account but we want to keep his photos (in case he changes his mind in the future).
+
+`ON DELETE SET DEFAULT` - change foreign key values to a default value, if one is provided
+
+## JOINS AND AGGREGATIONS
+
+## JOINS
+
+- produce values by merging together rows from multiple related tables
+- use joins most of the times when you're asked to find data that involves multiple resources
+
+## AGGREGATIONS
+
+- aggregations take several rows and calculate a single value (like `groupBy` in `pandas` )
+- keywords like `most`, `average`, `least` are examples of aggregations
 
 ## SQL FLAVORS
 
@@ -320,3 +680,19 @@ Advanced: Advanced SQL for Query Tuning and Performance Optimization
 Advanced: High Performance SQL
 
 <https://vladmihalcea.teachable.com/p/high-performance-sql-online?coupon_code=HPSQLV150OFF&affcode=172599_kuoszt8s>
+
+COMPLETE: Beginner to Advanced
+
+<https://www.udemy.com/course/sql-and-postgresql/>
+
+SQL Style Guide
+
+<https://www.sqlstyle.guide/>
+
+Diagrams
+
+<https://www.diagrams.net/>
+
+PostgresSQL Online
+
+<https://www.pg-sql.com>
