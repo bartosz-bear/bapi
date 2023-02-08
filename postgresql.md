@@ -1600,6 +1600,71 @@ ALTER TABLE products
 ADD UNIQUE(name);
 ```
 
+## REMOVING CONSTRAINTS
+
+```sql
+ALTER TABLE products
+DROP CONSTRAINT products_name_key;
+```
+
+## MULTICOLUMN UNIQUENESS
+
+- multi-column uniqueness constraint works over several column
+- unique value in the same column is accepted as long as corresponding values in the other column or columns are different, eg. "Shirt, Light Clothes" and "Shirt, Heavy Clothes" are acceptable 
+
+```sql
+ALTER TABLE products
+ADD UNIQUE (name, department);
+```
+
+## CHECK VALIDATION
+
+- before table was created
+
+```sql
+CREATE TABLE products (
+  price INTEGER CHECK (price > 0)
+);
+```
+- after table was created
+- it's only possible to add this check constraint if existing records in the table already pass the constraint
+- it's not possible to use subqueries within `CHECK` constraints statements
+
+```sql
+ALTER TABLE products
+ADD CHECK (price > 0);
+```
+
+## CHECK VALIDATION OF MULTIPLE COLUMNS
+
+```sql
+CREATE TABLE orders (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(40),
+  created_at TIMESTAMP NOT NULL,
+  est_delivery TIMESTAMP NOT NULL,
+  CHECK (created_at < est_delivery)
+);
+```
+
+## WHERE SHOULD WE ADD VALIDATIONS?
+
+WEB SERVER LEVEL
+- most of the validation rules, non-critical ones should be applied at the web server level
+- easier to express more complex validations
+- far easier to apply new validation rules
+- many libraries handle validations automatically
+
+DATABASE LEVEL
+- critical validation rules should be applied at the database level
+- validation still apply even if you connect from a different client
+- guaranteed that validation is always applied
+- can only apply new validation rules if all existing rows satisfy it
+
+## DATABASE STRUCTURE DESIGN PATTERNS
+
+
+
 ## SQL FLAVORS
 
 Standard keywords are the same for all SQL flavors. Only additional keywords on top of the standard set of keywords, make SQL flavors unique.
@@ -1621,6 +1686,22 @@ SELECT id, name
 FROM employees
 TOP 2;
 ```
+
+## SQL SCHEMA DESIGNERS
+
+- configuration file-like diagraming
+
+<https://dbdiagram.io>
+
+- manual diagraming
+
+<https://ondras.zarovi.cz/sql/demo>
+
+## ISSUE WITH SLOW POSTGRESQL ON WINDOWS 10
+
+In my `C:\Program Files\PostgreSQL\14\data\postgresql.conf` file I found `listen_addresses = "*"` which I changed to `listen_addresses = 'localhost'`.
+
+<https://dba.stackexchange.com/questions/201646/slow-connect-time-to-postgresql-on-windows-10>
 
 ## LEARNING
 
