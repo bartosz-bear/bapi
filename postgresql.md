@@ -348,6 +348,14 @@ SET population = 3505000
 WHERE name = 'Tokyo';
 ```
 
+## UPDATING `NULL` VALUES
+
+```sql
+UPDATE products
+SET price = 9999
+WHERE price IS NULL;
+```
+
 ## DELETING RECORDS
 
 ```sql
@@ -400,7 +408,7 @@ FROM films
 LIMIT 3;
 ```
 
-## Conventions
+## CONVENTIONS
 
 Table names and field names should be named using small letters only and underscores. Table names should be called using plurals and field names using singulars.
 
@@ -408,7 +416,8 @@ Table names and field names should be named using small letters only and undersc
 
 `customer_name`
 
-## Data Types
+## DATA TYPES
+
 
 Data types are SQL implementation based (eg. different in PostreSQL and MySQL).
 
@@ -416,22 +425,161 @@ Data types are SQL implementation based (eg. different in PostreSQL and MySQL).
 
 ## POSTGRESQL DATA TYPES
 
-## VARCHAR
+## NUMERIC DATA TYPES
+
+![](./images/postgresql/numeric_data_types.png)
+
+## `INTEGER`
+
+- signed integer number
+- from -2.1B to 2.1B
+- both negative and positive numbers who have no decimal points
+
+## `SERIAL`
+
+- positive sign integer from 1 to 2.1B
+- positive sign numbers who have no decimal points, and which auto-increment
+
+## NUMBERS WITH DECIMAL POINTS
+
+- these are fully precise but they are less computationally efficient
+
+## `NUMERIC`
+
+- use to store very precise numbers with decimal points like scientific calculations, grams of gold
+
+## `DECIMAL`
+
+## FLOATING POINT MATH NUMERIC TYPES
+
+- use to store numbers with a decimal where decimal is not that important, like kilograms of trash in a landfill, or number of liters in a lake
+- floating point math numeric types are much more efficient when it comes to computations
+
+## `REAL`
+
+## `DOUBLE PRECISION`
+
+## `FLOAT`
+
+## FAST RULES FOR STORING NUMBERS
+
+![](./images/postgresql/numeric_types_fast_rules.png)
+
+## CHARACTER TYPES
+
+- in PostgresSQL there are no performance differences between these different types unlike in other databases
+
+## `CHAR(x)`
+
+- a string with a fixed (defined) number of characters
+- extra chars are trimmed
+- unused chars and replaced with space
+
+## `VARCHAR`
 
 - variable length character
+
+## `VARCHAR(40)`
+
+- a string with up to 40 characters, automatically removes extra characters above the limit
+- no extra space characters are added like in the `CHAR(x)` type
+- this type is mostly used to prevent accidental storing of an extremely long character (which usually is a mistake not an intended behavior)
 
 ```sql
 VARCHAR(50)
 ```
 
-## INTEGER
+## `TEXT`
 
-- signed integer number
-- from -2.1B to 2.1B
+- stores a string of any length
 
-## NULL
+## BOOLEAN DATA TYPES
+
+Automatic conversion to boolean values:
+
+'true', 'yes', 'on', 1, 't', 'y' => TRUE
+'false', 'no', 'off', 0, 'f', 'n' => FALSE
+'null' => NULL
+
+```sql
+SELECT('yes'::BOOLEAN) -- returns TRUE
+```
+
+```sql
+SELECT(0::BOOLEAN) -- returns FALSE
+```
+
+## `NULL`
 
 - no value, nothing
+- not True, not False
+
+```sql
+SELECT('null'::BOOLEAN) -- returns `NULL` 
+```
+
+## DATE AND TIME VALUES
+
+## DATE CONVERSION
+
+```sql
+SELECT ('NOV-20-1980'::DATE); -- converts to 1980-11-20 (YYYY-MM-DD)
+```
+
+## TIME CONVERSION (WITH TIME ZONE OR WITHOUT TIME ZONE)
+
+## TIME WITHOUT TIME ZONE
+
+```sql
+SELECT ('01:23 PM'::TIME); -- returns 13:23:00
+```
+
+## TIME WITH TIME ZONE
+
+- UTC is a base time zone
+
+```sql
+SELECT ('01:23:23 AM EST'::TIME WITH TIME ZONE);
+-- returns 01:23:23-05:00 
+```
+
+## DATETIME (`TIMESTAMP`) WITH TIME ZONE
+
+```sql
+SELECT ('NOV-20-1980 1:23 AM PST'::TIMESTAMP WITH TIME ZONE);
+```
+
+## INTERVALS
+
+```sql
+SELECT ('1 D 2 H 30 M 15 S'::INTERVAL); -- returns '1 day 02:30:15' of type INTERVAL
+```
+
+```sql
+SELECT ('NOV-11-2022'::DATE) - ('1 D 2 H'::INTERVAL); -- returns '2002-11-09 22:00:00" of type TIMESTAMP WITHOUT TIME ZONE
+```
+
+## CALCULATING INTERVALS BETWEEN TIMES OF DIFFERENT TIME ZONES
+
+```sql
+SELECT ('NOV-20-1980 1:23 AM EST'::TIMESTAMP WITH TIME ZONE)
+- 
+SELECT ('NOV-10-1980 5:43 AM PST'::TIMESTAMP WITH ZIME ZONE)
+```
+
+## TYPE CONVERSION
+
+Converting a float into an integer
+
+```sql
+SELECT (2.0::INTEGER);
+```
+
+## OUT OF RANGE ERROR
+
+```sql
+SELECT (60000::SMALLINT); -- smallint accepts integer up to range 32767, therefore this will raise error
+```
 
 ## Collation
 
@@ -1388,6 +1536,68 @@ SELECT name, price,
     ELSE 'cheap'
   END
  FROM products;
+```
+## DATABASE-SIDE VALIDATION
+
+## RECORD LEVEL VALIDATION
+
+- is a given value defined at all?
+- is provided value unique?
+- is provided value larger, smaller, equal, not equal to?
+
+## APPLYING `NOT NULL` CONSTRAINT
+
+- apply during table creation
+
+```sql
+CREATE TABLE products (
+  price INTEGER NOT NULL
+);
+```
+
+- after table was created
+- if there is already a `NULL` value inside the table, this query will return an error
+
+```sql
+ALTER TABLE products
+ALTER COLUMN price
+SET NOT NULL;
+```
+
+## `DEFAULT` COLUMN VALUES
+
+- apply during table creation
+
+```sql
+CREATE TABLE products (
+  price TIME DEFAULT '00:01 AM'
+);
+```
+
+- apply after table was created
+
+```sql
+ALTER TABLE products
+ALTER COLUMN price
+SET DEFAULT 9999;
+```
+
+## APPLYING A `UNIQUE` CONSTRAINT TO ONE COLUMN
+
+- before table is created
+
+```sql
+CREATE TABLE products (
+  name VARCHAR(50) UNIQUE
+);
+```
+
+- applying after table was created
+- this constraint can only be added if there are no duplicates in the specified column (all values are already unique)
+
+```sql
+ALTER TABLE products
+ADD UNIQUE(name);
 ```
 
 ## SQL FLAVORS
