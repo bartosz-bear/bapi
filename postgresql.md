@@ -827,6 +827,7 @@ GROUP BY user_id;
 
 - aggregate functions takes a range of values and reduces them into a single value
 - you can only use aggregate functions on a single field at once
+- aggregate functions can't be nested
 
 <https://www.postgresql.org/docs/15/functions-aggregate.html>
 
@@ -1045,6 +1046,349 @@ INTERSECT ALL
 
 ![](./images/postgresql/except.png)
 
+# SUBQUERIES
+
+- subqueries (inner queries) are used to arrive a certain value which will be used as a 'variable' in a secondary query (outer query)
+- subquery is returned first
+- subquery doesn't require semi-colon at the end of it
+- subquery is placed inside the parenthesis
+
+```sql
+SELECT name, price -- OUTER QUERY
+FROM products
+WHERE price > (
+  SELECT MAX(price) -- SUBQUERY, INNER QUERY
+  FROM products
+  WHERE department = 'Toys'
+)
+```
+
+We can use subqueries in many different locations, which make them challenging to use or understand in other people's code.
+
+```sql
+SELECT
+  p1.name
+  (SELECT COUNT(name) FROM products) -- source of value
+FROM (SELECT * FROM products) as p1 -- source of records
+JOIN (SELECT * FROM products) as p2 ON p1.id = p2.id -- source of records
+WHERE p1.id IN (SELECT id FROM products); -- source of fields
+```
+
+In order to use subqueries effectively, it's necessary to understand the shape of the result set of the subquery.
+
+EXAMPLES: SUBQUERY -> SHAPE
+
+1. Full table shape. Both fields and records
+2. An array of records. Many records from one field.
+3. Scalar value/Scalar query. One record from one field.
+
+Example 1:
+
+```sql
+SELECT * FROM orders;
+```
+
+![](./images/postgresql/full_shape_subquery.png)
+
+Example 2:
+
+```sql
+SELECT id FROM orders;
+```
+
+![](./images/postgresql/array_subquery.png)
+
+Example 3:
+
+```sql
+SELECT COUNT(*) FROM orders;
+```
+
+![](./images/postgresql/scalar_subquery.png)
+
+## SUBQUERIES INSIDE OF A `SELECT` STATEMENT
+
+Array Subquery
+
+```sql
+SELECT name, price, (
+	SELECT price
+	FROM products
+  WHERE id = 3
+)
+FROM products
+WHERE price > 867;
+```
+
+Scalar Subquery
+
+```sql
+SELECT MAX(price) -- returns a field and one value
+FROM products
+```
+
+## SUBQUERIES INSIDE OF A `FROM` STATEMENT
+
+- subquery of this type has to have an alias applied to it
+- any subquery can be used inside the `FROM` statement as long as the result set is compatible with outer `SELECT` and `WHERE` statements. In other words, fields used in `SELECT` and `WHERE` statements must exist in the result set of the subquery
+
+![](./images/postgresql/subquery_inside_from_statement.png)
+
+Example 1
+
+```sql
+SELECT name, price_weight_ratio
+FROM (
+	SELECT name, price / weight AS price_weight_ratio
+	FROM products
+) AS p
+WHERE price_weight_ratio > 5;
+```
+
+Example 2
+
+```sql
+SELECT *
+FROM (SELECT MAX(price) FROM products) AS p;
+```
+
+Example 3
+
+```sql
+SELECT AVG(p.order_count) -- p. is not mandatory
+FROM (
+  SELECT user_id, COUNT(*) AS order_count
+  FROM orders
+  GROUP BY user_id
+ ) AS p
+ ```
+
+ Example 4
+
+ ```sql
+SELECT MAX(p.avg_price) 
+FROM (
+  SELECT manufacturer, AVG(price) AS avg_price
+  FROM phones
+  GROUP BY manufacturer
+) AS p
+ ```
+
+ ## SUBQUERIES IN A `JOIN` CLAUSE
+
+ - any subquery that returns a data set compatible with the `ON` clause
+
+```sql
+SELECT first_name
+FROM users
+JOIN (
+	SELECT user_id
+	FROM orders
+	WHERE product_id = 3
+) AS o -- o is an alias for orders
+ON o.user_id = users.id;
+```
+
+![](./images/postgresql/subquery_inside_join_clause.png)
+
+## SUBQUERIES INSIDE A `WHERE` CLAUSE
+
+- structure of data allowed in the subquery depends on the comparison operator (eg. a single column of records can be used with `IN` operator)
+- these types of subqueries are very useful
+
+Example 1
+
+```sql
+SELECT id
+FROM orders
+WHERE product_id IN (
+  SELECT id
+  FROM products
+  WHERE price / weight > 50
+);
+```
+
+Example 2
+
+```sql
+SELECT name, price
+FROM products
+WHERE price > (
+	SELECT AVG(price)
+	FROM products
+);
+```
+
+![](./images/postgresql/data_structures_compatible_with_where_clause.png)
+
+## `NOT IN` OPERATOR WITH A `WHERE` CLAUSE SUBQUERY
+
+```sql
+SELECT name, department
+FROM products
+WHERE department NOT IN (
+  SELECT department
+  FROM products
+  WHERE price < 100
+);
+```
+
+## `ALL` OPERATOR WITH A `WHERE` CLAUSE SUBQUERY
+
+```sql
+SELECT name, department, price
+FROM products
+WHERE price > ALL (
+  SELECT price
+  FROM products
+  WHERE department = 'Industrial'
+);
+```
+
+## `SOME` OPERATOR WITH A `WHERE` CLAUSE SUBQUERY
+
+- `SOME` is an alias of `ANY`, they can be used interexchangably
+
+Example
+
+`50 < SOME` vs (20,100) will return True, because 50 is largest than some (or any) of the two values. In this case 50 is greater than 20.
+
+```sql
+SELECT name, department, price
+FROM products
+WHERE price > SOME (
+  SELECT price
+  FROM products
+  WHERE department = 'Industrial'
+)
+```
+
+## CORRELATED SUBQUERIES
+
+- correlated subqueries are subqueries which use aliases to correlate values between two separate subqueries, in order to make some kind of comparison between records
+- correlated subqueries are similar to nested loops, as some value from an outer loop is passed to an inner loop for a comparison
+- we can use correlated subqueries inside `SELECT`, `FROM`, `WHERE` and `JOIN`, we can use it everywhere
+
+Example: for each row of the outer query, 'where subquery' will be run 
+
+```sql
+SELECT name, department, price
+FROM products AS p1 -- alias is necessary, outer query, p1 is passed as a variable to inner query
+WHERE p1.price = (
+  SELECT MAX(price)
+  FROM products AS p2 -- alias is necessary, inner query/subquery
+  WHERE p1.department = p2.department
+);
+```
+
+Example 2: 'select subquery' will be run for every row in the outer query.
+
+```sql
+SELECT p1.name, (
+  	SELECT COUNT(*)
+  	FROM orders AS o1
+  	WHERE o1.product_id = p1.id
+  ) AS num_orders
+FROM products AS p1
+```
+
+## USING CORRELATED SUBQUERY TO RUN A 'SELECT QUERY' WIHOUT ANY `FROM` CLAUSE
+
+- in order to achieve this, a subquery have to return a single value (a subquery has to be a scalar subquery)
+
+Example
+
+```sql
+SELECT (
+	SELECT MAX(price)
+  FROM products
+);
+```
+
+Example 2
+
+```sql
+SELECT (
+	SELECT MAX(price)
+  FROM products
+) / (
+  SELECT AVG(price)
+  FROM products
+);
+```
+
+Example 3
+
+```sql
+SELECT (SELECT MAX(price) FROM phones) AS max_price,
+       (SELECT MIN(price) FROM phones) AS min_price,
+       (SELECT AVG(price) FROM phones) AS avg_price;
+```
+
+## SELECTING `DISTINCT` VALUES
+
+- `DISTINCT` keyword is always placed inside the `SELECT` clause
+- `DISTINCT` provides a list of unique values inside a specific field
+- useful in the exploratory phase of database analysis
+
+
+```sql
+SELECT DISTINCT department
+FROM products;
+```
+
+```sql
+SELECT COUNT(DISTINCT department)
+FROM products;
+```
+
+## USING `DISTINCT` TO FIND A LIST OF UNIQUE COMBINATIONS OF RECORD VALUES FROM MULTIPLE FIELDS
+
+- we can't make `COUNT()` in this case
+
+```sql
+SELECT DISTINCT department, name
+FROM products;
+```
+
+## UTILITY OPERATORS
+
+## `GREATEST`
+
+```sql
+SELECT GREATEST(200, 10, 30);
+```
+
+```sql
+SELECT GREATEST(30,
+  (SELECT MAX (price * weight) FROM products)
+);
+```
+
+## `LEAST`
+
+```sql
+SELECT LEAST(1000, 20, 50, 100)
+```
+
+```sql
+SELECT name, price, LEAST (400, price * 0.5)
+FROM products;
+```
+
+## `CASE KEYWORD`
+
+- if none of the conditions is satisfied, `NULL` is returned
+
+```sql
+SELECT name, price,
+  CASE
+  	WHEN price > 600 THEN 'high'
+    WHEN price > 300 THEN 'medium'
+    ELSE 'cheap'
+  END
+ FROM products;
+```
 
 ## SQL FLAVORS
 
