@@ -1681,15 +1681,13 @@ CREATE TABLE orders (
 ## HOW TO CHECK TWO VALUES IN TWO SEPARATE COLUMNS, IF THERE IS ALWAYS A VALUE IN ONE OF THEM, AND NEVER THERE ARE NO VALUES OR TWO VALUES AT THE SAME TIME?
 
 ```sql
-Add CHECK of
+CHECK
 (
   COALESCE((post_id)::BOOLEAN:INTEGER, 0)
   +
   COALESCE((comment_id)::BOOLEAN:INTEGER, 0)
 )
 ```
-
-
 
 ## WHERE SHOULD WE ADD VALIDATIONS?
 
@@ -1753,6 +1751,58 @@ SELECT COALESCE(10, 5); -- returns 10
 ```sql
 SELECT COALESCE((post_id)::BOOLEAN:INTEGER, 0)'
 ```
+
+## ADVANCED TOPICS
+
+## `SHOW` KEYWORD
+
+- `SHOW` shows a particular piece of Postgres configuration
+
+## `SHOW data_directory`
+
+- show where Postrgres stores data on the local machine
+
+```sql
+SHOW data_directory; -- C:/Program Files/PostgreSQL/15/data
+```
+
+## HOW TO GET A LIST OF DATABASE NAMES WITH CORRESPONDING IDENTIFIERS (`OID`)?
+
+```sql
+SELECT oid, datname
+FROM pg_database;
+```
+
+## HOW TO GET A LIST OF ALL FILES STORED ON A LOCAL MACHINES WITH CORRESPONDING IDENTIFIERS (`OID`)?
+
+```sql
+SELECT * FROM pg_class;
+```
+
+## HOW IS DATA STORED IN POSTRESQL?
+
+HEAP/HEAP FILE
+
+- a file that contains all the data (rows) of a particular table
+- heap data structure is not the same as heap file
+- each heap file consists of several blocks
+- 'users' table (OID: 17002) is a heap file
+
+BLOCK/PAGE
+
+- a heap file is divided into many different blocks or pages. Each page/block stores some number of rows
+- each block consists of several different tuples/items
+- each block is 8kb in size
+
+![](./images/postgresql/block_structure.png)
+
+![](./images/postgresql/block_binary.png)
+
+TUPLE/ITEM
+
+- individual row from the table
+
+![](./images/postgresql/heap_block_tuple.png)
 
 ## SQL FLAVORS
 
