@@ -457,6 +457,8 @@ Data types are SQL implementation based (eg. different in PostreSQL and MySQL).
 
 ## `REAL`
 
+- full precision is not guaranteed, only about 6 digits of precision is guaranteed
+
 ## `DOUBLE PRECISION`
 
 ## `FLOAT`
@@ -549,6 +551,14 @@ SELECT ('01:23:23 AM EST'::TIME WITH TIME ZONE);
 SELECT ('NOV-20-1980 1:23 AM PST'::TIMESTAMP WITH TIME ZONE);
 ```
 
+## AUTOMATIC `TIMESTAMP` ENTRY
+
+```sql
+CREATE TABLE users (
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+```
+
 ## INTERVALS
 
 ```sql
@@ -611,6 +621,10 @@ Foreign key identifies a record (usually in an another table) that this row is a
 - name of a foreign key varies, usually they are called something like `user_id` or `department_id`
 - foreign keys are referring to concrete primary keys in a different table
 - foreign keys will change when a relationship changes (eg. an employee changes a department)
+
+## FOREIGN KEY IN POSTGRESQL
+
+- PostgreSQL only allows an entry of a record with a foreign key, if this entry is referencing an existing record in the second table. In order words, it's not possible to enter a new record if this new record is referencing a record which doesn't exist in the second table.
 
 ## GENERAL STRUCTURE OF A TABLE CREATION QUERY IN POSTGRESQL
 
@@ -1582,6 +1596,17 @@ ALTER COLUMN price
 SET DEFAULT 9999;
 ```
 
+## COMBINING A `DEFAULT` AND `NOT NULL` IN ONE CONSTRAINT
+
+- we can combine these two constraints in order to provide an empty string as minimum (when user decides to not add a bio)
+- this can be useful for server processing, for example, in Javascript when we run len(x), an empty string would give us value of 0, while `NULL` would raise an error
+
+```sql
+CREATE TABLE users (
+  bio VARCHAR(400) NOT NULL DEFAULT ''
+)
+```
+
 ## APPLYING A `UNIQUE` CONSTRAINT TO ONE COLUMN
 
 - before table is created
@@ -1635,6 +1660,12 @@ ALTER TABLE products
 ADD CHECK (price > 0);
 ```
 
+```sql
+CREATE TABLE posts (
+  latitude REAL CHECK (latitude IS NULL OR (latitude >= -90 AND latitude <= 90>))
+)
+```
+
 ## CHECK VALIDATION OF MULTIPLE COLUMNS
 
 ```sql
@@ -1646,6 +1677,19 @@ CREATE TABLE orders (
   CHECK (created_at < est_delivery)
 );
 ```
+
+## HOW TO CHECK TWO VALUES IN TWO SEPARATE COLUMNS, IF THERE IS ALWAYS A VALUE IN ONE OF THEM, AND NEVER THERE ARE NO VALUES OR TWO VALUES AT THE SAME TIME?
+
+```sql
+Add CHECK of
+(
+  COALESCE((post_id)::BOOLEAN:INTEGER, 0)
+  +
+  COALESCE((comment_id)::BOOLEAN:INTEGER, 0)
+)
+```
+
+
 
 ## WHERE SHOULD WE ADD VALIDATIONS?
 
@@ -1663,7 +1707,52 @@ DATABASE LEVEL
 
 ## DATABASE STRUCTURE DESIGN PATTERNS
 
+1. Polymorphic association
+2. Separate column for each 'reaction' type
+3. Separate table for each 'reaction' type
 
+Disclaimer: 'reaction' here refers to a reaction type on a social media post (likes, loves, sads). These patterns were considered as possible solutions to implement a reaction system in a social media site.
+
+## POLYMORPHIC ASSOCIATIONS
+
+- they are not recommended to use, but they are used in practice quite often
+- it's a situation where a column in one table refers to more than one table, but the reference is not enforced using foreign and private keys
+- in this case, the task of figuring out to which referenced tables, the base table is referring to is outside of SQL (mearning is deciphered by server or client)
+- IMPORTANT: foreign key can't be used in polymorphic association
+- polymorphic association results in data consistency (and for that reason is not recommended)
+
+## RATIONALE FOR CHOOSIGN DIFFERENT DESIGNS
+
+1. When deciding whether to go for a solution with one table and extra columns or two tables, it's important to consider whether rate of query for each table is going to be different. If so, it is advisable to go for two tables solution because performance efforts can be applied to one table only. The one requiring it.
+
+2. Another important consideration is expectation of future changes to any of the tables (due to change or further development of features). If you think it's likely that at least one of the tables can be modified in the future (by adding extra column), it is advisable to go for two tables solution. In this solution it is possible to change only one table. Doing this has two benefits: the second functionality will not be affected. Second, it's also about segregation of responsibilities. One program should be responsible for one behavior only.
+
+## DERIVED DATA
+
+- derived data is data which is not stored separately in a table, instead is calculated/queried on demand, it's derived from other existing data
+- eg. number of followers is derived from followers table, the total number itself is not stored separately
+
+## `COALESCE` FUNCTION
+
+- `COALESCE` looks at the values which are provided as arguments and it returns the first value which is not `NULL`
+
+```sql
+SELECT COALESCE(NULL, 5); -- returns 5
+```
+
+```sql
+SELECT COALESCE(NULL, 5, 8); -- returns 5
+```
+
+```sql
+SELECT COALESCE(10, 5); -- returns 10
+```
+
+## USING `COALESCE` TO TURN DIFFERENT NUMERIC VALUES INTO ZERO OR ONE
+
+```sql
+SELECT COALESCE((post_id)::BOOLEAN:INTEGER, 0)'
+```
 
 ## SQL FLAVORS
 
