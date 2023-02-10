@@ -1804,6 +1804,120 @@ TUPLE/ITEM
 
 ![](./images/postgresql/heap_block_tuple.png)
 
+## PERFORMANCE
+
+- FULL TABLE SCAN - every time Postgresql loads records from hard drive to RAM, it has a relatively high performance cost
+- items in an index structure are stored ordered (numerical order for numbers, alphabetical order for strings)
+
+## INDEX - HOW IT'S STRUCTURED AND HOW IT WORKS
+
+- Index is a data structure that efficiently tells us what block/item a record is stored at 
+- most common index is a B-Tree index
+
+![](./images/postgresql/index_structure.png)
+
+## CREATING AN INDEX
+
+- if you don't specify a name for an index, a name will be assigned automatically (eg. in the following example, the name of the index will be `users_username_idx`)
+
+```sql
+CREATE INDEX ON users(username); -- users is the name a table and username is a name of a column
+```
+
+```sql
+CREATE INDEX users_username_idx ON users(username);
+```
+
+## DELETING AN INDEX
+
+```sql
+DROP INDEX users_username_idx;
+```
+
+## BENCHMARKING
+
+- running the same query on indexed vs unindexed records can improve performance 10x
+- the following query was tested, and performance without index was 0.50ms, and performance with index was 0.05ms
+
+```sql
+EXPLAIN ANALYZE SELECT * FROM users
+WHERE username = 'Emil30'
+```
+
+## DOWNSIDES OF INDICES
+
+- creating indices increases storage space and this can be very costly on large databases stored on cloud servers (or even locally, as it will require more harddrives, machines and DevOps engineers)
+- indices slow down `INSERT/UPDATE/DELETE` operations because indices have to be updated after every single one of these operations
+- users may not use an index alltogether
+
+## GET SIZE OF A COLUMN
+
+```sql
+SELECT pg_size_pretty(pg_relation_size('users'));
+```
+
+## INDEX TYPES
+
+- B-TREE INDEX - standard index, used 99% of the time, described in the section above
+
+- HASH - speeds up simple equality checks
+
+- GiST - geometry, full text search
+
+- SP-GiST - clustered data, such as dates - many rows might have the same year
+
+- GIN - for columns that contain arrays or JSON data
+
+- BRIN - specialized for really large datasets
+
+## AUTOMATICALLY GENERED INDICES
+
+- PostrgreSQL automatically creates an index for the primary key column of every table, `column_name_pkey`
+- PostgresSQL automatically creates an index for any `UNIQUE` constrained column, `column_name2_key`
+- these indices don't get listed in the PGAdmin
+
+## SHOW ALL INDICES (INCLUDING HIDDEN)
+
+```sql
+SELECT relname, relkind
+FROM pg_class
+WHERE relkind = 'i';
+```
+
+## POSTGRES EXTENSIONS
+
+- extensions are out-of-the-box applications which gives us extra functionalities in PostrgreSQL
+
+## `pageinspect` EXTENSION
+
+```sql
+CREATE EXTENSIONS pageinspect;
+```
+
+## DISPLAY INFORMATION ABOUT A PARTICULAR INDEX (B-TREE)
+
+```sql
+SELECT *
+FROM bt_metap('users_username-idx')
+```
+
+- `bt` stands for B-Tree
+- `metap` stands for meta page 
+
+## `CTID`
+
+```sql
+SELECT ctid, *
+FROM users
+WHERE username = 'aali'; 
+```
+
+`CTID` is an identifier inside of an index. It has two separate storage conventions for two separate data types. 
+- if stored data is a row (tuple), then `ctid` points out to where a particular row is stored within a block
+- ctid is hidden unless specifically required by a query
+
+(1,0) - page 1, 
+
 ## SQL FLAVORS
 
 Standard keywords are the same for all SQL flavors. Only additional keywords on top of the standard set of keywords, make SQL flavors unique.
@@ -1825,6 +1939,12 @@ SELECT id, name
 FROM employees
 TOP 2;
 ```
+
+## KEYBOARD SHORTCUTS
+
+- `CTRL + /` - comment/uncomment a single or multiple lines
+
+<https://www.pgadmin.org/docs/pgadmin4/6.18/keyboard_shortcuts.html>
 
 ## SQL SCHEMA DESIGNERS
 
