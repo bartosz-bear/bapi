@@ -1904,7 +1904,7 @@ FROM bt_metap('users_username-idx')
 - `bt` stands for B-Tree
 - `metap` stands for meta page 
 
-## `CTID`
+## `CTID` IDENTIFIER
 
 ```sql
 SELECT ctid, *
@@ -1916,7 +1916,84 @@ WHERE username = 'aali';
 - if stored data is a row (tuple), then `ctid` points out to where a particular row is stored within a block
 - ctid is hidden unless specifically required by a query
 
-(1,0) - page 1, 
+ctid: (33, 43) -- page 33 in a heap, index 43 in a heap
+
+## QUERY TUNING
+
+## HOW QUERY IS EXECUTED?
+
+1. Parsing (checking syntax, building a query tree)
+2. Rewriting (taking a query tree and decomposing views into underlying table references)
+3. Planner (finding the best possible to fetch data). Most important for the performance tuning.
+4. Executer (runing the query)
+
+## `EXPLAIN` KEYWORD
+
+- `EXPLAIN` builds a query plan and displays info about it
+- this keyword is not used for performance evaluation, it's never used in production
+
+```sql
+EXPLAIN SELECT username, contents
+FROM users
+JOIN comments ON comments.user_id = users.id
+WHERE username = 'Alyson14';
+```
+
+## `EXPLAIN ANALYZE` KEYWORD
+
+- `EXPLAIN ANALYZE` builds a query plan, runs it and displays info about it
+- this keyword is not used for performance evaluation, it's never used in production
+
+```sql
+EXPLAIN ANALYZE SELECT username, contents
+FROM users
+JOIN comments ON comments.user_id = users.id
+WHERE username = 'Alyson14';
+```
+
+## QUERY PLAN
+
+- Query Plan is a query execution plan provided by PostgreSQL
+- Query Plan is shown by running `EXPLAIN` or `EXPLAIN ANALYZE` queries
+
+## SEQUENTIAL SCAN
+
+- accessing all the rows of a given table
+
+## ANALYSING QUERY PLAN
+
+- `->` - a query node; it's a step where we access some data or we are doing some processing
+- top line of the query plan is also a query node even thought is not marked with `->`
+- we start by analysing the inner most steps
+- when an inner most step is executed, it returns a result to the parent node
+
+![](./images/postgresql/query_plan_analysis.png)
+
+## `Hash Join` OPERATION
+
+- `Hash Join` is telling us we are either accessing or processing data
+- `cost` - we also see the amount of processing power required to perform this single step
+- `rows` - an estimate at how many rows this step will produce
+- `width` - an estimate at the average number of bytes of each row
+
+![](./images/postgresql/hash_join.png)
+
+## `COST` OF OPERATIONS (PERFORMANCE)
+
+- `cost` is an estimate of amount of time to execute some of the query
+- in order to make this estimate PostgreSQL takes a number of row and number of pages, and apply some estimatation ratios to each, in order to arrive at the estimation cost
+- seqential scan executes in O(n)
+- indexing executes in O(1)
+
+![](./images/postgresql/cost_estimation.png)
+
+## ACTUAL `COST` ESTIMATION RATIOS
+
+- these values are constant (defined in PostgreSQL) and will remain constant unless you change them manually
+
+![](./images/postgresql/actual_cost_estimation_ratios.png)
+
+<https://www.postgresql.org/docs/current/runtime-config-query.html>
 
 ## SQL FLAVORS
 
