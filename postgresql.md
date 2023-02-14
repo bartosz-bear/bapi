@@ -1984,16 +1984,85 @@ WHERE username = 'Alyson14';
 - in order to make this estimate PostgreSQL takes a number of row and number of pages, and apply some estimatation ratios to each, in order to arrive at the estimation cost
 - seqential scan executes in O(n)
 - indexing executes in O(1)
+- costs flow up (therefore a cost of a parent node includes the cost of its children)
 
 ![](./images/postgresql/cost_estimation.png)
 
 ## ACTUAL `COST` ESTIMATION RATIOS
 
 - these values are constant (defined in PostgreSQL) and will remain constant unless you change them manually
+- `seq_page_cost`, sequential page cost is a base value of 1, all other costs are relative to `seq_page_cost`
 
 ![](./images/postgresql/actual_cost_estimation_ratios.png)
 
 <https://www.postgresql.org/docs/current/runtime-config-query.html>
+
+## START-UP AND TOTAL COST
+
+![](./images/postgresql/startup_total_cost.png)
+
+## WHERE TO USE AN INDEX AND WHERE TO USE SEQUENTIAL SCAN?
+
+- index is useful for finding a relatively small sample of a large population, if you are looking for a large sample out of a large population it makes more sense to use sequential index
+- PostgreSQL will choose which method is more efficient (index or sequential scan) based on it's internal cost estimation
+
+## COMMON TABLE EXPRESSIONS - `WITH` KEYWORD
+
+- we define it with a `WITH` keyword in front of a main query
+- `CTE` produces a virtual table
+- `CTE` are used to make queries easier to read
+- `CTE` is kind of a syntactic sugar
+- `CTE` can be used to write recursive queries, which are otherwise impossible to express in plain SQL
+- cost of running a `CTE` or a normal query is the same
+
+```sql
+SELECT users.username, tags.created_at
+FROM users
+JOIN (
+	SELECT user_id, created_at FROM caption_tags
+	UNION ALL
+	SELECT user_id, created_at FROM photo_tags
+) AS tags ON tags.user_id = users.id
+WHERE tags.created_at < '2010-01-07';
+```
+
+```sql
+WITH tags AS (
+	SELECT user_id, created_at FROM caption_tags
+	UNION ALL
+	SELECT user_id, created_at FROM photo_tags
+)
+
+SELECT username, tags.created_at
+FROM users
+JOIN tags ON tags.user_id = users.id
+WHERE tags.created_at < '2010-01-07';
+```
+
+## RECURSIVE COMMON TABLE EXPRESSIONS - `WITH RECURSIVE`
+
+- it's very different to a simple `CTE`
+- you will use a recursive CTE every time you work on a tree like or graph-type data structure
+- they must use `UNION` keyword
+- recursive `CTE`s are one of the most challenging parts of SQL
+
+```sql
+WITH RECURSIVE countdown(val) (
+  SELECT 3 AS val -- Initial, non-recursive query
+  UNION
+  SELECT val - 1 FROM countdown WHERE val > 1 -- Recursive query
+)
+SELECT *
+FROM countdown;
+```
+
+## MECHANICS OF A RECURSIVE QUERY
+
+![](./images/postgresql/mechanics_of_recursive_queries.png.png)
+
+## USE CASE FOR A RECURSIVE CTE
+
+- recursive CTEs are used in tree and graph likes data structures, for example a tree of followers on Instagram
 
 ## SQL FLAVORS
 
