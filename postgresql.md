@@ -98,6 +98,13 @@ CREATE TABLE photos (
 DROP TABLE photos;
 ```
 
+## CHANGING A NAME OF A COLUMN
+
+```sql
+ALTER TABLE comments
+RENAME COLUMN contents TO body;
+```
+
 ## INSERTING DATA
 
 - actual values are matching in the exact order of specified fields
@@ -2097,7 +2104,7 @@ LIMIT 30;
 
 ## MECHANICS OF A RECURSIVE QUERY
 
-![](./images/postgresql/mechanics_of_recursive_queries.png.png)
+![](./images/postgresql/mechanics_of_recursive_queries.png)
 
 ## USE CASE FOR A RECURSIVE CTE
 
@@ -2239,6 +2246,31 @@ COMMIT;
 ROLLBACK;
 ```
 
+## SCHEMA MIGRATIONS
+
+Schema migration file is a code that describes precise changes we want to make to the database.
+
+- it can be written in any programming language
+- there are langugage specific libraries to support creation of migration files
+- migration files are generated from CLI, and then newly created files can be edited to add upgrade and downgrade code in either a programming language of your choice or SQL
+- UP/UPGRADE PART - contains a statement that advances, or upgrades the structure of the database
+- DOWN/DOWNGRADE PART - contains a statement that exactly undos the 'UP' command, or reverts to the previous stage of the database
+- any project can have multiple migration files, so you need an identifier for each of them
+- it is highly recommend to write schema migrations files in SQL if you have enough knowledge about SQL, because programming language libraries make intrinsic assumptions about the actual SQL code you want to generate (which is not always in line with what you want to generate)
+- 
+
+![](./images/postgresql/schema_migration.png)
+
+BIG LESSONS
+
+1. Changes to the database and changes to clients need to be made at precisely the same time
+
+2. When working with other engineers, we need a really easy way to tie the structure of our database to our code
+
+## CODE REVIEW REQUEST
+
+![](./images/postgresql/code_review_request.png)
+
 ## WHEN A CONNECTION CRASHES
 
 - when a connection crashes, Postgres will automatically rollback to the original state
@@ -2280,6 +2312,13 @@ TOP 2;
 - manual diagraming
 
 <https://ondras.zarovi.cz/sql/demo>
+
+## SCHEMA MIGRATIONS TOOLS FOR PYTHON
+
+From author of SQLAlchemy
+<https://pypi.org/project/alembic/>
+
+<https://pypi.org/project/yoyo-migrations/>
 
 ## ISSUE WITH SLOW POSTGRESQL ON WINDOWS 10
 
