@@ -559,6 +559,13 @@ CREATE TABLE users (
 );
 ```
 
+## HOW TO GROUP/BUCKET DATES IN WEEKS?
+
+```sql
+SELECT
+  date
+```
+
 ## INTERVALS
 
 ```sql
@@ -2157,15 +2164,37 @@ CREATE OR REPLACE VIEW recent_posts AS (
 ```
 
 ## DELETING A `VIEW`
-
 ```sql
 DROP VIEW recent_posts;
 ```
 
-## MATERIALIZED VIEWS
+## `MATERIALIZED VIEW`
 
 - a view is a query that gets executed every time you refer to it
 - a materialized view gets executed only at very specific times, but the results are saved and can be referencd without rerunning the query
+
+```sql
+CREATE MATERIALIZED VIEW weekly_likes AS (
+  SELECT 
+	date_trunc('week', COALESCE(posts.created_at, comments.created_at)) AS week,
+	COUNT(posts.id) AS likes_on_posts,
+	COUNT(comments.id) AS likes_on_comments
+FROM likes
+LEFT JOIN posts ON posts.id = likes.post_id
+LEFT JOIN comments ON comments.id = likes.comment_id
+GROUP BY week
+ORDER BY week
+)
+WITH DATA
+
+SELECT * FROM weekly_likes;
+```
+
+## UPDATING `MATERIALIZED VIEW`
+
+```sql
+REFRESH MATERIALIZED VIEW weekly_likes;
+```
 
 ## DIFFERENCE BETWEEN COMMON TABLE EXPRESSIONS AND VIEWS
 
@@ -2176,6 +2205,43 @@ DROP VIEW recent_posts;
 - CTEs can be used encapsulated by a view when a recursive functionality is used repeatadly, and therefore it can used accross the code base
 
 <https://stackoverflow.com/questions/30918633/sql-cte-vs-view>
+
+## `TRANSACTIONS`
+
+- transactions are useful when we have to run multiple operations, and we can only accept these operations if ALL of them were succesful
+- if even one operation failed, we cancel all other succesful operations
+- every `CONNECTION` in Postgres has it's o
+
+## OPENING A TRANSACTION SESSION
+
+- when a transaction opens, it opens in a separate connection with a copy of the whole database environment, all tables
+- therefore, when a transaction session starts, a new environment (a copy) is created and therefore after the session is opened, two separate copies of the database exist
+
+```sql
+BEGIN; 
+```
+
+## `COMMIT`
+
+```sql
+COMMIT;
+```
+
+- if all operations has been succesful, you can run `COMMIT` query in order to merge the copy with the original image (root image)
+
+## `ROLLBACK`
+
+- if you make an error, session state will change to `aborted` and you have to `ROLLBACK` to the original database image
+- if a session is in `aborted` state you will not be able to run any more queries/operations in this session anymore
+- in order to restore the ability to run queries again, you have to rollback to the valid state
+
+```sql
+ROLLBACK;
+```
+
+## WHEN A CONNECTION CRASHES
+
+- when a connection crashes, Postgres will automatically rollback to the original state
 
 ## SQL FLAVORS
 
@@ -2217,7 +2283,7 @@ TOP 2;
 
 ## ISSUE WITH SLOW POSTGRESQL ON WINDOWS 10
 
-In my `C:\Program Files\PostgreSQL\14\data\postgresql.conf` file I found `listen_addresses = "*"` which I changed to `listen_addresses = 'localhost'`.
+In my `C:\Program Files\PostgreSQL\14\data\postgresql.conf` file I found `listen_addresses = "*"` which I changed to `listen_addresses = '127.0.0.1,::1'`.
 
 <https://dba.stackexchange.com/questions/201646/slow-connect-time-to-postgresql-on-windows-10>
 
