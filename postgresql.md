@@ -1165,6 +1165,15 @@ UNION ALL
 )
 ```
 
+## DIFFERENCE BETWEEN `UNION` AND `JOIN`
+
+- `JOIN` combines COLUMNS. If two tables are joined together, then the data from the first table is shown in one set of column alongside the second table's column in the the same row.
+- `UNION` combines ROWS. If two tables are 'unioned' together, then the data from the first table is one set of rows, and data from the second table is another set. For that reason `UNION` can only be used on tables or results set if both of them have exactly the same columns.
+
+![](./images/postgresql/join_vs_union.png)
+
+<https://www.linkedin.com/pulse/sql-joins-vs-unions-nanthale-collins/>
+
 ## `INTERSECT`
 
 - `INTERSECT` returns only those records which exist in result sets of both queries
@@ -2042,9 +2051,14 @@ WHERE tags.created_at < '2010-01-07';
 ## RECURSIVE COMMON TABLE EXPRESSIONS - `WITH RECURSIVE`
 
 - it's very different to a simple `CTE`
-- you will use a recursive CTE every time you work on a tree like or graph-type data structure
+- you will use a recursive CTE every time you work on a tree like or graph-type data structure (may represent some type of hierarchy)
 - they must use `UNION` keyword
 - recursive `CTE`s are one of the most challenging parts of SQL
+- there are two virtual tables created during execution of recursive `CTE`, the results table and the working table
+- query in the recursive `CTE` (before `UNION` keyword) is a non-recursive query and it's run only once (before the recursive function runs) and is used to populate the the results table AND the working table with some initial records
+- query after the `UNION` keyword is a recursive query and is run several time based on the `WHERE` condition and some statement which modifies a condition (eg. `depth + 1`)
+- columns of both of these tables are defined by the arguments passed into the recursive `CTE` name (eg. `WITH RECURSIVE rec_cte_name(column1, column2, column3)`)
+- after the recursive query returns final results, the results set is renamed to a name of the recursive CTE and becames a table which the final query is run against
 
 ```sql
 WITH RECURSIVE countdown(val) (
@@ -2056,13 +2070,112 @@ SELECT *
 FROM countdown;
 ```
 
+```sql
+WITH RECURSIVE suggestions(leader_id, follower_id, depth) AS (
+		SELECT leader_id, follower_id, 1 AS depth
+		FROM followers
+		WHERE follower_id = 1
+	UNION
+		SELECT followers.leader_id, followers.follower_id, depth + 1
+		FROM followers
+		JOIN suggestions ON suggestions. leader_id = followers.follower_id -- `suggestions` is the working table
+		WHERE depth < 3
+)
+SELECT DISTINCT users.id, users.username
+FROM suggestions
+JOIN users ON users.id = suggestions.leader_id
+WHERE depth > 1
+LIMIT 30;
+```
+
 ## MECHANICS OF A RECURSIVE QUERY
 
 ![](./images/postgresql/mechanics_of_recursive_queries.png.png)
 
 ## USE CASE FOR A RECURSIVE CTE
 
-- recursive CTEs are used in tree and graph likes data structures, for example a tree of followers on Instagram
+- recursive CTEs are used in tree and graph likes data structures, for example to find a suggestion for a particular user inside a tree of people he follows on Instagram, and other people these other people follow
+- eg. I follow 'The Rock' and 'The Rock' follows 'Jennifer Lopez' and 'Snoop Dogg' and 'Snoop Dogg' follows 'Dr Dre' and 'Eminem'
+
+## HOW TO MERGE TWO TABLES INTO ONE (AND DELETE THE ONES WE DON'T NEED ANYMORE)?
+
+MANUAL APPROACH
+
+- this approach can work by have some major downsides
+- original IDs are not copied, therefore any existing queries which rely on these IDs will break
+
+1. Create a new table with column (and their corresponding data types and constraints) which exactly match the structure of the tables which will be merged into.
+
+```sql
+CREATE TABLE tags (
+	id SERIAL PRIMARY KEY,
+	created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+	updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+	user_id INTEGER NON NULL REFERENCES users(id) ON DELETE CASCADE,
+	post_id INTEGER NON NULL REFERENCES posts(id) ON DELETE CASCADE,
+	x INTEGER,
+	y INTEGER
+);
+```
+
+2. Select only those columns from table 1 which are not automatically entered (don't choose the primary key) and insert them into the newly created table.
+
+```sql
+INSERT INTO tags(created_at, updated_at, user_id, post_id, x, y)
+SELECT created_at, updated_at, user_id, post_id, x, y
+FROM photo_tags;
+```
+
+3. Repeat the same process for table 2
+
+```sql
+INSERT INTO tags(created_at, updated_at, user_id, post_id, x, y)
+SELECT created_at, updated_at, user_id, post_id, x, y
+FROM caption_tags;
+```
+
+4. Delete two original tables
+
+## `VIEW`
+'
+- `VIEW` is a virtual table which access to data from different tables in the database
+- it is used to merge tables together without deleting the original tables
+- because it's virtual, it's created everytime is used which guarantees that data in the merged, virtual table is always up to date
+- very similar to Common Table Expression, however a view is not attached to any particular query, it can be reused over several queries at any point in time
+- we can `UNION` or `JOIN` or any other query inside a view, they can also use computed values
+- views can be used to make other queries more readable and are often used to write repeatable queries as 'save' them as a variable (as a view)
+
+## CHANGING A `VIEW`
+
+```sql
+CREATE OR REPLACE VIEW recent_posts AS (
+  SELECT *
+  FROM posts
+  ORDER BY created_at DESC
+  LIMIT 15
+)
+```
+
+## DELETING A `VIEW`
+
+```sql
+DROP VIEW recent_posts;
+```
+
+## MATERIALIZED VIEWS
+
+- a view is a query that gets executed every time you refer to it
+- a materialized view gets executed only at very specific times, but the results are saved and can be referencd without rerunning the query
+
+## DIFFERENCE BETWEEN COMMON TABLE EXPRESSIONS AND VIEWS
+
+- views can be indexed but CTE can't (for that reason CTEs don't store statistics)
+- CTE works excellent on tree hierarchies (recursive CTE)
+- views being a physical object on database (but does not store data physically) and can be used on multiple queries, thus provide flexibility and centralized approach
+- CTE, on the other hand, are temporary and will be created when they are used (sometimes CTEs are called inline views)
+- CTEs can be used encapsulated by a view when a recursive functionality is used repeatadly, and therefore it can used accross the code base
+
+<https://stackoverflow.com/questions/30918633/sql-cte-vs-view>
 
 ## SQL FLAVORS
 
