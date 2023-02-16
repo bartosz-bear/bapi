@@ -2257,7 +2257,7 @@ Schema migration file is a code that describes precise changes we want to make t
 - DOWN/DOWNGRADE PART - contains a statement that exactly undos the 'UP' command, or reverts to the previous stage of the database
 - any project can have multiple migration files, so you need an identifier for each of them
 - it is highly recommend to write schema migrations files in SQL if you have enough knowledge about SQL, because programming language libraries make intrinsic assumptions about the actual SQL code you want to generate (which is not always in line with what you want to generate)
-- 
+- schema migrations are typically performed using transactions
 
 ![](./images/postgresql/schema_migration.png)
 
@@ -2267,6 +2267,56 @@ BIG LESSONS
 
 2. When working with other engineers, we need a really easy way to tie the structure of our database to our code
 
+## MIGRATING DATA USING PROGRAMMING LANGUAGES LIBRARIES - PROCESS
+
+- different programming languages offer different libraries supporting database migrations from CLI or scripts
+
+INSIDE A NODE.JS PROJECT
+
+ADD A SYSTEM VARIABLE IN ORDER TO CONNECT TO POSTGRES
+
+```powershell
+$env:DATABASE_URL="postgres://username:password@localhost:5432/socialnetwork";
+```
+
+CREATE A MIGRATION FILE
+
+```powershell
+npm run migrate create migration name
+```
+
+EDIT A MIGRATION FILE
+
+```js
+exports.up = pgm => {
+  pgm.sql(`
+    CREATE TABLE comments (
+      id SERIAL PRIMARY KEY,
+      created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+      updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+      contents VARCHAR(240) NOT NULL
+    );
+  `)
+};
+
+exports.down = pgm => {
+  pgm.sql(`
+    DROP TABLE comments;
+  `)
+};
+
+```
+
+MIGRATE A MIGRATION
+
+Following command will run ALL uncommited migrations not only the most recent one.
+
+```powershell
+npm run migrate up
+```
+
+After a succesful migration, migration library will create a table in Postgres called `pgmigrations` which will store a table of all executed migrations along with their execution time.
+
 ## CODE REVIEW REQUEST
 
 ![](./images/postgresql/code_review_request.png)
@@ -2274,6 +2324,23 @@ BIG LESSONS
 ## WHEN A CONNECTION CRASHES
 
 - when a connection crashes, Postgres will automatically rollback to the original state
+
+## DATA MIGRATION
+
+- difficult topic in database world
+- there are several reasons to not run data migrations at the same time as schema migrations
+- one reason is that a production server is still running during migration transaction which can result in a loss of data which was added to the database between the time when a migration was started and when it was completed
+- it's possible to run schema and data migrations as one migration file or separate migrations files
+- data migrations are typically done using transactions
+
+## DESIGN STYLE FOR SCHEMA AND DATA MIGRATIONS
+
+1. Add a new column
+2. Deploy a new version of server code, so new entries are inserted into both old and columns
+3. Copy values from old columns to a new column (new format)
+4. Deploy a new version of server code, so new entries are inserted into the the new columns only
+5. Drop old columns
+
 
 ## SQL FLAVORS
 
