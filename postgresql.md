@@ -2217,7 +2217,8 @@ REFRESH MATERIALIZED VIEW weekly_likes;
 
 - transactions are useful when we have to run multiple operations, and we can only accept these operations if ALL of them were succesful
 - if even one operation failed, we cancel all other succesful operations
-- every `CONNECTION` in Postgres has it's o
+- every `CONNECTION` in Postgres has it's own copy of a database environment
+- `LOCKED RECORDS` - when a record was modified during a transaction, no other transaction or even the main connection will not be able to access to that record until first transaction commits or rolls back
 
 ## OPENING A TRANSACTION SESSION
 
@@ -2341,6 +2342,80 @@ After a succesful migration, migration library will create a table in Postgres c
 4. Deploy a new version of server code, so new entries are inserted into the the new columns only
 5. Drop old columns
 
+## ACCESSING POSTGRES FROM API
+
+
+- CLIENT - it's responsible for a single query to a database, usually a class provided by a library
+
+- POOL - it's a collection of clients, usually a class provided by a library
+
+```js
+const pg = require('pg');
+
+class Pool {
+  _pool = null;
+
+  connect(options) {
+    this._pool = new pg.Pool(options);
+    return this._pool.query('SELECT 1 + 1;');
+  }
+
+  close() {
+    return this._pool.end();
+  }
+
+  // REALLY BIG SECURITY ISSUE HERE
+  query(sql) {
+    return this._pool.query(sql);
+  }
+
+}
+
+module.exports = new Pool();
+```
+
+- CONNECTION - it's a piece of code responsible for establishing a connection between an API server and a database
+
+```js
+pool.connect({
+  host: 'localhost',
+  port: 5432,
+  database: 'socialnetwork',
+  user: 'username',
+  password: 'password'
+})
+  .then(() => {
+    app().listen(3005,  () => {
+      console.log('Listening on port 3005');
+    });
+  })
+  .catch((err) => console.log(err));
+```
+
+- CONNECT - a method of a client or a pool class which takes credentials and database details arguments and connects to a database
+
+```js
+  connect(options) {
+    this._pool = new pg.Pool(options);
+    return this._pool.query('SELECT 1 + 1;');
+  }
+
+```
+
+- CLOSE - a method of a client or a pool which disconnects from a database
+
+```js
+  close() {
+    return this._pool.end();
+  }
+```
+
+## REPOSITORY PATTERN
+
+- Repository Object is one signle object (usually a class with methods) with central access point to data from a particular table
+- API calls correspond to standard REST methods + additional calls not defined by standards REST set
+
+![](./images/postgresql/repository_pattern.png)
 
 ## SQL FLAVORS
 
