@@ -2417,6 +2417,46 @@ pool.connect({
 
 ![](./images/postgresql/repository_pattern.png)
 
+## SQL INJECTION EXPLOIT
+
+- it's a security vulnerability where user-provided input (a form, url) is concatanated with additional SQL query which is executed by the database server with malicious intent
+- in order to mitigate this risk we never concatanate user provided strings and a SQL query
+
+EXAMPLE OF SQL INJECTION
+
+```
+http://localhost:3005/users/1DROP_TABLE_users;
+```
+
+## SOLUTION TO SQL INJECTION EXPLOIT RISK
+
+1. Use postgres to sanitize values (preferable option most of the times)
+2. Add code on the server side to sanitize values
+
+USING POSTGRES TO SANITZE VALUES
+
+How to sanitize?
+- pass a SQL query as one parameter, and user defined values as second paramater
+
+```js
+  static async findById(id) {
+    const { rows } = await pool.query(`
+      SELECT * FROM users WHERE id = $1;
+    `, [id]);
+
+    return toCamelCase(rows)[0];
+  }
+```
+
+```js
+  query(sql, params) {
+    return this._pool.query(sql, params);
+  }
+```
+
+- use `PREPARED STATEMENTS` functionality of Postrgres to receive a string and user-defined values
+
+
 ## SQL FLAVORS
 
 Standard keywords are the same for all SQL flavors. Only additional keywords on top of the standard set of keywords, make SQL flavors unique.
