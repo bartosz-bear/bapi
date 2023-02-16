@@ -100,7 +100,7 @@ DROP TABLE photos;
 
 ## CHANGING A NAME OF A COLUMN
 
-```sql
+```postgresql
 ALTER TABLE comments
 RENAME COLUMN contents TO body;
 ```
@@ -122,6 +122,14 @@ VALUES
 	('Delhi', 'India', 28125000, 2240),
   ('Shanghai', 'China', 22125000, 4015),
   ('Sao Paulo', 'Brazil', 20935000, 3043);
+```
+
+## INSERT AND RETURN - `RETURNING`
+
+- when you want to insert an item into a database and get the details about the insert coming directly from the database use `RETURNING` keyword
+
+```postgresql
+INSERT INTO users (username, bio) VALUES ($1, $2) RETURNING *;
 ```
 
 ## SELECTING DISTINCT RECORDS
@@ -2410,6 +2418,157 @@ pool.connect({
   }
 ```
 
+## COMPLETE REST-BASED IP IMPLEMENTATION
+
+`users.js` ROUTING
+
+```js
+const express = require('express');
+const UserRepo = require('../repos/user-repo');
+const toCamelCase = require('../repos/utils/to-camel-case');
+
+const router = express.Router();
+
+router.get('/users', async (req, res) => {
+
+  const users = await UserRepo.find();
+
+  res.send(users);
+
+});
+
+router.get('/users/:id', async (req, res) => {
+  const { id } = req.params;
+
+  const user = await UserRepo.findById(id);
+
+  if (user) {
+    res.send(user);
+  } else {
+    res.sendStatus(404);
+  }
+
+});
+
+router.post('/users', async (req, res) => {
+  const { username, bio } = req.body;
+
+  const user = await UserRepo.insert(username, bio);
+
+  res.send(user);
+});
+
+router.put('/users/:id', async (req, res) => {
+  const { id } = req.params;
+  const { username, bio } = req.body;
+
+  const user = await UserRepo.update(id, username, bio);
+
+  if (user) {
+    res.send(user);
+  } else {
+    res.sendStatus(404);
+  }
+});
+
+router.delete('/users/:id', async (req, res) => {
+  const { id } = req.params;
+
+  const user = await UserRepo.delete(id);
+
+  if (user) {
+    res.send(user);
+  } else {
+    res.sendStatus(404);
+  }
+});
+
+module.exports = router;
+```
+
+`user-repo.js` REPOSITORY PATTERN IMPLEMENTATION
+
+```js
+const pool = require('../pool')
+const toCamelCase = require('./utils/to-camel-case')
+ 
+class UserRepo {
+  static async find() {
+    const { rows } = await pool.query('SELECT * FROM users;')
+    return toCamelCase(rows)
+  }
+ 
+  static async findById(id) {
+    const { rows } = await pool.query(
+      'SELECT * FROM users WHERE id = $1;', [id]
+    );
+
+    return toCamelCase(rows)[0];
+  }
+ 
+  static async insert(username, bio) {
+    const {rows } = await pool.query('INSERT INTO users (username, bio) VALUES ($1, $2) RETURNING *;', 
+    [username, bio]
+    );
+
+    return toCamelCase(rows)[0];
+  }
+ 
+  static async update(id, username, bio) {
+    const { rows } = await pool.query(
+      'UPDATE users SET username = $1, bio = $2 WHERE id = $3 RETURNING *;',
+      [username, bio, id]
+    );
+
+    return toCamelCase(rows)[0];
+  }
+
+  static async delete(id) {
+    const { rows } = await pool.query(
+      'DELETE FROM users WHERE id = $1 RETURNING *;', [id]
+    );
+
+    return toCamelCase(rows)[0];
+  }
+}
+ 
+module.exports = UserRepo
+```
+
+```http
+http://localhost:3005/users
+
+###
+
+http://localhost:3005/users/1
+
+###
+
+POST http://localhost:3005/users HTTP/1.1
+content-type: application/json
+
+{
+  "username": "minty3",
+  "bio": "I'm a mint"
+}
+
+###
+
+PUT http://localhost:3005/users/1 HTTP/1.1
+content-type: application/json
+
+{
+  "username": "Alyson1567",
+  "bio": "I am alyson55"
+}
+
+###
+
+
+DELETE http://localhost:3005/users/2 HTTP/1.1
+content-type: application/json
+```
+
 ## REPOSITORY PATTERN
 
 - Repository Object is one signle object (usually a class with methods) with central access point to data from a particular table
@@ -2438,6 +2597,7 @@ USING POSTGRES TO SANITZE VALUES
 How to sanitize?
 - pass a SQL query as one parameter, and user defined values as second paramater
 
+
 ```js
   static async findById(id) {
     const { rows } = await pool.query(`
@@ -2454,8 +2614,14 @@ How to sanitize?
   }
 ```
 
-- use `PREPARED STATEMENTS` functionality of Postrgres to receive a string and user-defined values
+- use `PREPARED STATEMENTS` functionality of Postgres to receive a string and user-defined values
+- `$1` is how Postgres recognizes a variable
 
+<https://www.postgresql.org/docs/current/sql-prepare.html>
+
+## TESTING
+
+- there are different database environment modes for different purposes: test, development, production
 
 ## SQL FLAVORS
 
