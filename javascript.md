@@ -201,3 +201,145 @@ let numRegex = /\d/g;
 ```js
 let noNumRegex = /\D/g;
 ```
+
+## MATCHING WHITESPACE AND OTHER DELIMINATION CHARACTERS
+
+- `/\s/` - returns whitespace, carriage return, tab, form feed, and new line characters
+- `/\s/` is equal to `/[\r\t\f\n\v]/`
+
+```js
+let sample = "Whitespace is important in separating words";
+let countWhiteSpace = /\s/g; // Change this line
+let result = sample.match(countWhiteSpace);
+```
+
+## MATCHING ALL NON WHITESPACE AND OTHER DELIMINATION CHARACTERS
+
+- `/\S/` - returns everything BUT whitespace, carriage return, tab, form feed, and new line characters
+- `/\S/` is equal to `/[^ \r\t\f\n\v]/`
+
+```js
+let sample = "Whitespace is important in separating words";
+let countNonWhiteSpace = /\S/g; // Change this line
+let result = sample.match(countNonWhiteSpace);
+```
+
+## SPECIFY THE UPPER AND LOWER NUNBER OF MATCHES
+
+- `/x{3,6}/` - only return strings with letter `x` if it matches between 3 (lower bound) and 6 times (upper band)
+
+```js
+let ohStr = "Ohhh no";
+let ohRegex = /Oh{3,6} no/; // Change this line
+let result = ohRegex.test(ohStr);
+```
+
+## SPECIFY ONLY THE LOWER NUMBER OF MATCHES
+
+- `/x{3,}/` - only return strings with letter `x` which appear at least 3 times
+
+```js
+let haStr = "Hazzzzah";
+let haRegex = /Haz{4,}ah/; // Change this line
+let result = haRegex.test(haStr);
+```
+
+## SPECIFY EXACT NUMBER OF MATCHES
+
+- `/x{3}/` - only returns strings with letter `x` which appear exactly 3 times
+
+```js
+let timStr = "Timmmmber";
+let timRegex = /Tim{4}ber/; // Change this line
+let result = timRegex.test(timStr);
+```
+
+## OPTIONAL CHECK `?`. MATCHING IF IT EXISTS OR IT DOESN'T EXIST
+
+- `/colou?r/` - it returns true for both `color` and `colour`
+
+```js
+let favWord = "favorite";
+let favRegex = /favou?rite/; // Change this line
+let result = favRegex.test(favWord);
+```
+
+## POSITIVE AND NEGATIVE LOOKAHEAD
+
+- `/a(?=b)` - POSITIVE LOOKAHEAD, after regex found letter `a`, it will look ahead for `b`, if if found `b`, it will return `a`. If it didn't find `b`, it will return `null`
+- `/a(?!b)` - NEGATIVE LOOKAHEAD, after regex found letter `a`, it will look ahead for `b`, if it didnt' find `b`, it will return `a`. If it found `b`, it will return `null`
+
+Example 1: Here is a (naively) simple password checker that looks for between 3 and 6 characters and at least one number:
+
+```js
+let password = "abc123";
+let checkPass = /(?=\w{3,6})(?=\D*\d)/;
+checkPass.test(password);
+```
+
+Example 2: Match passwords that are greater than 5 characters long, and have exactly two consecutive digits.
+
+```js
+let sampleWord = "astronaut";
+let pwRegex =  /(?=\w{6})(?=\w*\d{2})/;
+let result = pwRegex.test(sampleWord);
+```
+
+## MATCHING MULTIPLE STRINGS (MIXED GROUPING OF CHARACTERS)
+
+- `/T(o|i)m` - returns true for both `Tom` and `Tim`
+
+If you want to find either Penguin or Pumpkin in a string, you can use the following Regular Expression: `/P(engu|umpk)in/g`
+
+```js
+let myString = "Eleanor Roosevelt";
+let myRegex = /(Franklin |Eleanor ).*\s*Roosevelt$/; // Change this line
+let result = myRegex.test(myString); // Change this line
+```
+
+## CAPTURE GROUPS
+
+Say you want to match a word that occurs multiple times like below.
+
+```js
+let repeatStr = "row row row your boat";
+```
+
+You could use `/row row row/`, but what if you don't know the specific word repeated? Capture groups can be used to find repeated substrings.
+
+Capture groups are constructed by enclosing the regex pattern to be captured in parentheses. In this case, the goal is to capture a word consisting of alphanumeric characters so the capture group will be \w+ enclosed by parentheses: `/(\w+)/`.
+
+The substring matched by the group is saved to a temporary "variable", which can be accessed within the same regex using a backslash and the number of the capture group (e.g. `\1`). Capture groups are automatically numbered by the position of their opening parentheses (left to right), starting at 1.
+
+The example below matches a word that occurs thrice separated by spaces:
+
+```js
+let repeatRegex = /(\w+) \1 \1/;
+repeatRegex.test(repeatStr); // Returns true
+repeatStr.match(repeatRegex); // Returns ["row row row", "row"]
+```
+
+Use capture groups in reRegex to match a string that consists of only the same number repeated exactly three times separated by single spaces.
+
+```js
+let repeatNum = "42 42 42";
+let reRegex = /^(\d+) \1 \1$/; // Change this line
+let result = reRegex.test(repeatNum);
+```
+
+
+## EXAMPLES
+
+1. Usernames can only use alpha-numeric characters.
+
+2. The only numbers in the username have to be at the end. There can be zero or more of them at the end. Username cannot start with the number.
+
+3. Username letters can be lowercase and uppercase.
+
+4. Usernames have to be at least two characters long. A two-character username can only use alphabet letters as characters.
+
+```js
+let username = "JackOfAllTrades";
+let userCheck = /^[a-z][a-z]+\d*$|^[a-z]\d\d+$/i;
+let result = userCheck.test(username);
+```
