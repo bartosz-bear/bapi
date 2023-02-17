@@ -43,6 +43,11 @@ FROM employees;
 
 `name` is a name of a field in a table, while `first_name` will be a name of the field in the result set
 
+## DATA DEFINITION LANGUAGE (DDL)
+
+- DDL is a set of SQL commands used to create, modify, and delete database structures not data
+- examples: `CREATE`, `ALTER`, `DROP`
+
 ## CREATING A DATABASE
 
 ## DATABASE DESIGN QUESTIONS
@@ -2622,6 +2627,45 @@ How to sanitize?
 ## TESTING
 
 - there are different database environment modes for different purposes: test, development, production
+
+## SCHEMA
+
+- schemas are like folders containing tables, but also data types, functions and operators
+- every database gets a default schema called `public`
+- each schema can have it's own separate copy of a table
+- schemas can be useful for testing purposes, each testing file can connect to the same table, however separated into different schemas
+
+```sql
+CREATE SCHEMA test;
+```
+
+```sql
+CREATE SCHEMA schema_name AUTHORIZATION roleName;
+```
+
+<https://www.postgresql.org/docs/current/ddl-schemas.html>
+
+## SEARCH PATH
+
+- search path controls the default schema
+
+```sql
+SHOW search_path; -- "$user, public"
+```
+
+`$user` variable stores the current user
+
+## CHANGING SEARCH PATH
+
+```sql
+SET search_path TO test, public;
+```
+
+## CREATING A NEW USER (NEW `ROLE`)
+
+```sql
+CREATE ROLE role_name WITH LOGIN PASSWORD 'password';
+```
 
 ## SQL FLAVORS
 
