@@ -9,7 +9,7 @@ def format_choices(choices):
 
     return l
 
-class NameForm(forms.Form):
+class CourseCategoriesForm(forms.Form):
     choice = forms.ChoiceField(choices=format_choices(get_dropdown_choices()))
 
 
