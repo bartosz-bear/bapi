@@ -56,35 +56,16 @@
 
           {{ my_name }}
 
-          <h3>selection form</h3>
+          <h3>courses</h3>
 
-          <form action="your-name" method="post">
+          <form action="get_courses" method="post">
             {% csrf_token %}
             {{ form }}
             <input type="submit" value="Submit">
           </form>
-          
-          <!--
-          {{ csrf_token 
-            selection_form | safe }}
 
-            <form method="post" action="/bapi_scraping/get_courses">
-              {% csrf_token %}
-              <p><b>It will take up to 2 minutes to scrap data and create a CSV file.
-               After you press the button, do not refresh the page.</b><p>
-              <label for="course_category">Choose a course category:</label>
+          {{ courses }}
 
-              {% for option in select_input_options %}
-                {{ forloop.counter0 }} # starting index 0
-
-                # do yo
-              {% endfor %}
-              
-              <select name="course_category">''' + select_input_options + '''</select>
-              
-              <input type="submit"/></form>'''
-
-              -->
         </main>
         <footer class="pt-5 my-5 text-muted border-top">
           BAPI &middot; &copy; 2023

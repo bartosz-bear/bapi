@@ -114,7 +114,7 @@ def scrap(category):
     df = df.loc[:, ['Category Name', 'Course Name', 'First Instructor Name', 'Course Description',
                     '# of Students Enrolled', '# of Ratings']]
 
-    #print(df.head())
+    print(df.head())
 
     # Saving to .csv
     #df.to_csv('courses_final.csv', index=False)
