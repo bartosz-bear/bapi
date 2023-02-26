@@ -7,6 +7,10 @@ from decouple import config
 
 from .forms import CourseCategoriesForm
 
+#from .queries.sqlalchemy.delete_courses_table import delete_courses_table
+from .queries.psycopg2.delete_courses_table import delete_courses_table
+
+
 def scraping_index(request):
   '''
   Main view for scraping related functionalities
@@ -31,10 +35,19 @@ def get_courses(request):
     # Get user's choice from the POST request and use it to scrap data from Coursera
     context['final_choice'] = request.POST['choice']
     context['courses'] = scrap(request.POST['choice'])
+    context['courses'].rename(columns={'Category Name': 'category', 'Course Name':'course','First Instructor Name': 'instructor',
+                                       'Course Description': 'description', '# of Students Enrolled': 'enrollment_count',
+                                       '# of Ratings': 'rating'}, inplace=True)
 
     # Connect to a database and save data a new table
-    engine = create_engine("postgresql+psycopg2://" + config("DB_USER") + ":" + config("DB_PASSWORD") + "@localhost:" + config("DB_PORT") + "/" + config("DB_NAME"), echo=True)
-    context['courses'].to_sql('bapi_scraping_courses', engine)
+    #engine = create_engine("postgresql+psycopg2://" + config("DB_USER") + ":" + config("DB_PASSWORD") + "@localhost:" + config("DB_PORT") + "/" + config("DB_NAME"), echo=True)
+    
+    delete_courses_table()
+
+    #delete_courses_table(engine)
+    
+    #context['courses'].to_sql('bapi_scraping_courses4', engine)
+
 
   else:
     form = CourseCategoriesForm()
