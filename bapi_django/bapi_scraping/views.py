@@ -33,7 +33,7 @@ def get_courses(request):
     context['courses'] = scrap(request.POST['choice'])
 
     # Connect to a database and save data a new table
-    engine = create_engine("postgresql+psycopg2://" + config("DB_USER") + ":" + config("DB_PASSWORD") + "@localhost:" + config("DB_PORT") + "/" + config("DB_NAME"))
+    engine = create_engine("postgresql+psycopg2://" + config("DB_USER") + ":" + config("DB_PASSWORD") + "@localhost:" + config("DB_PORT") + "/" + config("DB_NAME"), echo=True)
     context['courses'].to_sql('bapi_scraping_courses', engine)
 
   else:
