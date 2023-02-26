@@ -45,9 +45,7 @@ def get_courses(request):
     delete_courses_table()
 
     #delete_courses_table(engine)
-    
     #context['courses'].to_sql('bapi_scraping_courses4', engine)
-
 
   else:
     form = CourseCategoriesForm()
