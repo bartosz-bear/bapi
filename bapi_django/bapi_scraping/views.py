@@ -8,7 +8,7 @@ from decouple import config
 from .forms import CourseCategoriesForm
 
 #from .queries.sqlalchemy.delete_courses_table import delete_courses_table
-from .queries.psycopg2.delete_courses_table import delete_courses_table
+from .queries.psycopg2.delete_courses_table import delete_courses_table#, insert_courses
 
 
 def scraping_index(request):
@@ -42,7 +42,7 @@ def get_courses(request):
     # Connect to a database and save data a new table
     #engine = create_engine("postgresql+psycopg2://" + config("DB_USER") + ":" + config("DB_PASSWORD") + "@localhost:" + config("DB_PORT") + "/" + config("DB_NAME"), echo=True)
     
-    delete_courses_table()
+    delete_courses_table(context['courses'])
 
     #delete_courses_table(engine)
     #context['courses'].to_sql('bapi_scraping_courses4', engine)
