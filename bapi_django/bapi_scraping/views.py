@@ -2,13 +2,11 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from bapi_scraping.scripts.coursera_scraper import scrap
 
-from sqlalchemy import create_engine
 from decouple import config
 
 from .forms import CourseCategoriesForm
 
-#from .queries.sqlalchemy.delete_courses_table import delete_courses_table
-from .queries.psycopg2.delete_courses_table import delete_courses_table
+from .queries.psycopg2.courses_queries import insert_values, create_table, delete_table
 
 
 def scraping_index(request):
@@ -39,13 +37,9 @@ def get_courses(request):
                                        'Course Description': 'description', '# of Students Enrolled': 'enrollment_count',
                                        '# of Ratings': 'rating'}, inplace=True)
 
-    # Connect to a database and save data a new table
-    #engine = create_engine("postgresql+psycopg2://" + config("DB_USER") + ":" + config("DB_PASSWORD") + "@localhost:" + config("DB_PORT") + "/" + config("DB_NAME"), echo=True)
-    
-    delete_courses_table()
-
-    #delete_courses_table(engine)
-    #context['courses'].to_sql('bapi_scraping_courses4', engine)
+    delete_table('bapi_scraping_courses2')
+    create_table('bapi_scraping_courses2')
+    insert_values('bapi_scraping_courses2', context['courses'])
 
   else:
     form = CourseCategoriesForm()
