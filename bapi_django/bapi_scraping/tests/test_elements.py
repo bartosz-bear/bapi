@@ -1,51 +1,27 @@
-import pytest
-import pytest-xdist
-import pytest-playwright
+from bapi_scraping.queries.psycopg2.mydb import db_cursor
+from bapi_scraping.queries.psycopg2.courses_queries import delete_table, create_table, insert_values
 
-def test_visit_elements_page(page):
-    
-    page.goto("https://www.demoqa.com/elements")
-    header_text = page.inner_text(".main-header")
+def inc(x):
+  return x + 1
 
-    assert "Elements" in header_text
+def test_answer():
+  assert inc(4) == 5
 
-def test_coppalse_elements_container(page):
-    
-    page.goto("https://www.demoqa.com/elements")
-    element_group = page.wait_for_selector(".element-group")
+def test_delete_table():
+  with db_cursor() as cur:
+    cur.execute('CREATE TABLE test_table;')
 
-    page.click(".header-right")
+    delete_table('test_table')
 
-    element_list_class = element_group.eval_on_selector(
-        ".element-list", "el => el.className"
-    )
+    a = cur.execute('SELECT * FROM test_table;')
+  
+    print(a)
 
-    assert "show" not in element_list_class
+  assert a == 'han'
 
-@pytest.mark.parametrize(
-    "button_type",
-    [
-        ("Double Click", "doubleClickMessage"),
-        ("Right Click", "rightClickMessage"),
-        ("Click", "dynamicClickMessage"),
-    ],
-)
-def test_click_types(button_type, page):
-    """Test that specific click actions provide a result.
-    :param button_type: A tuple containing click action and result.
-    :param page: A Playwright browser page.
-    """
-    click_action, result = button_type
 
-    page.goto("https://www.demoqa.com/buttons")
 
-    if click_action == "Double Click":
-        page.wait_for_selector("#doubleClickBtn").dblclick()
-    elif click_action == "Right Click":
-        page.wait_for_selector("#rightClickBtn").click(button="right")
-    else:
-        page.wait_for_selector("button >> text='Click Me'").click()
 
-    message = page.is_visible(f"#{result}")
 
-    assert message
+# test in
+# test out
