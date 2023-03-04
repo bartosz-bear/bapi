@@ -33,3 +33,13 @@ def insert_values(table_name, courses):
         '''.format(table_name, ', '.join(columns)) + ' %s'
 
     execute_values(cur, insert_query, my_tuple, template=None, page_size=100)
+
+def get_data(table_name):
+
+  print(table_name)
+
+  with db_cursor() as cur:
+
+    cur.execute('SELECT * FROM %s;' % table_name)
+    
+    return cur.fetchall()

@@ -7,7 +7,35 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   </head>
   <body>
-    <body>
+    <style>
+      body {
+        background: white;
+      }
+      .box {
+        width: 100%;
+        height: 100%;
+        border: 1px solid white;
+        display: flex;
+        justify-content: center;
+      }
+      img {
+        width: 80%;
+        height: 100%;
+        margin: 0 auto;
+      }
+
+      .table {
+        table-layout:fixed;
+      }
+
+      .table td {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+
+    </style>
 
       <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
         <symbol id="bootstrap" viewBox="0 0 118 94">
@@ -56,15 +84,250 @@
 
           {{ my_name }}
 
-          <h3>courses</h3>
+          <div>Welcome!
+            
+            <br></br>
+            
+            
+            Modern data warehouses pull data from different data sources. Sometimes organizations need to collect data from public websites. If the website was gracious enough
+            to offer an API, this process is pretty straight forward. Register with the website, connect through the API and fetch data to your favorite language of choice. It gets more
+            complicated if the website doesn't offer an API. How do we get data automatically in this case?
+            
+            <br></br>
+
+            Scraping
+
+            <br></br>
+            
+            Let's assume that the company offered an API. In this case, we should definitely use it whenever we can. 'Whenever we can' is the key though. Even if the company offered an
+            API it doesn't mean we can get the data WE WANT. API allows us to get the data the website wants us to get. That's often not good enough. So what do we?
+            
+            <br></br>
+
+            Scraping
+           
+
+            <br></br>
+
+            I want to take a little pause here to ponder for a little about the legal considerations. Why legal? Well, I realized that for many people in the industry scraping seems a bit shady.
+
+            <br></br>
+
+            Even the word itself, SCRAPING. Feels like we are doing something BAAAAAAD. No we are not.
+
+            <br></br>
+
+            First of all, check this out.
+
+            <br></br>
+            
+            <a href="https://techcrunch.com/2022/04/18/web-scraping-legal-court/">US Supreme Court Rules Scraping Public Data is Legal</a>
+            
+           <br></br>
+
+            In April, 2022 U.S. Supreme Court (yes, that's the highest court in the federal judiciary of the United States) officially ruled that scraping data
+            that is publicly available is LEGAL. The case was brought by LinkedIn who was unhappy with the competitor scraping data from their portal.
+           
+            <br></br>
+            
+            In other words, whatever you can scrape from a public website is legal. Which makes perfect sense, because you can get the exact data by visiting the same website and enter data points
+            manually to your Excel or database.
+            
+            <br></br>
+
+            There is another important reason why you should consider adding scraping to you data collection pipelines.
+            
+            <br></br>
+            
+            Your competitiors are already doing it.
+
+            <br></br>
+
+            Take Point72 Asset Management as an example. Point72 is one of the largest hedge fund managers in the world and they are actively is ACTIVELY RECRUITING web scrapers. And they've
+            been already doing this for me (trust me I checked).
+
+
+            <br></br>
+
+            <a href="https://boards.greenhouse.io/point72/jobs/5655465002">Web Scraping Associate Position</a>
+
+            <br></br>
+
+           
+
+            
+            <div class="box">
+
+              {% load static %}
+              <img src="{% static 'web_scraping_associate.png' %}" alt="Course Categories">
+  
+            
+
+            </div>     
+
+            <br></br>
+
+            I want to bring your attention to one of the bullet points from the job ad:
+
+            <br></br>
+
+            "Be responsible for testing the data and the scrape to ensure accuracy, quality, and <b>compliance</b>"
+
+            <br></br>
+
+            What is essentially mean is that a very large organization has REVIEWED the legal standing of scraping and decided that if enough diligence is applied, scraping is a valida and Legal
+            to acquire data from public sources.
+
+            <br></br>
+
+            Why did they decide to go this route? There are two reasons?
+
+            <br></br>
+
+            1. Acquiring data from data providers like Bloomberg and Reuters, are expensive. I still remember when I worked in a treasury department of a large organization who was using a very 
+            expensive Bloomberg terminal to get data about financial markets, even thought the same date was ALREADY AVAILABLE from public sources for FREE. Don't get me wrong, Bloomberg terminal
+            was awesome. Awesome is not enough, in 1990s was a game changer. But it's 2023.
+
+            <br></br>
+
+            So if you are using any data vendor and you feel that you pay too much, scraping can be a solution.
+
+            <br></br>
+            
+            2. Second thing is flexibility. Bloomberg being Bloomberg, with all due respect for the great service it provides, it doesn't cover everything. Do you think Point72 doesn't have access
+            to Bloomberg or Reuters terminals? Of course they do. And it doesn't even seem expensive to me. The very simple reason why they are building a web scraping team is that traditonal data vendors
+            have their limits. 90s was the time of simple HTML+CSS+little bit of JavaScript websites, first decade of 2000s was the times of PHP/Python/Java pretty decent web applications and the second 
+            decade was the times when it was pretty easy for everyone to build their presence online and everyone was collecting and presenting TONES OF DATA ONLINE. Now, in the third decade of 2000s is 
+            about TAKING ADVANTAGE of the absolutely unbelivable amount of data available online. And turning it to actionable information of course.
+
+            <br></br>
+
+            If you are not taking advantage what's available in front of your eyes, you are running behind. Scraping is UNPOPULAR. It's actually fairly likely that you've never heard this term 
+            before, or maybe you heard it and some guy from our industry remembered every one that scraping is a shady business, and mature businesses rely on solid solutions (think talk about 
+            Bitcoin in 2010).
+
+            <br></br>
+
+            Well, it's up to you. You can either can take advantage what's in front of you and ride the big wave of 2020s or... NOT. It's up to you. If you can see what can be done, have a look on
+            the practical implementation of scraping below.
+            
+
+
+            <br></br>
+            </div>
+
+          
+
+          <hr>
+
+          <div>
+
+          Ok, we are going to take one of the most popular website for online course providers in the world. 'Coursera' was founded in 2012 by two leading researchers of Machine Learning and AI,
+          Standford University professor Andrew Ng, and Daphne Koller. Coursera provides a range of high qualify courses provided by top universities around the world like Standford, Penn, Imperial
+          College London as well as the top tech companies like Gooogle, IBM and Microsoft.
+
+          <br></br>
+
+
+          What we are going to do this in this exercise is actually pretty simple. We are going to choose our favorite subject (Data Science of course) and we are going to programatically collect
+          all relevant information about all data science courses offered by Coursera.
+
+          <br></br>
+
+          Below we can see a snaphot of some of the <a href="https://www.coursera.org">Coursera</a> available in the Data Science domain.
+
+
+        
+        </div>
+
+        <br>
+
+        <div class="box">
+
+            {% load static %}
+            <img src="{% static 'course_categories.png' %}" alt="Course Categories">
+
+          </div>           
+
+          <div>
+
+            <br>
+
+          We want to get more detailed information about each course. Information which was available in the category summary page, like Name of the Instructor, Number of Ratings, Number of 
+          students enrolled and Full Description of the course. If we were to collect these information manually, we would have to visit each course separately. This would take a lot of time
+          and is when scraping comes handy. The script will visit each course page, scrap the requested information and save everything to SQL database for further use.
+
+        </div>
+          <br>
+
+          <div class="box">
+
+
+          {% load static %}
+          <img src="{% static 'course_info.png' %}" class="box.img" alt="Course Categories">
+    
+
+
+        </div>
+
+          <hr>
+
+          Let's see how it works in practice.
+
+          <br>
+
+          <br>
+
+          Choose a category and press 'Submit'. Be patient, scraping data from Coursera takes about 2 minutes to complete.
+
+          <br>
+          
+          <br>
 
           <form action="get_courses" method="post">
             {% csrf_token %}
             {{ form }}
-            <input type="submit" value="Submit">
+            <input type="submit" value="Scrape it!">
           </form>
 
-          {{ courses }}
+          <br>
+
+          
+
+          {% for i in scraped %}
+
+          <table class="table">
+            <thead class="thead-dark">
+            <tr>
+              <th>Category</th>
+              <th>Course Name</th>
+              <th>Instructor</th>
+              <th>Description</th>
+              <th>Enrollments Count</th>
+              <th>Rating</th>
+            </tr>
+          </thead>
+            <tr>
+              <td>{{ i.category }}</td>
+              <td>{{ i.course }}</td>
+              <td>{{ i.instructor }}</td>
+              <td class="cell-hyphens">{{ i.description }}</td>
+              <td>{{ i.enrollment_count }}</td>
+              <td>{{ i.rating }}</td>
+            </tr>
+          </table> 
+
+          {% endfor %}
+
+         
+
+
+
+            
+
+          <!--{{ courses }}-->
+
+
 
         </main>
         <footer class="pt-5 my-5 text-muted border-top">

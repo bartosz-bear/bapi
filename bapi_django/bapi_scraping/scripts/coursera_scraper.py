@@ -10,7 +10,7 @@ def get_course_instructor(course_path):
     Gets name of the first instructor for a single course.
     """
     page = urlopen(course_path).read()
-    soup = BeautifulSoup(page)
+    soup = BeautifulSoup(page, 'lxml')
     instructor = soup.find('h3', {'class': 'instructor-name headline-3-text bold'}).get_text().split('Top')[0]
 
     return instructor
@@ -87,7 +87,7 @@ def scrap(category):
 
     # Scraping course page for each course. Updating 'Course Description', 'Enrollments' and 'Ratings'
     courses_final = []
-    for single_course in courses[:3]:
+    for single_course in courses[:1]:
         url_single_course = f"{root}{single_course['course_link']}"
         request_single_course = requests.get(url_single_course)
         course_soup = BeautifulSoup(request_single_course.content, 'lxml', from_encoding='utf-8')
