@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from bapi_scraping.scripts.coursera_scraper import scrap
-from bapi_scraping.utils.utils import from_sql_to_dict
 
 from decouple import config
 
@@ -39,14 +38,19 @@ def get_courses(request):
                                        '# of Ratings': 'rating'}, inplace=True)
 
     try:
-      delete_table('bapi_scraping_courses2')
-      print('deleting a table')
+      create_table('bapi_scraping_courses2')
+      insert_values('bapi_scraping_courses2', context['courses'])
+      print('table created and populated')
     except:
+      delete_table('bapi_scraping_courses2')
       create_table('bapi_scraping_courses2')
       insert_values('bapi_scraping_courses2', context['courses'])
 
-      context['scraped'] = from_sql_to_dict(get_data('bapi_scraping_courses2'))
-      #print('scraped', scraped)
+      context['scraped'] = get_data('bapi_scraping_courses2')
+
+      print('scraped data', context['scraped'])
+
+      print('del cre ins')
       
   else:
     form = CourseCategoriesForm()

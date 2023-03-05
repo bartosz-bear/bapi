@@ -87,7 +87,7 @@ def scrap(category):
 
     # Scraping course page for each course. Updating 'Course Description', 'Enrollments' and 'Ratings'
     courses_final = []
-    for single_course in courses[:1]:
+    for single_course in courses:
         url_single_course = f"{root}{single_course['course_link']}"
         request_single_course = requests.get(url_single_course)
         course_soup = BeautifulSoup(request_single_course.content, 'lxml', from_encoding='utf-8')
