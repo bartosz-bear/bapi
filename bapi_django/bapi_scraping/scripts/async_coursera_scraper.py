@@ -1,9 +1,53 @@
+'''
+from bs4 import BeautifulSoup
+import grequests
+import requests
+import time
+
+### Starting the timer ###
+start_time = time.time()
+
+### List of urls to scrape data from ###
+links = [
+"https://www.coursera.org/learn/foundations-data",
+"https://www.coursera.org/learn/machine-learning",
+"https://www.coursera.org/learn/ask-questions-make-decisions"
+]
+
+reqs = (grequests.get(link) for link in links)
+resp = grequests.imap(reqs, grequests.Pool(10))
+
+for r in resp:
+    print(BeautifulSoup(r.text, 'lxml'))
+
+
+
+for r in resp:
+   soup = BeautifulSoup(r.text, 'lxml')
+   results = soup.find_all('a', attrs={"class":'product__list-name'})
+   print(results[0].text)
+   prices = soup.find_all('span', attrs={'class':"pdpPriceMrp"})
+   print(prices[0].text)
+   discount = soup.find_all("div", attrs={"class":"listingDiscnt"})
+   print(discount[0].text)
+
+   
+print("--- %s seconds ---" % (time.time() - start_time))
+'''
+
+########################################################################################
+
+import grequests
 from urllib.request import urlopen
 import requests
+
 from bs4 import BeautifulSoup
+
+import time
 
 import pandas as pd
 
+start_time = time.time()
 
 def get_course_instructor(course_path):
     """
@@ -89,7 +133,12 @@ def scrap(category):
     courses_final = []
     for single_course in courses[:3]:
         url_single_course = f"{root}{single_course['course_link']}"
+
         request_single_course = requests.get(url_single_course)
+        #request_single_course = grequests.get(url_single_course)
+        
+        
+        
         course_soup = BeautifulSoup(request_single_course.content, 'lxml', from_encoding='utf-8')
         single_course['instructor'] = get_course_instructor(url_single_course)
         try:
@@ -150,3 +199,5 @@ def get_dropdown_choices():
     return categories_dict
 
 #scrap_and_close = scrap('data-science')
+
+print("--- %s seconds ---" % (time.time() - start_time))
