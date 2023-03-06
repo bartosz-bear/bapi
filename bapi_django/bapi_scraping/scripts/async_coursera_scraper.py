@@ -6,8 +6,11 @@ import pandas as pd
 
 import aiohttp
 import asyncio
+import time
 
 async def main(course, root):
+    
+    
     
     async with aiohttp.ClientSession() as session:
         async with session.get('https://www.coursera.org/browse/data-science') as response:
@@ -25,10 +28,12 @@ async def main(course, root):
 async def async_get_course(session, url_course):
     #url_course = f"{root}{course['course_link']}"
     async with session.get(url_course) as res:
-        html = await res.text()
-        return html
+        response = await res.content.read() 
+        return response
 
 async def example(courses, root):
+
+  starting_time = time.time()
     
   actions = []
   data = []
@@ -38,13 +43,16 @@ async def example(courses, root):
           url_course = f"{root}{course['course_link']}"
           data.append(url_course)
           actions.append(asyncio.ensure_future(async_get_course(session, url_course)))
-      res = await asyncio.gather(*actions)
+      results = await asyncio.gather(*actions)
       
-      for d, u in enumerate(res):
+      for idx, res in enumerate(results):
           #html = await res.text()
-          print('what is d', d)
-          data2.append(get_info_from_course((courses[d], data[d], d)))
-  print('finalllyyyy', data2)
+          #print('what is d', d)
+          data2.append(get_info_from_course((courses[idx], data[idx], res)))
+  #print('finalllyyyy', data2)
+
+  total_time = time.time() - starting_time
+  print('total_time', total_time)
 
   return data2
 
@@ -62,7 +70,9 @@ def get_info_from_course(response):
 
   course, url_course, course_response = response
 
-  course_soup = BeautifulSoup(course_response.content, 'lxml', from_encoding='utf-8')
+  #print('course response yyyyyyyyyyyyyy', course, url_course, type(course_response))
+
+  course_soup = BeautifulSoup(course_response, 'lxml', from_encoding='utf-8')
   course['instructor'] = get_course_instructor(url_course)
   try:
     course['description'] = get_course_description(course_soup)
@@ -154,6 +164,8 @@ def scrap(category):
             course_features['course_name'] = j.find('a', {'class': 'CardText-link'}).get_text()
             course_features['course_link'] = j.find('a', {'class': 'CardText-link'})['href']
             courses.append(course_features)
+
+    #courses = courses[:2]
 
     courses_final = asyncio.run(example(courses, root))
 

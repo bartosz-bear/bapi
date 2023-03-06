@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
-#from bapi_scraping.scripts.async_coursera_scraper import scrap
+from bapi_scraping.scripts.coursera_scraper import scrap
 
 from decouple import config
 
@@ -8,6 +8,7 @@ from .forms import CourseCategoriesForm
 
 from .queries.psycopg2.courses_queries import insert_values, create_table, delete_table, get_data
 
+import time
 
 def scraping_index(request):
   '''
@@ -32,7 +33,10 @@ def get_courses(request):
 
     # Get user's choice from the POST request and use it to scrap data from Coursera
     context['final_choice'] = request.POST['choice']
+    starting_time = time.time()
     context['courses'] = scrap(request.POST['choice'])
+    total_time = time.time() - starting_time
+    print('scraping total time', total_time)
     context['courses'].rename(columns={'Category Name': 'category', 'Course Name':'course','First Instructor Name': 'instructor',
                                        'Course Description': 'description', '# of Students Enrolled': 'enrollment_count',
                                        '# of Ratings': 'rating'}, inplace=True)
@@ -48,7 +52,7 @@ def get_courses(request):
 
       context['scraped'] = get_data('bapi_scraping_courses2')
 
-      print('scraped data', context['scraped'])
+      #print('scraped data', context['scraped'])
 
       print('del cre ins')
       

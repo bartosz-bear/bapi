@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 
 import pandas as pd
 
+import time
 
 def get_course_instructor(course_path):
     """
@@ -85,9 +86,11 @@ def scrap(category):
             course_features['course_link'] = j.find('a', {'class': 'CardText-link'})['href']
             courses.append(course_features)
 
+    starting_time = time.time()
+
     # Scraping course page for each course. Updating 'Course Description', 'Enrollments' and 'Ratings'
     courses_final = []
-    for single_course in courses[:3]:
+    for single_course in courses:
         url_single_course = f"{root}{single_course['course_link']}"
         request_single_course = requests.get(url_single_course)
         course_soup = BeautifulSoup(request_single_course.content, 'lxml', from_encoding='utf-8')
@@ -102,6 +105,9 @@ def scrap(category):
             single_course['ratings'] = "0"
         #print(f'Course: ', single_course)
         courses_final.append(single_course)
+
+    total_time = time.time() - starting_time
+    print('total_time', total_time)
 
     # Converting a list of courses into pandas DataFrame; Cleaning data structure, formatting column headers
     df = pd.DataFrame(courses_final)
