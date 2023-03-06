@@ -1,79 +1,54 @@
+'''
+from bs4 import BeautifulSoup
+import grequests
+import requests
+import time
+
+### Starting the timer ###
+start_time = time.time()
+
+### List of urls to scrape data from ###
+links = [
+"https://www.coursera.org/learn/foundations-data",
+"https://www.coursera.org/learn/machine-learning",
+"https://www.coursera.org/learn/ask-questions-make-decisions"
+]
+
+reqs = (grequests.get(link) for link in links)
+resp = grequests.imap(reqs, grequests.Pool(10))
+
+for r in resp:
+    print(BeautifulSoup(r.text, 'lxml'))
+
+
+
+for r in resp:
+   soup = BeautifulSoup(r.text, 'lxml')
+   results = soup.find_all('a', attrs={"class":'product__list-name'})
+   print(results[0].text)
+   prices = soup.find_all('span', attrs={'class':"pdpPriceMrp"})
+   print(prices[0].text)
+   discount = soup.find_all("div", attrs={"class":"listingDiscnt"})
+   print(discount[0].text)
+
+   
+print("--- %s seconds ---" % (time.time() - start_time))
+'''
+
+########################################################################################
+
+'''
+import grequests
 from urllib.request import urlopen
 import requests
+
 from bs4 import BeautifulSoup
+
+import time
 
 import pandas as pd
 
-import aiohttp
-import asyncio
-
-async def main(course, root):
-    
-    async with aiohttp.ClientSession() as session:
-        async with session.get('https://www.coursera.org/browse/data-science') as response:
-            
-            #print('Status:', response.status)
-            #print('Content-type', response.headers['content-type'])
-
-            html = await response.text()
-            #print('Body:', html[:15], "...")
-
-            #print('Response text:', html)
-
-#####################################################################################################
-
-async def async_get_course(session, url_course):
-    #url_course = f"{root}{course['course_link']}"
-    async with session.get(url_course) as res:
-        html = await res.text()
-        return html
-
-async def example(courses, root):
-    
-  actions = []
-  data = []
-  data2 = []
-  async with aiohttp.ClientSession() as session:
-      for course in courses:
-          url_course = f"{root}{course['course_link']}"
-          data.append(url_course)
-          actions.append(asyncio.ensure_future(async_get_course(session, url_course)))
-      res = await asyncio.gather(*actions)
-      
-      for d, u in enumerate(res):
-          #html = await res.text()
-          print('what is d', d)
-          data2.append(get_info_from_course((courses[d], data[d], d)))
-  print('finalllyyyy', data2)
-
-  return data2
-
-def get_course(course, root):
-  # Request data for an individual course
-
-  url_course = f"{root}{course['course_link']}"
-  response = requests.get(url_course)
-
-  return course, url_course, response
-
-def get_info_from_course(response):
-  # Scraping course page for each course. Updating 'Course Description', 'Enrollments' and 'Ratings'
-  #for course in courses[:3]:
-
-  course, url_course, course_response = response
-
-  course_soup = BeautifulSoup(course_response.content, 'lxml', from_encoding='utf-8')
-  course['instructor'] = get_course_instructor(url_course)
-  try:
-    course['description'] = get_course_description(course_soup)
-    course['students_enrolled'] = get_enrollments(course_soup)
-    course['ratings'] = get_ratings(course_soup)
-  except:
-    course['description'] = "The course hasn't started yet."
-    course['students_enrolled'] = "0"
-    course['ratings'] = "0"
-    
-  return course
+start_time = time.time()
 
 def get_course_instructor(course_path):
     """
@@ -155,17 +130,28 @@ def scrap(category):
             course_features['course_link'] = j.find('a', {'class': 'CardText-link'})['href']
             courses.append(course_features)
 
-    courses_final = asyncio.run(example(courses, root))
-
-    #print('working xxxxxxx', courses_final)
-
-    '''
-    # Get course info for each course in the category
+    # Scraping course page for each course. Updating 'Course Description', 'Enrollments' and 'Ratings'
     courses_final = []
-    for course in courses[:2]:
-        #courses_final.append(get_course(course, root))
-        courses_final.append(get_info_from_course(get_course(course, root)))
-    '''
+    for single_course in courses[:3]:
+        url_single_course = f"{root}{single_course['course_link']}"
+
+        request_single_course = requests.get(url_single_course)
+        #request_single_course = grequests.get(url_single_course)
+        
+        
+        
+        course_soup = BeautifulSoup(request_single_course.content, 'lxml', from_encoding='utf-8')
+        single_course['instructor'] = get_course_instructor(url_single_course)
+        try:
+            single_course['description'] = get_course_description(course_soup)
+            single_course['students_enrolled'] = get_enrollments(course_soup)
+            single_course['ratings'] = get_ratings(course_soup)
+        except:
+            single_course['description'] = "The course hasn't started yet."
+            single_course['students_enrolled'] = "0"
+            single_course['ratings'] = "0"
+        #print(f'Course: ', single_course)
+        courses_final.append(single_course)
 
     # Converting a list of courses into pandas DataFrame; Cleaning data structure, formatting column headers
     df = pd.DataFrame(courses_final)
@@ -213,17 +199,7 @@ def get_dropdown_choices():
 
     return categories_dict
 
-scrap_and_close = scrap('data-science')
+#scrap_and_close = scrap('data-science')
 
-
-#####################################################################################################
-
-'''
-if __name__ == '__main__':
-  loop = asyncio.new_event_loop()
-  asyncio.set_event_loop(loop)
-  try:
-      asyncio.run(main())
-  except KeyboardInterrupt:
-      pass
+print("--- %s seconds ---" % (time.time() - start_time))
 '''

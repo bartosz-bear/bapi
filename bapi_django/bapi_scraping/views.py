@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
-from bapi_scraping.scripts.async_coursera_scraper import scrap
+#from bapi_scraping.scripts.async_coursera_scraper import scrap
 
 from decouple import config
 
