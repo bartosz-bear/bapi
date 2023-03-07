@@ -1,5 +1,5 @@
 from django import forms
-from bapi_scraping.scripts.coursera_scraper import get_dropdown_choices
+from bapi_scraping.scripts.async_coursera_scraper import get_dropdown_choices
 
 def format_choices(choices):
     l = []

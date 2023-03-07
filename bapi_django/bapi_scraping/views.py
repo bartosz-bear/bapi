@@ -1,14 +1,10 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
-from bapi_scraping.scripts.coursera_scraper import scrap
-
-from decouple import config
 
 from .forms import CourseCategoriesForm
 
-from .queries.psycopg2.courses_queries import insert_values, create_table, delete_table, get_data
+from bapi_scraping.scripts.async_coursera_scraper import scrap
 
-import time
+from .queries.psycopg2.courses_queries import insert_values, create_table, delete_table, get_data
 
 def scraping_index(request):
   '''
@@ -33,28 +29,20 @@ def get_courses(request):
 
     # Get user's choice from the POST request and use it to scrap data from Coursera
     context['final_choice'] = request.POST['choice']
-    starting_time = time.time()
     context['courses'] = scrap(request.POST['choice'])
-    total_time = time.time() - starting_time
-    print('scraping total time', total_time)
     context['courses'].rename(columns={'Category Name': 'category', 'Course Name':'course','First Instructor Name': 'instructor',
                                        'Course Description': 'description', '# of Students Enrolled': 'enrollment_count',
                                        '# of Ratings': 'rating'}, inplace=True)
 
     try:
-      create_table('bapi_scraping_courses2')
-      insert_values('bapi_scraping_courses2', context['courses'])
-      print('table created and populated')
+      create_table('coursera_courses')
+      insert_values('coursera_courses', context['courses'])
     except:
-      delete_table('bapi_scraping_courses2')
-      create_table('bapi_scraping_courses2')
-      insert_values('bapi_scraping_courses2', context['courses'])
+      delete_table('coursera_courses')
+      create_table('coursera_courses')
+      insert_values('coursera_courses', context['courses'])
 
-      context['scraped'] = get_data('bapi_scraping_courses2')
-
-      #print('scraped data', context['scraped'])
-
-      print('del cre ins')
+      context['scraped'] = get_data('coursera_courses')
       
   else:
     form = CourseCategoriesForm()
