@@ -42,12 +42,12 @@
             </a>
       
             <ul class="nav nav-pills">
-              <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li>
-              <li class="nav-item"><a href="#" class="nav-link">Fetch</a></li>
-              <li class="nav-item"><a href="#" class="nav-link">Store</a></li>
-              <li class="nav-item"><a href="#" class="nav-link">Transform</a></li>
-              <li class="nav-item"><a href="#" class="nav-link">Visualize</a></li>
-              <li class="nav-item"><a href="#" class="nav-link">Hire me</a></li>
+              <li class="nav-item"><a href="/home/" class="nav-link active" aria-current="page">Home</a></li>
+              <li class="nav-item"><a href="/extract/web_scraping/" class="nav-link">Extract</a></li>
+              <li class="nav-item"><a href="/transform/" class="nav-link">Transform</a></li>
+              <li class="nav-item"><a href="/load/" class="nav-link">Load</a></li>
+              <li class="nav-item"><a href="/visualize/" class="nav-link">Visualize</a></li>
+              <li class="nav-item"><a href="/hire/" class="nav-link">Hire me</a></li>
             </ul>
           </header>
         </div>
@@ -77,7 +77,7 @@
           </div>
 
           <div class="container px-4 py-5" id="featured-3">
-            <h2 class="pb-2 border-bottom">Fetching Data</h2>
+            <h2 class="pb-2 border-bottom">Extracting Data</h2>
             <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
               <div class="feature col">
                 <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
@@ -149,38 +149,10 @@
             </div>
           </div>
 
-          <div class="container px-4 py-5" id="hanging-icons">
-            <h2 class="pb-2 border-bottom">Storing Data</h2>
-            <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
-              <div class="col d-flex align-items-start">
-                <div class="feature col">
-                  <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
-                    <svg class="bi" width="1em" height="1em"><use xlink:href="#collection"/></svg>
-                  </div>
-                
-                <div>
-                  <h3 class="fs-2">SQL<br></br></h3>
-                  <p>After I get data from any source I save it to a PostgreSQL database.</p>
-                  <p><b>Technology:</b> SQL, PostgreSQL, SQLAlchemy, Django ORM</p>
-                
-                <a href="#" class="icon-link d-inline-flex align-items-center">
-                  See demo
-                  <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
-                </a>
-        
-                <a href="#" class="icon-link d-inline-flex align-items-center">
-                  See my code
-                  <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
-                </a>
-                </div>
-              </div>
-                
-              </div>
-            </div>
-          </div>
+
 
           <div class="container px-4 py-5" id="featured-3">
-            <h2 class="pb-2 border-bottom">Transform and Connect Data</h2>
+            <h2 class="pb-2 border-bottom">Transforming Data</h2>
             <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
               <div class="feature col">
                 <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
@@ -223,8 +195,38 @@
             </div>
           </div>
 
+          <div class="container px-4 py-5" id="hanging-icons">
+            <h2 class="pb-2 border-bottom">Loading Data</h2>
+            <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+              <div class="col d-flex align-items-start">
+                <div class="feature col">
+                  <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+                    <svg class="bi" width="1em" height="1em"><use xlink:href="#collection"/></svg>
+                  </div>
+                
+                <div>
+                  <h3 class="fs-2">SQL<br></br></h3>
+                  <p>After I get data from any source I save it to a PostgreSQL database.</p>
+                  <p><b>Technology:</b> SQL, PostgreSQL, SQLAlchemy, Django ORM</p>
+                
+                <a href="#" class="icon-link d-inline-flex align-items-center">
+                  See demo
+                  <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
+                </a>
+        
+                <a href="#" class="icon-link d-inline-flex align-items-center">
+                  See my code
+                  <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
+                </a>
+                </div>
+              </div>
+                
+              </div>
+            </div>
+          </div>
+
           <div class="container px-4 py-5" id="featured-3">
-            <h2 class="pb-2 border-bottom">Visualise Data</h2>
+            <h2 class="pb-2 border-bottom">Analyzing and Visualizing Data</h2>
             <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
               <div class="feature col">
                 <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
@@ -323,22 +325,6 @@
             </div>
           </div>
 
-          <div>
-            <h1>Hello, world!</h1>
-
-            {% if latest_question_list %}
-              <ul>
-            {% for question in latest_question_list %}
-              <li>
-                <a href="{% url 'bapi_django_app:detail' question.id %}">{{ question.question_text }}</a>
-              </li>
-            {% endfor %}
-              </ul>
-        
-            {% else %}
-              <p>No polls are available.</p>
-            {% endif %}
-          </div>
 
         </main>
         <footer class="pt-5 my-5 text-muted border-top">
