@@ -16,7 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
+#from ..bapi_django_app import views as bapi_django_app_views
+
 urlpatterns = [
+    #path('home/', bapi_django_app_views.index, name='index'),
     path('', include('bapi_django_app.urls')),
     path('', include('bapi_scraping.urls')),
     path("admin/", admin.site.urls),

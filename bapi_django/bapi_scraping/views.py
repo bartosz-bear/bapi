@@ -14,7 +14,7 @@ def scraping_index(request):
   context = {
     'my_name': 'Bartosz',
   }
-  return render(request, 'bapi_scraping/index.html', context)
+  return render(request, 'extract.html', context)
 
 
 def get_courses(request):
@@ -56,4 +56,4 @@ def get_courses(request):
 
   context['form'] = form
 
-  return render(request, 'bapi_scraping/courses.html', context)
+  return render(request, 'extract/web_scraping.html', context)
