@@ -4,9 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>BAPI</title>
+    <BASE href="http://127.0.0.1:8000/home.html">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   </head>
   <body>
+    {% block style %}{% endblock %}
     <body>
 
       <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -42,21 +44,38 @@
             </a>
       
             <ul class="nav nav-pills">
-              <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li>
-              <li class="nav-item"><a href="#" class="nav-link">Fetch</a></li>
-              <li class="nav-item"><a href="#" class="nav-link">Store</a></li>
-              <li class="nav-item"><a href="#" class="nav-link">Transform</a></li>
-              <li class="nav-item"><a href="#" class="nav-link">Visualize</a></li>
-              <li class="nav-item"><a href="#" class="nav-link">Hire me</a></li>
+              {% with url_name=request.resolver_match.url_name %}
+              <li class="nav-item"><a href="/home" class="nav-link {% if url_name == 'home' %}active{% endif %}">Home</a></li>
+              {% endwith %}
+              
+              {% with url_name=request.resolver_match.url_name %}
+              <li class="nav-item"><a href="/extract/web_scraping" class="nav-link {% if url_name == 'get_courses' %}active{% endif %}">Extract</a></li>
+              {% endwith %}
+              
+              {% with url_name=request.resolver_match.url_name %}
+              <li class="nav-item"><a href="/transform" class="nav-link {% if url_name == 'transform' %}active{% endif %}">Transform</a></li>
+              {% endwith %}
+              
+              {% with url_name=request.resolver_match.url_name %}
+              <li class="nav-item"><a href="/load" class="nav-link {% if url_name == 'load' %}active{% endif %}">Load</a></li>
+              {% endwith %}
+              
+              {% with url_name=request.resolver_match.url_name %}
+              <li class="nav-item"><a href="/visualize" class="nav-link {% if url_name == 'visualize' %}active{% endif %}">Visualize</a></li>
+              {% endwith %}
+              
+              {% with url_name=request.resolver_match.url_name %}
+              <li class="nav-item"><a href="/hire" class="nav-link {% if url_name == 'hire' %}active{% endif %}">Hire</a></li>
+              {% endwith %}
             </ul>
           </header>
         </div>
 
-        <main>
+        {% block main %}{% endblock %}
 
-          {{ my_name }}
 
-        </main>
+        
+
         <footer class="pt-5 my-5 text-muted border-top">
           BAPI &middot; &copy; 2023
         </footer>

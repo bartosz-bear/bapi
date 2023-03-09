@@ -1,17 +1,96 @@
-from urllib.request import urlopen
 import requests
+import aiohttp
+import asyncio
+
 from bs4 import BeautifulSoup
 
 import pandas as pd
 
+import re
 
-def get_course_instructor(course_path):
+ROOT = "https://www.coursera.org/"
+
+async def async_get_course(session, url_course):
+    async with session.get(url_course) as res:
+        response = await res.content.read() 
+        return response
+
+async def async_get_course_infos(courses):
+
+  # Use this line to control number of courses to fetch during debugging and development
+  #courses = courses[:3]
+
+  actions = []
+  urls = []
+  course_infos = []
+  async with aiohttp.ClientSession() as session:
+      for course in courses:
+          url_course = f"{ROOT}{course['course_link']}"
+          urls.append(url_course)
+          actions.append(asyncio.ensure_future(async_get_course(session, url_course)))
+      results = await asyncio.gather(*actions)
+
+      for idx, res in enumerate(results):
+          course_infos.append(get_info_from_course((courses[idx], urls[idx], res)))
+
+  return course_infos
+
+
+def get_summary_page(category):
+    
+    category = 'data-science'
+    
+    # Creating a BeautifulSoup object
+    url_browse = f"{ROOT}browse/{category}"
+    request_browse = requests.get(url_browse)
+    browse_soup = BeautifulSoup(request_browse.content, 'lxml', from_encoding='utf-8')
+
+    # Finding a product card for each course
+    course_html_containers = browse_soup.find_all('div', {'class': 'rc-ProductCard'})
+
+    # Scraping 'Course Name' and 'Course Link' for each course found in Coursera's summary page
+    courses = []
+    for i, j in enumerate(course_html_containers):
+        course_type = j.find('label', {'class': 'rc-CardText css-1feobmm'}).get_text()
+        if course_type == 'Course':
+            course_features = dict(course_name='', course_link='')
+            course_features['course_name'] = j.find('a', {'class': 'CardText-link'}).get_text()
+            course_features['course_link'] = j.find('a', {'class': 'CardText-link'})['href']
+            courses.append(course_features)
+
+    return courses
+
+def get_info_from_course(response):
+  # Scraping course page for each course. Updating 'Course Description', 'Enrollments' and 'Ratings'
+  #for course in courses[:3]:
+
+  course, _, course_response = response
+
+  course_soup = BeautifulSoup(course_response, 'lxml', from_encoding='utf-8')
+  course['instructor'] = get_course_instructor(course_soup)
+  try:
+    course['description'] = get_course_description(course_soup)
+    course['students_enrolled'] = get_enrollments(course_soup)
+    course['ratings'] = get_ratings(course_soup)
+  except:
+    course['description'] = "The course hasn't started yet."
+    course['students_enrolled'] = "0"
+    course['ratings'] = "0"
+
+  return course
+
+
+def get_course_instructor(soup):
     """
-    Gets name of the first instructor for a single course.
-    """
-    page = urlopen(course_path).read()
-    soup = BeautifulSoup(page, 'lxml')
-    instructor = soup.find('h3', {'class': 'instructor-name headline-3-text bold'}).get_text().split('Top')[0]
+    Gets full description (all paragraphs) for a single course.
+    """    
+    try:
+      instructor = soup.find('div', {'class': 'rc-BannerInstructorInfo'}).find('span').get_text()
+      instructor = re.sub(r'\s\+\d+\s[\w\s]+', '', instructor)
+      if instructor[-1] == ' ':
+          instructor = instructor[:-1]
+    except:
+      instructor = "NA"
 
     return instructor
 
@@ -30,7 +109,6 @@ def get_course_description(soup):
     course_description = ''.join(string_paragraphs)
 
     return course_description
-
 
 def get_enrollments(soup):
     """
@@ -66,58 +144,20 @@ def scrap(category):
     category argument in the following format: scrap('data-science')
     """
 
-    # Creating a BeautifulSoup object
-    root = "https://www.coursera.org/"
-    url_browse = f"{root}browse/{category}"
-    request_browse = requests.get(url_browse)
-    browse_soup = BeautifulSoup(request_browse.content, 'lxml', from_encoding='utf-8')
+    courses = get_summary_page(category)
 
-    # Finding a product card for each course
-    course_html_containers = browse_soup.find_all('div', {'class': 'rc-ProductCard'})
-
-    # Scraping 'Course Name' and 'Course Link' for each course found in Coursera's summary page
-    courses = []
-    for i, j in enumerate(course_html_containers):
-        course_type = j.find('label', {'class': 'rc-CardText css-1feobmm'}).get_text()
-        if course_type == 'Course':
-            course_features = dict(course_name='', course_link='')
-            course_features['course_name'] = j.find('a', {'class': 'CardText-link'}).get_text()
-            course_features['course_link'] = j.find('a', {'class': 'CardText-link'})['href']
-            courses.append(course_features)
-
-    # Scraping course page for each course. Updating 'Course Description', 'Enrollments' and 'Ratings'
-    courses_final = []
-    for single_course in courses:
-        url_single_course = f"{root}{single_course['course_link']}"
-        request_single_course = requests.get(url_single_course)
-        course_soup = BeautifulSoup(request_single_course.content, 'lxml', from_encoding='utf-8')
-        single_course['instructor'] = get_course_instructor(url_single_course)
-        try:
-            single_course['description'] = get_course_description(course_soup)
-            single_course['students_enrolled'] = get_enrollments(course_soup)
-            single_course['ratings'] = get_ratings(course_soup)
-        except:
-            single_course['description'] = "The course hasn't started yet."
-            single_course['students_enrolled'] = "0"
-            single_course['ratings'] = "0"
-        #print(f'Course: ', single_course)
-        courses_final.append(single_course)
+    courses_final = asyncio.run(async_get_course_infos(courses))
 
     # Converting a list of courses into pandas DataFrame; Cleaning data structure, formatting column headers
     df = pd.DataFrame(courses_final)
     df['Category Name'] = category
-    
     df.drop('course_link', axis=1, inplace=True)
     df.rename(columns={'course_name': 'Course Name', 'instructor': 'First Instructor Name',
                        'description': 'Course Description',
                        'students_enrolled': '# of Students Enrolled', 'ratings': '# of Ratings'}, inplace=True)
     df = df.loc[:, ['Category Name', 'Course Name', 'First Instructor Name', 'Course Description',
                     '# of Students Enrolled', '# of Ratings']]
-
-    print(df.head())
-
-    # Saving to .csv
-    #df.to_csv('courses_final.csv', index=False)
+    df = df.drop_duplicates()
 
     # Printing summary information
     print(f'DONE! There are {len(courses_final)} courses in the category {category}.')
