@@ -3,7 +3,7 @@ from pathlib import Path
 filename = Path(__file__).resolve().parent.parent.parent.parent.__str__() + "\\requirements.txt"
 
 def drop_builds(x):
-    a = '='.join(x.split('=')[:2])
+    a = '=='.join(x.split('=')[:2])
     return a
 
 # Read requirements.txt and create a list of libraries
