@@ -5,4 +5,5 @@ ALLOWED_HOSTS = [config('HOST'), config('HOST_IP'), config('PROD_TEST_HOST'), 'l
 SESION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 
+STATIC_URL = '/static/'
 STATIC_ROOT = '/home/bapi/bapi/static'
