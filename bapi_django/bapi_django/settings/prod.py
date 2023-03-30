@@ -7,3 +7,5 @@ CSRF_COOKIE_SECURE = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = '/home/bapi/bapi/static'
+
+MIDDLEWARE = MIDDLEWARE + ['whitenoise.middleware.WhiteNoiseMiddleware']
