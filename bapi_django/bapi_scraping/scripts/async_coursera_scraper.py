@@ -146,7 +146,11 @@ def scrap(category):
 
     courses = get_summary_page(category)
 
+    print(courses)
+
     courses_final = asyncio.run(async_get_course_infos(courses))
+
+    print(courses_final)
 
     # Converting a list of courses into pandas DataFrame; Cleaning data structure, formatting column headers
     df = pd.DataFrame(courses_final)
