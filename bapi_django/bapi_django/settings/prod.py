@@ -1,5 +1,6 @@
 from decouple import config
 from .base import *
+import os
 
 DEBUG = False
 ALLOWED_HOSTS = [config('HOST'), config('HOST_IP'), config('PROD_TEST_HOST'), 'localhost']
@@ -7,7 +8,8 @@ SESION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/home/bapi/bapi/static'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MIDDLEWARE.append('whitenoise.middleware.WhiteNoiseMiddleware')
 
