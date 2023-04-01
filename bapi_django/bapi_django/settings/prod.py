@@ -8,7 +8,7 @@ SESION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/home/bapi/bapi/static/'
+STATIC_ROOT = '/home/bapi/bapi/'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
