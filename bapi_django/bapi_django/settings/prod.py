@@ -8,7 +8,7 @@ SESION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/home/bapi/bapi/'
+STATIC_ROOT = '/home/bapi/bapi/bapi_django/static/'
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')

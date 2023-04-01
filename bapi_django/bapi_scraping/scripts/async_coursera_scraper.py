@@ -7,6 +7,7 @@ from bs4 import BeautifulSoup
 import pandas as pd
 
 import re
+import time
 
 ROOT = "https://www.coursera.org/"
 
@@ -37,17 +38,22 @@ async def async_get_course_infos(courses):
 
 
 def get_summary_page(category):
-    
-    category = 'data-science'
-    
-    # Creating a BeautifulSoup object
+      
+    course_html_containers = []
     url_browse = f"{ROOT}browse/{category}"
-    request_browse = requests.get(url_browse)
+    request_counter = 0
+
+    # Try requesting up to 30 times, otherwise be a respectful scraper and give up
+    while not course_html_containers and request_counter < 31:
+      request_browse = requests.get(url_browse)
+      browse_soup = BeautifulSoup(request_browse.content, 'lxml', from_encoding='utf-8')
+      course_html_containers = browse_soup.find_all('div', {'class': 'rc-ProductCard'})
+      time.sleep(0.5)
+      print("Coursera is not responding. I will try " + str(30 - request_counter) + " more times.")
+      request_counter += 1
+
     browse_soup = BeautifulSoup(request_browse.content, 'lxml', from_encoding='utf-8')
-
-    # Finding a product card for each course
-    course_html_containers = browse_soup.find_all('div', {'class': 'rc-ProductCard'})
-
+    
     # Scraping 'Course Name' and 'Course Link' for each course found in Coursera's summary page
     courses = []
     for i, j in enumerate(course_html_containers):
@@ -130,30 +136,28 @@ def get_ratings(soup):
 
 def scrap(category):
     """
-    Gets a single course category and saves all courses from this category as .csv file. Returns a list of courses
+    Gets a single course category and saves all courses from this category as .xslx file. Returns a list of courses
     with features.
 
-    CSV file contains following categories: Course Name, Course Category, Instructor, Description, # of Students
+    Excel file contains following categories: Course Name, Course Category, Instructor, Description, # of Students
     Enrolled, # of Ratings.
 
     In case, the course hasn't started yet (therefore has no ratings and no students enrolled), this information
-    is shown in the .csv file in the following way: "Description": "The course hasn't started yet", "# of Students
+    is shown in the .xlsx file in the following way: "Description": "The course hasn't started yet", "# of Students
     Enrolled": 0, "# of Ratings": 0
 
     DISCLAIMER: This function is designed to work with the server back end. In order to run it locally, pass the
-    category argument in the following format: scrap('data-science')
+    category argument in the following format: scrap('data-science'). You can choose from the following categories:
+    ['data-science', 'business', 'personal-development', 'language-learning', 'math-and-logic', 'physical-science-and-engineering]
     """
 
     courses = get_summary_page(category)
 
-    print(courses)
-
     courses_final = asyncio.run(async_get_course_infos(courses))
-
-    print(courses_final)
 
     # Converting a list of courses into pandas DataFrame; Cleaning data structure, formatting column headers
     df = pd.DataFrame(courses_final)
+    
     df['Category Name'] = category
     df.drop('course_link', axis=1, inplace=True)
     df.rename(columns={'course_name': 'Course Name', 'instructor': 'First Instructor Name',
@@ -165,6 +169,7 @@ def scrap(category):
 
     # Printing summary information
     print(f'DONE! There are {len(courses_final)} courses in the category {category}.')
+    print(df)
 
     return df
 
