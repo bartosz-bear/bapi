@@ -159,7 +159,7 @@ def scrap(category):
     df = pd.DataFrame(courses_final)
     
     df['Category Name'] = category
-    df.drop('course_link', axis=1, inplace=True)
+    #df.drop('course_link', axis=1, inplace=True)
     df.rename(columns={'course_name': 'Course Name', 'instructor': 'First Instructor Name',
                        'description': 'Course Description',
                        'students_enrolled': '# of Students Enrolled', 'ratings': '# of Ratings'}, inplace=True)
