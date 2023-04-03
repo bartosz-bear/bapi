@@ -68,7 +68,7 @@ def transform_finance():
   checks.append({'check': "CHECK IF 'LOAN' COLUMN IS OF TYPE 'INT'", 'results': clients['LOAN'].dtype == np.int32})
 
   #### REMOVE UNNEEDED COLUMNS
-  clients.drop(['BIRTH_DT', 'today', 'datetime'], axis=1, inplace=True)
+  #clients.drop(['BIRTH_DT', 'today', 'datetime'], axis=1, inplace=True)
 
   #### SUMMARY - `clients` TABLE AFTER CLEAN-UP
   ### 'transfers' TABLE CLEAN-UP
@@ -265,4 +265,9 @@ def transform_finance():
       else:
           checks_summary.append({'check': c['check'], 'results': 'Fail'})
 
-  return checks_summary
+  ## PRE-SQL CLEAN-UP
+  clients.drop(['age', 'today', 'datetime'], axis=1, inplace=True)
+  clients['BIRTH_DT'] = pd.to_datetime(clients['BIRTH_DT'], format="%Y%m%d")
+  counties.round({'URBAN_RATIO': 2, 'UNEMP_95': 2, 'UNEMP_96': 2})
+
+  return {'checks_summary': checks_summary, 'clients': clients, 'transfers': transfers, 'counties': counties}
