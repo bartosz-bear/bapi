@@ -94,14 +94,43 @@
       {% load static %}
       <img src="{% static 'bapi_django_app/unemp_question_mark_issue.png' %}" alt="Counties table">
   
-    </div><br>
+    </div><br><br>
 
     <h4>Transform script</h4><br>
 
     In the backend, ETL script loads data from CSV files into pandas dataframe, identifies the issues, cleans up the data
     and stores the cleaned data in PostgreSQL database. In the latter stage, the clean data is available via an API.
 
-    Press the button to activate the script.
+    Press the button to activate the script. 
+
+    <br><br>
+
+    <form action="" method="post">
+      {% csrf_token %}
+      {{ form }}
+      <input type="submit" value="Transform data">
+    </form>
+
+    <br><br>
+
+    <table class="table">
+      <thead class="thead-dark">
+      <tr class="bg-primary">
+        <th style="width: 85%;">Check</th>
+        <th style="width: 15%;">Results</th>
+      </tr>
+    </thead>
+  
+    {% for element in checks %}
+    <tr>
+      <td>{{ element.check }}</td>
+      <td>{{ element.results }}</td>
+    </tr>
+    {% endfor %}
+  
+    </table> 
+  
+  
 
     <br><br>
 
