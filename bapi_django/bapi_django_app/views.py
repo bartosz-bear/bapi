@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, Http404
 from django.template import loader
 from django.shortcuts import render, get_object_or_404
+from bapi_django_app.scripts.transform_finance import transform_finance
 
 from .models import Question
 
@@ -15,9 +16,15 @@ def home(request):
   return render(request, 'home.html', context)
 
 def transform(request):
-  context = {
-    'page': 'Transform Page'
-  }
+
+  context = {}
+
+  if request.method == 'POST':
+
+    checks = transform_finance()
+
+    context['checks'] = checks
+
   return render(request, 'transform.html', context)
 
 def load(request):
