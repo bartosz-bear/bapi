@@ -3,6 +3,8 @@ from django.http import HttpResponse, Http404
 from django.template import loader
 from django.shortcuts import render, get_object_or_404
 from bapi_django_app.scripts.transform_finance import transform_finance
+from bapi_django_app.queries.psycopg2.save_finance import insert_values, insert_values_multi, create_table, delete_table
+from bapi_django_app.scripts.insert_finance_tables import insert_tables
 
 from .models import Question
 
@@ -22,8 +24,9 @@ def transform(request):
   if request.method == 'POST':
 
     checks = transform_finance()
+    #insert_tables(checks)
 
-    context['checks'] = checks
+    context['checks'] = checks['checks_summary']
 
   return render(request, 'transform.html', context)
 
