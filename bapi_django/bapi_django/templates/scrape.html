@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+<main>
+
+  {{ scrape }}
+
+  {% with url_name=request.resolver_match.url_name %}
+  <li class="nav-item"><a href="/scrape/courses/" class="nav-link {% if url_name == 'home' %}active{% endif %}">Courses</a></li>
+  {% endwith %}
+
+</main>
+
+{% endblock %}
+
