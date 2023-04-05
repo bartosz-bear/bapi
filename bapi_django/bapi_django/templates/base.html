@@ -49,19 +49,19 @@
               {% endwith %}
               
               {% with url_name=request.resolver_match.url_name %}
-              <li class="nav-item"><a href="/scrape" class="nav-link {% if url_name == 'scrape' %}active{% endif %}">Scrape</a></li>
+              <li class="nav-item"><a href="/scrape" class="nav-link {% if 'scrape' in url_name %}active{% endif %}">Scrape</a></li>
               {% endwith %}
               
               {% with url_name=request.resolver_match.url_name %}
-              <li class="nav-item"><a href="/transform" class="nav-link {% if url_name == 'transform' %}active{% endif %}">Transform</a></li>
+              <li class="nav-item"><a href="/transform" class="nav-link {% if 'transform' in url_name %}active{% endif %}">Transform</a></li>
               {% endwith %}
               
               {% with url_name=request.resolver_match.url_name %}
-              <li class="nav-item"><a href="/load" class="nav-link {% if url_name == 'load' %}active{% endif %}">Load</a></li>
+              <li class="nav-item"><a href="/load" class="nav-link {% if 'load' in url_name %}active{% endif %}">Load</a></li>
               {% endwith %}
               
               {% with url_name=request.resolver_match.url_name %}
-              <li class="nav-item"><a href="/expose" class="nav-link {% if url_name == 'expose' %}active{% endif %}">Expose</a></li>
+              <li class="nav-item"><a href="/expose" class="nav-link {% if 'expose' in url_name %}active{% endif %}">Expose</a></li>
               {% endwith %}
               
               {% with url_name=request.resolver_match.url_name %}

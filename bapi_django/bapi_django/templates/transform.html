@@ -4,11 +4,30 @@
 
 <main>
 
-  {{ transform }}
+  <h2>Welcome to 'Transform' section!</h2><br>
 
-  {% with url_name=request.resolver_match.url_name %}
-  <li class="nav-item"><a href="/transform/financial_transactions/" class="nav-link {% if url_name == 'home' %}active{% endif %}">Financial transactions</a></li>
-  {% endwith %}
+  In the 'Transform' section you can see my work related to transformation part of ETL (Extract-Transform-Load) pipelines.
+
+  My most common tool I use for this type of work is 'pandas'.
+
+  Some of the the tasks involved in this section are:
+  - checking if values are unique (no duplicates)
+  - checking for missing values
+  - checking for NULL/NaN values
+  - making sure that columns are of correct and performant data types
+  - checking for outliers
+  - removing undeeded columns
+  - adding more useful, 'higher level' columns (eg. 'curren age' instead of birth of date)
+  - joining and merging several tables to acquire more analytics insights
+
+  Finally, I make sure that data is in format compatible with the requirements of the 'Load' stage. Eg. are column types compatible with types and constraints of SQL table?
+
+  Check the examples below to see the actual code to see some interesting solutions to common data validation problems (eg. applying homogenuity check or using domain knowledge
+  to convert missing values to valid data).<br><br>
+
+  <h4>Transformations</h4><br>
+
+  <a href="/transform/financial_transactions/">Financial transactions</a>
 
 </main>
 

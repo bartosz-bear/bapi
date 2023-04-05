@@ -5,6 +5,8 @@ from .forms import CourseCategoriesForm
 from bapi_scrape.scripts.courses.scrape import scrape
 from bapi_load.scripts.courses.db_operations import insert_values, create_table, delete_table, get_data
 
+from psycopg2.errors import DuplicateTable
+from psycopg2.errors import UniqueViolation
 
 def scrape_courses(request):
   '''
@@ -26,7 +28,7 @@ def scrape_courses(request):
     try:
       create_table('coursera_courses')
       insert_values('coursera_courses', context['courses'])
-    except:
+    except DuplicateTable or UniqueViolation:
       delete_table('coursera_courses')
       create_table('coursera_courses')
       insert_values('coursera_courses', context['courses'])
