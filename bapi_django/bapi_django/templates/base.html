@@ -45,7 +45,7 @@
       
             <ul class="nav nav-pills">
               {% with url_name=request.resolver_match.url_name %}
-              <li class="nav-item"><a href="/home" class="nav-link {% if url_name == 'home' %}active{% endif %}">Home</a></li>
+              <li class="nav-item"><a href="/about" class="nav-link {% if url_name == 'about' %}active{% endif %}">About</a></li>
               {% endwith %}
               
               {% with url_name=request.resolver_match.url_name %}
@@ -65,7 +65,7 @@
               {% endwith %}
               
               {% with url_name=request.resolver_match.url_name %}
-              <li class="nav-item"><a href="/hire" class="nav-link {% if url_name == 'hire' %}active{% endif %}">Hire</a></li>
+              <li class="nav-item"><a href="/contact" class="nav-link {% if url_name == 'contact' %}active{% endif %}">Contact</a></li>
               {% endwith %}
             </ul>
           </header>

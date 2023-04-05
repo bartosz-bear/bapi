@@ -4,6 +4,8 @@
 
 <main>
 
+  <div class="reading">
+
   <h2>Welcome to 'Expose' section!</h2><br>
 
   In this section I'm going to show you how I make scraped data available for developers or business users using API endpoints or visualisations.
@@ -28,7 +30,48 @@
   <a href="https://github.com/bartosz-bear/notebooks/blob/main/data%20science%20and%20ml/02-Data-Visualization-with-Seaborn/02-Seaborn%20Exercises.ipynb" target="_blank" rel="noopener">Seaborn Visualizations</a><br>
   <a href="https://github.com/bartosz-bear/notebooks/blob/main/data%20science%20and%20ml/03-Geographical-Plotting/03-Choropleth%20Maps%20Exercise.ipynb" target="_blank" rel="noopener">Geographical Plotting</a><br>
 
+</div>
+
 </main>
 
 {% endblock %}
 
+{% block style %}
+
+<style>
+  body {
+    background: white;
+  }
+  .box {
+    width: 100%;
+    height: 100%;
+    border: 1px solid white;
+    display: flex;
+    justify-content: center;
+  }
+  img {
+    width: 80%;
+    height: 100%;
+    margin: 0 auto;
+  }
+
+  .table {
+    table-layout:fixed;
+  }
+
+  .table th {
+    color: white;
+  }
+
+  .table td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  div.reading {
+    width: 800px;
+    margin: 0 auto;
+  }
+</style>
+
+{% endblock %}

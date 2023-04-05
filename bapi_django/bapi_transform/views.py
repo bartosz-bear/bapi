@@ -10,8 +10,7 @@ def checks(request):
   if request.method == 'POST':
 
     checks = validate()
-    print(checks)
-    insert_data(checks)
+    #insert_data(checks)
 
     context['checks'] = checks['checks_summary']
   else:

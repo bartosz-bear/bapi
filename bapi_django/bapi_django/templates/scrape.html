@@ -28,3 +28,42 @@
 
 {% endblock %}
 
+{% block style %}
+
+<style>
+  body {
+    background: white;
+  }
+  .box {
+    width: 100%;
+    height: 100%;
+    border: 1px solid white;
+    display: flex;
+    justify-content: center;
+  }
+  img {
+    width: 80%;
+    height: 100%;
+    margin: 0 auto;
+  }
+
+  .table {
+    table-layout:fixed;
+  }
+
+  .table th {
+    color: white;
+  }
+
+  .table td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  div.reading {
+    width: 800px;
+    margin: 0 auto;
+  }
+</style>
+
+{% endblock %}

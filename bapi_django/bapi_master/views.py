@@ -1,8 +1,8 @@
 from django.shortcuts import render
 
-def home(request):
+def about(request):
 
-  return render(request, 'home.html')
+  return render(request, 'about.html')
 
 def scrape(request):
 
@@ -24,8 +24,8 @@ def expose(request):
   }
   return render(request, 'expose.html', context)
 
-def hire(request):
+def contact(request):
   context = {
-    'page': 'Hire Page'
+    'page': 'Contact Page'
   }
-  return render(request, 'hire.html', context)
+  return render(request, 'contact.html', context)
