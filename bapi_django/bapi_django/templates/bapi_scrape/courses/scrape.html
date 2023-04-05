@@ -1,0 +1,169 @@
+{% extends "base.html" %}   // Inherits all the components from base template, including the header and footer
+
+{% block main %}
+
+<main>
+
+  {{ my_name }}
+
+  <div>
+    
+    <div class="reading">
+
+
+  <div>
+
+    <h2>Let's see scraping in action</h2><br>
+
+  Ok, we are going to take one of the most popular websites for online courses called <b>'Coursera'.</b> The company was founded in 2012 by two leading researchers of Machine Learning and AI,
+  Stanford University professor Andrew Ng, and Daphne Koller. Coursera provides a range of high qualify courses provided by top universities around the world as well as the top tech companies like Gooogle, IBM and Microsoft.
+
+  <br></br>
+
+  Let's imagine that you are a researcher working for a company who would like to analyze popularity and quality of online courses in data science field. You want to create an Excel spreadsheet which contains ALL available
+  courses in Coursera. 
+
+  In this case, you would visit <a href="https://www.coursera.org/browse/data-science" target="_blank" rel="noopener">www.coursera.org</a>, choose the category data science and see what courses are available in this category.
+  
+  
+
+  <br></br>
+
+  Below we can see a snaphot of some of the courses available in the Data Science domain.
+
+  You can realize immediately that the user interface is not showing what you expected. Instead of presenting a list of all available courses, it's displaying some deliberately filtered courses or programs. They are most likely
+  the courses, THEY would like you to take the most. Not what you really want. As I said before, websites' interfaces are NOT REALLY DESIGNED FOR YOU. They are design to serve the website's owner interest, but still in
+  a subtle way so you don't leave immediately.
+
+</div>
+
+<br>
+
+<div class="box">
+
+    {% load static %}
+    <img src="{% static 'bapi_scrape/course_categories3.png' %}" alt="Course Categories">
+
+  </div>           
+
+  <div>
+
+    <br>
+
+  For each course in the 'Data Science' category we would like to collect 'Name of the Instructor', 'Number of Ratings', 'Number of Students Enrolled' and 'Full Description' of the course. If we were to collect these
+  information manually, we would have to visit each course page separately. This would take a lot of time. And this is where scraping comes handy. The script will visit each course page, collect the requested information
+  and save everything to SQL database for further use.
+
+</div>
+  <br>
+
+  <div class="box">
+
+
+  {% load static %}
+  <img src="{% static 'bapi_scrape/course_info2.png' %}" class="box.img" alt="Course Categories">
+
+
+
+</div>
+
+  <hr>
+
+  Let's see how it works in practice.
+
+  <br>
+
+  <br>
+
+  Choose a category and press 'Submit'. Be patient, it takes between 5-10 seconds to collect for information about all courses.
+
+  <br>
+  
+  <br>
+
+  <form action="" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Scrape it!">
+  </form>
+
+  <br>
+
+  
+
+  
+
+  <table class="table">
+    <thead class="thead-dark">
+    <tr class="bg-primary">
+      <th>Category</th>
+      <th>Course Name</th>
+      <th>Instructor</th>
+      <th>Description</th>
+      <th>Enrollments Count</th>
+      <th>Rating</th>
+    </tr>
+  </thead>
+
+  {% for index, category, course, instructor, description, enrollment_count, rating in scraped %}
+  <tr>
+    <td>{{ category }}</td>
+    <td>{{ course }}</td>
+    <td>{{ instructor }}</td>
+    <td class="cell-hyphens">{{ description }}</td>
+    <td>{{ enrollment_count }}</td>
+    <td>{{ rating }}</td>
+  </tr>
+  {% endfor %}
+
+  </table> 
+
+{{ call_to_action }}<br><br>
+
+{{ call_to_action2 | safe }}
+
+  <!--{{ courses }}-->
+
+</main>
+
+{% endblock %}
+
+{% block style %}
+
+<style>
+  body {
+    background: white;
+  }
+  .box {
+    width: 100%;
+    height: 100%;
+    border: 1px solid white;
+    display: flex;
+    justify-content: center;
+  }
+  img {
+    width: 80%;
+    height: 100%;
+    margin: 0 auto;
+  }
+
+  .table {
+    table-layout:fixed;
+  }
+
+  .table th {
+    color: white;
+  }
+
+  .table td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  div.reading {
+    width: 800px;
+    margin: 0 auto;
+  }
+</style>
+
+{% endblock %}

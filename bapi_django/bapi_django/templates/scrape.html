@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+<main>
+
+  <div>
+    
+    <div class="reading">
+
+      <h2>Welcome to 'Scrape' section!</h2><br>
+
+      In the 'Scrape' section I'm going to demonstrate different ways I can help you collect unstructured data from Internet using Web Scraping.<br><br>
+        
+      Web scraping allows you to collect data from very small and very large websites (think Amazon, Twitter, Facebook). If you can see information displayed in your browser this information can be downloaded and saved in
+      the format most suitable and actionable for YOU. This includes platforms which require authentication (provided that you have authentication of course).<br><br>
+      
+      Click one of the links below to see web scraping in action.<br><br>
+
+      <h4>Scraping scripts, spiders and crawlers</h4><br>
+
+  <a href="/scrape/courses/">Coursera Courses (Asynchronous BeautifulSoup)</a>
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}
+
+{% block style %}
+
+<style>
+  body {
+    background: white;
+  }
+  .box {
+    width: 100%;
+    height: 100%;
+    border: 1px solid white;
+    display: flex;
+    justify-content: center;
+  }
+  img {
+    width: 80%;
+    height: 100%;
+    margin: 0 auto;
+  }
+
+  .table {
+    table-layout:fixed;
+  }
+
+  .table th {
+    color: white;
+  }
+
+  .table td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  div.reading {
+    width: 800px;
+    margin: 0 auto;
+  }
+</style>
+
+{% endblock %}

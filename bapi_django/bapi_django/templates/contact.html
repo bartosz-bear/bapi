@@ -1,0 +1,38 @@
+{% extends "base.html" %}   // Inherits all the components from base template, including the header and footer
+
+{% block main %}
+
+<main>
+
+
+<div class="reading">
+
+  <br><br>
+
+  <p class="has-line-data" data-line-start="89" data-line-end="90"></p>
+  <h3 class="code-line" data-line-start=91 data-line-end=92 ><a id="_Contact_91"></a>📧 Contact</h3><br>
+  <p class="has-line-data" data-line-start="93" data-line-end="94">If you think I could help you, I’m for hire. Contact me at:<br><br><a href="mailto:bartosz.artur.piechnik@gmail.com">bartosz.artur.piechnik@gmail.com</a><br>
+    <a href="http://www.github.com/bartosz-bear" target="_blank">github.com/bartosz-bear</a></p>
+
+</div>
+
+</main>
+
+{% endblock %}
+
+
+{% block style %}
+
+<style>
+div img {
+   display: block;
+   width: 100%;
+}
+
+div.reading {
+    width: 800px;
+    margin: 0 auto;
+  }
+</style>
+
+{% endblock %}

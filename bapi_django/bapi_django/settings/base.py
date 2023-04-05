@@ -28,8 +28,10 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    "bapi_django_app",
-    "bapi_scraping",
+    "bapi_master",
+    "bapi_scrape",
+    "bapi_transform",
+    "bapi_load",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
