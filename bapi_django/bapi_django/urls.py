@@ -16,10 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
+from bapi_master import views
+
 urlpatterns = [
     path('', include('bapi_master.urls')),
     path('', include('bapi_scrape.urls')),
     path('', include('bapi_transform.urls')),
     path('', include('bapi_load.urls')),
+    path('', views.home, name='home'),
     path("admin/", admin.site.urls),
 ]
