@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
 
 from .forms import CourseCategoriesForm
 
@@ -7,6 +8,14 @@ from bapi_load.scripts.courses.db_operations import insert_values, create_table,
 
 from psycopg2.errors import DuplicateTable
 from psycopg2.errors import UniqueViolation
+
+import scrapy
+from scrapy.crawler import CrawlerRunner
+from bapi_scrape.scrapy.imdb.imdb.spiders.best_movies import BestMoviesSpider
+from scrapy.utils.log import configure_logging
+
+from twisted.internet import reactor
+
 
 def scrape_courses(request):
   '''
@@ -48,3 +57,38 @@ def scrape_courses(request):
   context['form'] = form
 
   return render(request, 'bapi_scrape/courses/scrape.html', context)
+
+def scrape_movies(request):
+
+  context = {'movies': '<p>LALLAA</p>'}
+
+  return render(request, 'bapi_scrape/movies/scrape.html', context)
+
+@csrf_exempt
+def run_spider(request):
+
+  configure_logging({'LOG_FORMAT': '%(levelname)s: %(message)s'})
+  runner = CrawlerRunner()
+
+  d = runner.crawl(BestMoviesSpider)
+  d.addBoth(lambda _: reactor.stop())
+  reactor.run()
+
+  return render(request, 'bapi_scrape/movies/movies_table.html')
+
+
+
+
+
+
+
+
+
+
+def swap_element(request):
+
+  return render(request, 'bapi_scrape/movies/swap.html')
+
+def show_spinner(request):
+
+  return render(request, 'bapi_scrape/movies/show_spinner.html')

@@ -1,0 +1,2243 @@
+[
+  {
+    "title": "The Shawshank Redemption",
+    "year": "1994",
+    "duration": "2h 22m",
+    "genre": "Drama",
+    "rating": "9.3",
+    "movie_url": "https://www.imdb.com/title/tt0111161/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Grave of the Fireflies",
+    "year": "1988",
+    "duration": "1h 29m",
+    "genre": "Animation",
+    "rating": "8.5",
+    "movie_url": "https://www.imdb.com/title/tt0095327/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Once Upon a Time in the West",
+    "year": "1968",
+    "duration": "2h 45m",
+    "genre": "Western",
+    "rating": "8.5",
+    "movie_url": "https://www.imdb.com/title/tt0064116/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Intouchables",
+    "year": "2011",
+    "duration": "1h 52m",
+    "genre": "Biography",
+    "rating": "8.5",
+    "movie_url": "https://www.imdb.com/title/tt1675434/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "American History X",
+    "year": "1998",
+    "duration": "1h 59m",
+    "genre": "Crime",
+    "rating": "8.5",
+    "movie_url": "https://www.imdb.com/title/tt0120586/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Rear Window",
+    "year": "1954",
+    "duration": "1h 52m",
+    "genre": "Mystery",
+    "rating": "8.5",
+    "movie_url": "https://www.imdb.com/title/tt0047396/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Lawrence of Arabia",
+    "year": "1962",
+    "duration": "3h 38m",
+    "genre": "Adventure",
+    "rating": "8.3",
+    "movie_url": "https://www.imdb.com/title/tt0056172/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Star Wars: Episode VI - Return of the Jedi",
+    "year": "1983",
+    "duration": "2h 11m",
+    "genre": "Action",
+    "rating": "8.3",
+    "movie_url": "https://www.imdb.com/title/tt0086190/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Toy Story",
+    "year": "1995",
+    "duration": "1h 21m",
+    "genre": "Animation",
+    "rating": "8.3",
+    "movie_url": "https://www.imdb.com/title/tt0114709/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Full Metal Jacket",
+    "year": "1987",
+    "duration": "1h 56m",
+    "genre": "Drama",
+    "rating": "8.3",
+    "movie_url": "https://www.imdb.com/title/tt0093058/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Hunt",
+    "year": "2012",
+    "duration": "1h 55m",
+    "genre": "Drama",
+    "rating": "8.3",
+    "movie_url": "https://www.imdb.com/title/tt2106476/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Finding Nemo",
+    "year": "2003",
+    "duration": "1h 40m",
+    "genre": "Animation",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt0266543/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Unforgiven",
+    "year": "1992",
+    "duration": "2h 10m",
+    "genre": "Drama",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt0105695/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Some Like It Hot",
+    "year": "1959",
+    "duration": "2h 1m",
+    "genre": "Comedy",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt0053291/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "L.A. Confidential",
+    "year": "1997",
+    "duration": "2h 18m",
+    "genre": "Crime",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt0119488/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "V for Vendetta",
+    "year": "2005",
+    "duration": "2h 12m",
+    "genre": "Action",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt0434409/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Room",
+    "year": "2015",
+    "duration": "1h 58m",
+    "genre": "Drama",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt3170832/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Fargo",
+    "year": "1996",
+    "duration": "1h 38m",
+    "genre": "Crime",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt0116282/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Jaws",
+    "year": "1975",
+    "duration": "2h 4m",
+    "genre": "Adventure",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt0073195/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Terminator",
+    "year": "1984",
+    "duration": "1h 47m",
+    "genre": "Action",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt0088247/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "12 Years a Slave",
+    "year": "2013",
+    "duration": "2h 14m",
+    "genre": "Biography",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt2024544/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Life of Brian",
+    "year": "1979",
+    "duration": "1h 34m",
+    "genre": "Comedy",
+    "rating": "8.0",
+    "movie_url": "https://www.imdb.com/title/tt0079470/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Gandhi",
+    "year": "1982",
+    "duration": "3h 11m",
+    "genre": "Biography",
+    "rating": "8.0",
+    "movie_url": "https://www.imdb.com/title/tt0083987/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Aladdin",
+    "year": "1992",
+    "duration": "1h 30m",
+    "genre": "Animation",
+    "rating": "8.0",
+    "movie_url": "https://www.imdb.com/title/tt0103639/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Dances with Wolves",
+    "year": "1990",
+    "duration": "3h 1m",
+    "genre": "Adventure",
+    "rating": "8.0",
+    "movie_url": "https://www.imdb.com/title/tt0099348/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Incredibles",
+    "year": "2004",
+    "duration": "1h 55m",
+    "genre": "Animation",
+    "rating": "8.0",
+    "movie_url": "https://www.imdb.com/title/tt0317705/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Gold Rush",
+    "year": "1925",
+    "duration": "1h 35m",
+    "genre": "Adventure",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt0015864/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Mr. Smith Goes to Washington",
+    "year": "1939",
+    "duration": "2h 9m",
+    "genre": "Comedy",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt0031679/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Battle of Algiers",
+    "year": "1966",
+    "duration": "2h 1m",
+    "genre": "Drama",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt0058946/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The General",
+    "year": "1926",
+    "duration": "1h 7m",
+    "genre": "Action",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt0017925/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Wild Strawberries",
+    "year": "1957",
+    "duration": "1 h 31 m",
+    "genre": "Drama",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt0050986/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Mary and Max",
+    "year": "2009",
+    "duration": "1h 32m",
+    "genre": "Animation",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt0978762/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The 400 Blows",
+    "year": "1959",
+    "duration": "1h 39m",
+    "genre": "Crime",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt0053198/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Grapes of Wrath",
+    "year": "1940",
+    "duration": "2h 9m",
+    "genre": "Drama",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt0032551/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Hotel Rwanda",
+    "year": "2004",
+    "duration": "2h 1m",
+    "genre": "Biography",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt0395169/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Persona",
+    "year": "1966",
+    "duration": "1h 23m",
+    "genre": "Drama",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt0060827/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Amores Perros",
+    "year": "2000",
+    "duration": "2h 34m",
+    "genre": "Drama",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt0245712/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Best Years of Our Lives",
+    "year": "1946",
+    "duration": "2h 50m",
+    "genre": "Drama",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt0036868/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "On the Waterfront",
+    "year": "1954",
+    "duration": "1h 48m",
+    "genre": "Crime",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt0047296/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Iron Giant",
+    "year": "1999",
+    "duration": "1h 26m",
+    "genre": "Animation",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt0129167/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Seventh Seal",
+    "year": "1957",
+    "duration": "1h 36m",
+    "genre": "Drama",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt0050976/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "In the Name of the Father",
+    "year": "1993",
+    "duration": "2h 13m",
+    "genre": "Biography",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt0107207/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "La haine",
+    "year": "1995",
+    "duration": "1h 38m",
+    "genre": "Crime",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt0113247/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Network",
+    "year": "1976",
+    "duration": "2h 1m",
+    "genre": "Drama",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt0074958/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Before Sunset",
+    "year": "2004",
+    "duration": "1h 20m",
+    "genre": "Drama",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt0381681/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "My Neighbor Totoro",
+    "year": "1988",
+    "duration": "1h 26m",
+    "genre": "Animation",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt0096283/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Cool Hand Luke",
+    "year": "1967",
+    "duration": "2h 7m",
+    "genre": "Crime",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt0061512/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Rebecca",
+    "year": "1940",
+    "duration": "2h 10m",
+    "genre": "Drama",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt0032976/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Barry Lyndon",
+    "year": "1975",
+    "duration": "3 h 5 m",
+    "genre": "Adventure",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt0072684/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Wild Tales",
+    "year": "2014",
+    "duration": "2h 2m",
+    "genre": "Comedy",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt3011894/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Third Man",
+    "year": "1949",
+    "duration": "1h 33m",
+    "genre": "Film-Noir",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt0041959/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Hachi: A Dog's Tale",
+    "year": "2009",
+    "duration": "1h 33m",
+    "genre": "Biography",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt1028532/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Gran Torino",
+    "year": "2008",
+    "duration": "1h 56m",
+    "genre": "Drama",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt1205489/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "It Happened One Night",
+    "year": "1934",
+    "duration": "1h 45m",
+    "genre": "Comedy",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt0025316/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Rush",
+    "year": "2013",
+    "duration": "2h 3m",
+    "genre": "Action",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt1979320/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Monsters, Inc.",
+    "year": "2001",
+    "duration": "1h 32m",
+    "genre": "Animation",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt0198781/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Groundhog Day",
+    "year": "1993",
+    "duration": "1h 41m",
+    "genre": "Comedy",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt0107048/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "How to Train Your Dragon",
+    "year": "2010",
+    "duration": "1h 38m",
+    "genre": "Animation",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt0892769/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Before Sunrise",
+    "year": "1995",
+    "duration": "1h 41m",
+    "genre": "Drama",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt0112471/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Million Dollar Baby",
+    "year": "2004",
+    "duration": "2h 12m",
+    "genre": "Drama",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt0405159/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Memories of Murder",
+    "year": "2003",
+    "duration": "2h 12m",
+    "genre": "Crime",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt0353969/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Trainspotting",
+    "year": "1996",
+    "duration": "1h 33m",
+    "genre": "Drama",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt0117951/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Sound of Music",
+    "year": "1965",
+    "duration": "2h 52m",
+    "genre": "Biography",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt0059742/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Logan",
+    "year": "2017",
+    "duration": "2h 17m",
+    "genre": "Action",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt3315342/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Deer Hunter",
+    "year": "1978",
+    "duration": "3 h 3 m",
+    "genre": "Drama",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt0077416/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Inside Out",
+    "year": "2015",
+    "duration": "1h 35m",
+    "genre": "Animation",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt2096673/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Into the Wild",
+    "year": "2007",
+    "duration": "2h 28m",
+    "genre": "Adventure",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt0758758/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Dead Poets Society",
+    "year": "1989",
+    "duration": "2h 8m",
+    "genre": "Comedy",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt0097165/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Wizard of Oz",
+    "year": "1939",
+    "duration": "1h 42m",
+    "genre": "Adventure",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt0032138/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Ben-Hur",
+    "year": "1959",
+    "duration": "3h 32m",
+    "genre": "Adventure",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt0052618/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Handmaiden",
+    "year": "2016",
+    "duration": "2h 25m",
+    "genre": "Drama",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt4016934/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Exorcist",
+    "year": "1973",
+    "duration": "2h 2m",
+    "genre": "Horror",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt0070047/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Ratatouille",
+    "year": "2007",
+    "duration": "1h 51m",
+    "genre": "Animation",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt0382932/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Platoon",
+    "year": "1986",
+    "duration": "2h",
+    "genre": "Drama",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt0091763/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Big Lebowski",
+    "year": "1998",
+    "duration": "1h 57m",
+    "genre": "Comedy",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt0118715/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Spotlight",
+    "year": "2015",
+    "duration": "2h 9m",
+    "genre": "Biography",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt1895587/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Harry Potter and the Deathly Hallows: Part 2",
+    "year": "2011",
+    "duration": "2h 10m",
+    "genre": "Adventure",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt1201607/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Grand Budapest Hotel",
+    "year": "2014",
+    "duration": "1 h 39 m",
+    "genre": "Adventure",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt2278388/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Gone Girl",
+    "year": "2014",
+    "duration": "2h 29m",
+    "genre": "Drama",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt2267998/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Blade Runner",
+    "year": "1982",
+    "duration": "1h 57m",
+    "genre": "Action",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt0083658/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Hacksaw Ridge",
+    "year": "2016",
+    "duration": "2h 19m",
+    "genre": "Biography",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt2119532/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Ford v Ferrari",
+    "year": "2019",
+    "duration": "2h 32m",
+    "genre": "Action",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt1950186/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Catch Me If You Can",
+    "year": "2002",
+    "duration": "2h 21m",
+    "genre": "Biography",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt0264464/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Mad Max: Fury Road",
+    "year": "2015",
+    "duration": "2h",
+    "genre": "Action",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt1392190/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Pirates of the Caribbean: The Curse of the Black Pearl",
+    "year": "2003",
+    "duration": "2h 23m",
+    "genre": "Action",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt0325980/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Stand by Me",
+    "year": "1986",
+    "duration": "1h 29m",
+    "genre": "Adventure",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt0092005/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Three Billboards Outside Ebbing, Missouri",
+    "year": "2017",
+    "duration": "1h 55m",
+    "genre": "Comedy",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt5027774/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Prisoners",
+    "year": "2013",
+    "duration": "2h 33m",
+    "genre": "Crime",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt1392214/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Rocky",
+    "year": "1976",
+    "duration": "2h",
+    "genre": "Drama",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt0075148/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Help",
+    "year": "2011",
+    "duration": "2h 26m",
+    "genre": "Drama",
+    "rating": "8.1",
+    "movie_url": "https://www.imdb.com/title/tt1454029/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "My Father and My Son",
+    "year": "2005",
+    "duration": "1h 52m",
+    "genre": "Drama",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt0476735/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Sherlock Jr.",
+    "year": "1924",
+    "duration": "45m",
+    "genre": "Action",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt0015324/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Wages of Fear",
+    "year": "1953",
+    "duration": "2 h 11 m",
+    "genre": "Adventure",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt0046268/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Dersu Uzala",
+    "year": "1975",
+    "duration": "2h 22m",
+    "genre": "Adventure",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt0071411/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Passion of Joan of Arc",
+    "year": "1928",
+    "duration": "1h 54m",
+    "genre": "Biography",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt0019254/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "To Be or Not to Be",
+    "year": "1942",
+    "duration": "1h 39m",
+    "genre": "Comedy",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt0035446/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Children of Heaven",
+    "year": "1997",
+    "duration": "1h 29m",
+    "genre": "Drama",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt0118849/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Tokyo Story",
+    "year": "1953",
+    "duration": "2h 16m",
+    "genre": "Drama",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt0046438/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Yojimbo",
+    "year": "1961",
+    "duration": "1h 50m",
+    "genre": "Action",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt0055630/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Dial M for Murder",
+    "year": "1954",
+    "duration": "1h 45m",
+    "genre": "Crime",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt0046912/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Treasure of the Sierra Madre",
+    "year": "1948",
+    "duration": "2h 6m",
+    "genre": "Adventure",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt0040897/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Klaus",
+    "year": "2019",
+    "duration": "1h 36m",
+    "genre": "Animation",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt4729430/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Rashomon",
+    "year": "1950",
+    "duration": "1h 28m",
+    "genre": "Crime",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt0042876/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "All About Eve",
+    "year": "1950",
+    "duration": "2h 18m",
+    "genre": "Drama",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt0042192/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "For a Few Dollars More",
+    "year": "1965",
+    "duration": "2h 12m",
+    "genre": "Western",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt0059578/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Ran",
+    "year": "1985",
+    "duration": "2h 42m",
+    "genre": "Action",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt0089881/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Bridge on the River Kwai",
+    "year": "1957",
+    "duration": "2h 41m",
+    "genre": "Adventure",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt0050212/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Secret in Their Eyes",
+    "year": "2009",
+    "duration": "2h 9m",
+    "genre": "Drama",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt1305806/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Great Escape",
+    "year": "1963",
+    "duration": "2 h 52 m",
+    "genre": "Adventure",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt0057115/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Monty Python and the Holy Grail",
+    "year": "1975",
+    "duration": "1h 31m",
+    "genre": "Adventure",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt0071853/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Elephant Man",
+    "year": "1980",
+    "duration": "2h 4m",
+    "genre": "Biography",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt0080678/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Downfall",
+    "year": "2004",
+    "duration": "2h 36m",
+    "genre": "Biography",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt0363163/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Raging Bull",
+    "year": "1980",
+    "duration": "2h 9m",
+    "genre": "Biography",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt0081398/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Warrior",
+    "year": "2011",
+    "duration": "2h 20m",
+    "genre": "Action",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt1291584/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Chinatown",
+    "year": "1974",
+    "duration": "2h 10m",
+    "genre": "Drama",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt0071315/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Die Hard",
+    "year": "1988",
+    "duration": "2h 12m",
+    "genre": "Action",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt0095016/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Gone with the Wind",
+    "year": "1939",
+    "duration": "3h 58m",
+    "genre": "Drama",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt0031381/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Lock, Stock and Two Smoking Barrels",
+    "year": "1998",
+    "duration": "1h 47m",
+    "genre": "Action",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt0120735/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Casino",
+    "year": "1995",
+    "duration": "2h 58m",
+    "genre": "Crime",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt0112641/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Truman Show",
+    "year": "1998",
+    "duration": "1h 43m",
+    "genre": "Comedy",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt0120382/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Howl's Moving Castle",
+    "year": "2004",
+    "duration": "1h 59m",
+    "genre": "Animation",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt0347149/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Pan's Labyrinth",
+    "year": "2006",
+    "duration": "1h 58m",
+    "genre": "Drama",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt0457430/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Thing",
+    "year": "1982",
+    "duration": "1h 49m",
+    "genre": "Horror",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt0084787/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "A Beautiful Mind",
+    "year": "2001",
+    "duration": "2h 15m",
+    "genre": "Biography",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt0268978/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Father",
+    "year": "2020",
+    "duration": "1 h 37 m",
+    "genre": "Drama",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt10272386/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Kill Bill: Vol. 1",
+    "year": "2003",
+    "duration": "1h 51m",
+    "genre": "Action",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt0266697/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Batman Begins",
+    "year": "2005",
+    "duration": "2h 20m",
+    "genre": "Action",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt0372784/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Snatch",
+    "year": "2000",
+    "duration": "1h 42m",
+    "genre": "Comedy",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt0208092/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Sixth Sense",
+    "year": "1999",
+    "duration": "1h 47m",
+    "genre": "Drama",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt0167404/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Indiana Jones and the Last Crusade",
+    "year": "1989",
+    "duration": "2h 7m",
+    "genre": "Action",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt0097576/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "There Will Be Blood",
+    "year": "2007",
+    "duration": "2h 38m",
+    "genre": "Drama",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt0469494/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Shutter Island",
+    "year": "2010",
+    "duration": "2h 18m",
+    "genre": "Mystery",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt1130884/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "1917",
+    "year": "2019",
+    "duration": "1h 59m",
+    "genre": "Action",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt8579674/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "No Country for Old Men",
+    "year": "2007",
+    "duration": "2h 2m",
+    "genre": "Crime",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt0477348/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Taxi Driver",
+    "year": "1976",
+    "duration": "1h 54m",
+    "genre": "Crime",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt0075314/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Green Book",
+    "year": "2018",
+    "duration": "2h 10m",
+    "genre": "Biography",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt6966692/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Jurassic Park",
+    "year": "1993",
+    "duration": "2h 7m",
+    "genre": "Action",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt0107290/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Spider-Man: No Way Home",
+    "year": "2021",
+    "duration": "2h 28m",
+    "genre": "Action",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt10872600/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Wolf of Wall Street",
+    "year": "2013",
+    "duration": "3h",
+    "genre": "Biography",
+    "rating": "8.2",
+    "movie_url": "https://www.imdb.com/title/tt0993846/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Kid",
+    "year": "1921",
+    "duration": "1h 8m",
+    "genre": "Comedy",
+    "rating": "8.3",
+    "movie_url": "https://www.imdb.com/title/tt0012349/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Pather Panchali",
+    "year": "1955",
+    "duration": "2h 5m",
+    "genre": "Drama",
+    "rating": "8.3",
+    "movie_url": "https://www.imdb.com/title/tt0048473/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Bicycle Thieves",
+    "year": "1948",
+    "duration": "1h 29m",
+    "genre": "Drama",
+    "rating": "8.3",
+    "movie_url": "https://www.imdb.com/title/tt0040522/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Dangal",
+    "year": "2016",
+    "duration": "2h 41m",
+    "genre": "Action",
+    "rating": "8.3",
+    "movie_url": "https://www.imdb.com/title/tt5074352/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Like Stars on Earth",
+    "year": "2007",
+    "duration": "2h 45m",
+    "genre": "Drama",
+    "rating": "8.3",
+    "movie_url": "https://www.imdb.com/title/tt0986264/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Double Indemnity",
+    "year": "1944",
+    "duration": "1 h 47 m",
+    "genre": "Crime",
+    "rating": "8.3",
+    "movie_url": "https://www.imdb.com/title/tt0036775/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "M",
+    "year": "1931",
+    "duration": "1h 39m",
+    "genre": "Crime",
+    "rating": "8.3",
+    "movie_url": "https://www.imdb.com/title/tt0022100/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "A Separation",
+    "year": "2011",
+    "duration": "2h 3m",
+    "genre": "Drama",
+    "rating": "8.3",
+    "movie_url": "https://www.imdb.com/title/tt1832382/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Judgment at Nuremberg",
+    "year": "1961",
+    "duration": "2h 59m",
+    "genre": "Drama",
+    "rating": "8.3",
+    "movie_url": "https://www.imdb.com/title/tt0055031/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "North by Northwest",
+    "year": "1959",
+    "duration": "2h 16m",
+    "genre": "Action",
+    "rating": "8.3",
+    "movie_url": "https://www.imdb.com/title/tt0053125/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Singin' in the Rain",
+    "year": "1952",
+    "duration": "1h 43m",
+    "genre": "Comedy",
+    "rating": "8.3",
+    "movie_url": "https://www.imdb.com/title/tt0045152/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "To Kill a Mockingbird",
+    "year": "1962",
+    "duration": "2h 9m",
+    "genre": "Crime",
+    "rating": "8.3",
+    "movie_url": "https://www.imdb.com/title/tt0056592/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Apartment",
+    "year": "1960",
+    "duration": "2h 5m",
+    "genre": "Comedy",
+    "rating": "8.3",
+    "movie_url": "https://www.imdb.com/title/tt0053604/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Vertigo",
+    "year": "1958",
+    "duration": "2h 8m",
+    "genre": "Mystery",
+    "rating": "8.3",
+    "movie_url": "https://www.imdb.com/title/tt0052357/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Ikiru",
+    "year": "1952",
+    "duration": "2h 23m",
+    "genre": "Drama",
+    "rating": "8.3",
+    "movie_url": "https://www.imdb.com/title/tt0044741/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Toy Story 3",
+    "year": "2010",
+    "duration": "1h 43m",
+    "genre": "Animation",
+    "rating": "8.3",
+    "movie_url": "https://www.imdb.com/title/tt0435761/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Citizen Kane",
+    "year": "1941",
+    "duration": "1h 59m",
+    "genre": "Drama",
+    "rating": "8.3",
+    "movie_url": "https://www.imdb.com/title/tt0033467/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Princess Mononoke",
+    "year": "1997",
+    "duration": "2h 14m",
+    "genre": "Animation",
+    "rating": "8.3",
+    "movie_url": "https://www.imdb.com/title/tt0119698/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Metropolis",
+    "year": "1927",
+    "duration": "2h 33m",
+    "genre": "Drama",
+    "rating": "8.3",
+    "movie_url": "https://www.imdb.com/title/tt0017136/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Incendies",
+    "year": "2010",
+    "duration": "2h 11m",
+    "genre": "Drama",
+    "rating": "8.3",
+    "movie_url": "https://www.imdb.com/title/tt1255953/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Am\u00e9lie",
+    "year": "2001",
+    "duration": "2 h 2 m",
+    "genre": "Comedy",
+    "rating": "8.3",
+    "movie_url": "https://www.imdb.com/title/tt0211915/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Up",
+    "year": "2009",
+    "duration": "1h 36m",
+    "genre": "Animation",
+    "rating": "8.3",
+    "movie_url": "https://www.imdb.com/title/tt1049413/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Once Upon a Time in America",
+    "year": "1984",
+    "duration": "3h 49m",
+    "genre": "Crime",
+    "rating": "8.3",
+    "movie_url": "https://www.imdb.com/title/tt0087843/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Reservoir Dogs",
+    "year": "1992",
+    "duration": "1h 39m",
+    "genre": "Crime",
+    "rating": "8.3",
+    "movie_url": "https://www.imdb.com/title/tt0105236/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Scarface",
+    "year": "1983",
+    "duration": "2h 50m",
+    "genre": "Crime",
+    "rating": "8.3",
+    "movie_url": "https://www.imdb.com/title/tt0086250/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "A Clockwork Orange",
+    "year": "1971",
+    "duration": "2h 16m",
+    "genre": "Crime",
+    "rating": "8.3",
+    "movie_url": "https://www.imdb.com/title/tt0066921/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "2001: A Space Odyssey",
+    "year": "1968",
+    "duration": "2h 29m",
+    "genre": "Adventure",
+    "rating": "8.3",
+    "movie_url": "https://www.imdb.com/title/tt0062622/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Eternal Sunshine of the Spotless Mind",
+    "year": "2004",
+    "duration": "1h 48m",
+    "genre": "Drama",
+    "rating": "8.3",
+    "movie_url": "https://www.imdb.com/title/tt0338013/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Heat",
+    "year": "1995",
+    "duration": "2 h 50 m",
+    "genre": "Action",
+    "rating": "8.3",
+    "movie_url": "https://www.imdb.com/title/tt0113277/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Requiem for a Dream",
+    "year": "2000",
+    "duration": "1h 42m",
+    "genre": "Drama",
+    "rating": "8.3",
+    "movie_url": "https://www.imdb.com/title/tt0180093/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Inglourious Basterds",
+    "year": "2009",
+    "duration": "2h 33m",
+    "genre": "Adventure",
+    "rating": "8.3",
+    "movie_url": "https://www.imdb.com/title/tt0361748/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Sting",
+    "year": "1973",
+    "duration": "2h 9m",
+    "genre": "Comedy",
+    "rating": "8.3",
+    "movie_url": "https://www.imdb.com/title/tt0070735/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Good Will Hunting",
+    "year": "1997",
+    "duration": "2h 6m",
+    "genre": "Drama",
+    "rating": "8.3",
+    "movie_url": "https://www.imdb.com/title/tt0119217/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Top Gun: Maverick",
+    "year": "2022",
+    "duration": "2h 10m",
+    "genre": "Action",
+    "rating": "8.3",
+    "movie_url": "https://www.imdb.com/title/tt1745960/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "High and Low",
+    "year": "1963",
+    "duration": "2h 23m",
+    "genre": "Crime",
+    "rating": "8.4",
+    "movie_url": "https://www.imdb.com/title/tt0057565/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Great Dictator",
+    "year": "1940",
+    "duration": "2h 5m",
+    "genre": "Comedy",
+    "rating": "8.4",
+    "movie_url": "https://www.imdb.com/title/tt0032553/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Witness for the Prosecution",
+    "year": "1957",
+    "duration": "1h 56m",
+    "genre": "Crime",
+    "rating": "8.4",
+    "movie_url": "https://www.imdb.com/title/tt0051201/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Paths of Glory",
+    "year": "1957",
+    "duration": "1h 28m",
+    "genre": "Drama",
+    "rating": "8.4",
+    "movie_url": "https://www.imdb.com/title/tt0050825/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Sunset Blvd.",
+    "year": "1950",
+    "duration": "1h 50m",
+    "genre": "Drama",
+    "rating": "8.4",
+    "movie_url": "https://www.imdb.com/title/tt0043014/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Capernaum",
+    "year": "2018",
+    "duration": "2h 6m",
+    "genre": "Drama",
+    "rating": "8.4",
+    "movie_url": "https://www.imdb.com/title/tt8267604/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb",
+    "year": "1964",
+    "duration": "1h 35m",
+    "genre": "Comedy",
+    "rating": "8.4",
+    "movie_url": "https://www.imdb.com/title/tt0057012/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Lives of Others",
+    "year": "2006",
+    "duration": "2h 17m",
+    "genre": "Drama",
+    "rating": "8.4",
+    "movie_url": "https://www.imdb.com/title/tt0405094/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "3 Idiots",
+    "year": "2009",
+    "duration": "2h 50m",
+    "genre": "Comedy",
+    "rating": "8.4",
+    "movie_url": "https://www.imdb.com/title/tt1187043/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "WALL\u00b7E",
+    "year": "2008",
+    "duration": "1h 38m",
+    "genre": "Animation",
+    "rating": "8.4",
+    "movie_url": "https://www.imdb.com/title/tt0910970/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Amadeus",
+    "year": "1984",
+    "duration": "2 h 40 m",
+    "genre": "Biography",
+    "rating": "8.4",
+    "movie_url": "https://www.imdb.com/title/tt0086879/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Hamilton",
+    "year": "2020",
+    "duration": "2h 40m",
+    "genre": "Biography",
+    "rating": "8.4",
+    "movie_url": "https://www.imdb.com/title/tt8503618/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Your Name.",
+    "year": "2016",
+    "duration": "1h 46m",
+    "genre": "Animation",
+    "rating": "8.4",
+    "movie_url": "https://www.imdb.com/title/tt5311514/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Coco",
+    "year": "2017",
+    "duration": "1h 45m",
+    "genre": "Animation",
+    "rating": "8.4",
+    "movie_url": "https://www.imdb.com/title/tt2380307/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Memento",
+    "year": "2000",
+    "duration": "1h 53m",
+    "genre": "Mystery",
+    "rating": "8.4",
+    "movie_url": "https://www.imdb.com/title/tt0209144/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Aliens",
+    "year": "1986",
+    "duration": "2h 17m",
+    "genre": "Action",
+    "rating": "8.4",
+    "movie_url": "https://www.imdb.com/title/tt0090605/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Come and See",
+    "year": "1985",
+    "duration": "2h 22m",
+    "genre": "Drama",
+    "rating": "8.4",
+    "movie_url": "https://www.imdb.com/title/tt0091251/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Spider-Man: Into the Spider-Verse",
+    "year": "2018",
+    "duration": "1h 57m",
+    "genre": "Animation",
+    "rating": "8.4",
+    "movie_url": "https://www.imdb.com/title/tt4633694/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Oldboy",
+    "year": "2003",
+    "duration": "2h",
+    "genre": "Action",
+    "rating": "8.4",
+    "movie_url": "https://www.imdb.com/title/tt0364569/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Shining",
+    "year": "1980",
+    "duration": "2h 26m",
+    "genre": "Drama",
+    "rating": "8.4",
+    "movie_url": "https://www.imdb.com/title/tt0081505/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Avengers: Infinity War",
+    "year": "2018",
+    "duration": "2h 29m",
+    "genre": "Action",
+    "rating": "8.4",
+    "movie_url": "https://www.imdb.com/title/tt4154756/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Dark Knight Rises",
+    "year": "2012",
+    "duration": "2h 44m",
+    "genre": "Action",
+    "rating": "8.4",
+    "movie_url": "https://www.imdb.com/title/tt1345836/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Braveheart",
+    "year": "1995",
+    "duration": "2h 58m",
+    "genre": "Biography",
+    "rating": "8.4",
+    "movie_url": "https://www.imdb.com/title/tt0112573/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Django Unchained",
+    "year": "2012",
+    "duration": "2h 45m",
+    "genre": "Drama",
+    "rating": "8.4",
+    "movie_url": "https://www.imdb.com/title/tt1853728/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "American Beauty",
+    "year": "1999",
+    "duration": "2 h 2 m",
+    "genre": "Drama",
+    "rating": "8.4",
+    "movie_url": "https://www.imdb.com/title/tt0169547/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Joker",
+    "year": "2019",
+    "duration": "2h 2m",
+    "genre": "Crime",
+    "rating": "8.4",
+    "movie_url": "https://www.imdb.com/title/tt7286456/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Avengers: Endgame",
+    "year": "2019",
+    "duration": "3h 1m",
+    "genre": "Action",
+    "rating": "8.4",
+    "movie_url": "https://www.imdb.com/title/tt4154796/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Raiders of the Lost Ark",
+    "year": "1981",
+    "duration": "1h 55m",
+    "genre": "Action",
+    "rating": "8.4",
+    "movie_url": "https://www.imdb.com/title/tt0082971/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "City Lights",
+    "year": "1931",
+    "duration": "1h 27m",
+    "genre": "Comedy",
+    "rating": "8.5",
+    "movie_url": "https://www.imdb.com/title/tt0021749/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Modern Times",
+    "year": "1936",
+    "duration": "1h 27m",
+    "genre": "Comedy",
+    "rating": "8.5",
+    "movie_url": "https://www.imdb.com/title/tt0027977/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Cinema Paradiso",
+    "year": "1988",
+    "duration": "2h 35m",
+    "genre": "Drama",
+    "rating": "8.5",
+    "movie_url": "https://www.imdb.com/title/tt0095765/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Pianist",
+    "year": "2002",
+    "duration": "2h 30m",
+    "genre": "Biography",
+    "rating": "8.5",
+    "movie_url": "https://www.imdb.com/title/tt0253474/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Casablanca",
+    "year": "1942",
+    "duration": "1h 42m",
+    "genre": "Drama",
+    "rating": "8.5",
+    "movie_url": "https://www.imdb.com/title/tt0034583/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Usual Suspects",
+    "year": "1995",
+    "duration": "1h 46m",
+    "genre": "Crime",
+    "rating": "8.5",
+    "movie_url": "https://www.imdb.com/title/tt0114814/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Psycho",
+    "year": "1960",
+    "duration": "1h 49m",
+    "genre": "Horror",
+    "rating": "8.5",
+    "movie_url": "https://www.imdb.com/title/tt0054215/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Apocalypse Now",
+    "year": "1979",
+    "duration": "2h 27m",
+    "genre": "Drama",
+    "rating": "8.5",
+    "movie_url": "https://www.imdb.com/title/tt0078788/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Lion King",
+    "year": "1994",
+    "duration": "1h 28m",
+    "genre": "Animation",
+    "rating": "8.5",
+    "movie_url": "https://www.imdb.com/title/tt0110357/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "L\u00e9on: The Professional",
+    "year": "1994",
+    "duration": "1h 50m",
+    "genre": "Action",
+    "rating": "8.5",
+    "movie_url": "https://www.imdb.com/title/tt0110413/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Alien",
+    "year": "1979",
+    "duration": "1h 57m",
+    "genre": "Horror",
+    "rating": "8.5",
+    "movie_url": "https://www.imdb.com/title/tt0078748/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Prestige",
+    "year": "2006",
+    "duration": "2 h 10 m",
+    "genre": "Drama",
+    "rating": "8.5",
+    "movie_url": "https://www.imdb.com/title/tt0482571/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Back to the Future",
+    "year": "1985",
+    "duration": "1h 56m",
+    "genre": "Adventure",
+    "rating": "8.5",
+    "movie_url": "https://www.imdb.com/title/tt0088763/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Gladiator",
+    "year": "2000",
+    "duration": "2h 35m",
+    "genre": "Action",
+    "rating": "8.5",
+    "movie_url": "https://www.imdb.com/title/tt0172495/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Whiplash",
+    "year": "2014",
+    "duration": "1h 46m",
+    "genre": "Drama",
+    "rating": "8.5",
+    "movie_url": "https://www.imdb.com/title/tt2582802/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Departed",
+    "year": "2006",
+    "duration": "2h 31m",
+    "genre": "Crime",
+    "rating": "8.5",
+    "movie_url": "https://www.imdb.com/title/tt0407887/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Harakiri",
+    "year": "1962",
+    "duration": "2h 13m",
+    "genre": "Action",
+    "rating": "8.6",
+    "movie_url": "https://www.imdb.com/title/tt0056058/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Parasite",
+    "year": "2019",
+    "duration": "2h 12m",
+    "genre": "Drama",
+    "rating": "8.5",
+    "movie_url": "https://www.imdb.com/title/tt6751668/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Seven Samurai",
+    "year": "1954",
+    "duration": "3h 27m",
+    "genre": "Action",
+    "rating": "8.6",
+    "movie_url": "https://www.imdb.com/title/tt0047478/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "It's a Wonderful Life",
+    "year": "1946",
+    "duration": "2h 10m",
+    "genre": "Drama",
+    "rating": "8.6",
+    "movie_url": "https://www.imdb.com/title/tt0038650/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Life Is Beautiful",
+    "year": "1997",
+    "duration": "1h 56m",
+    "genre": "Comedy",
+    "rating": "8.6",
+    "movie_url": "https://www.imdb.com/title/tt0118799/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "City of God",
+    "year": "2002",
+    "duration": "2h 10m",
+    "genre": "Crime",
+    "rating": "8.6",
+    "movie_url": "https://www.imdb.com/title/tt0317248/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Spirited Away",
+    "year": "2001",
+    "duration": "2h 5m",
+    "genre": "Animation",
+    "rating": "8.6",
+    "movie_url": "https://www.imdb.com/title/tt0245429/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Terminator 2: Judgment Day",
+    "year": "1991",
+    "duration": "2h 17m",
+    "genre": "Action",
+    "rating": "8.6",
+    "movie_url": "https://www.imdb.com/title/tt0103064/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Star Wars: Episode IV - A New Hope",
+    "year": "1977",
+    "duration": "2h 1m",
+    "genre": "Action",
+    "rating": "8.6",
+    "movie_url": "https://www.imdb.com/title/tt0076759/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Green Mile",
+    "year": "1999",
+    "duration": "3h 9m",
+    "genre": "Crime",
+    "rating": "8.6",
+    "movie_url": "https://www.imdb.com/title/tt0120689/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Se7en",
+    "year": "1995",
+    "duration": "2 h 7 m",
+    "genre": "Crime",
+    "rating": "8.6",
+    "movie_url": "https://www.imdb.com/title/tt0114369/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Saving Private Ryan",
+    "year": "1998",
+    "duration": "2h 49m",
+    "genre": "Drama",
+    "rating": "8.6",
+    "movie_url": "https://www.imdb.com/title/tt0120815/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Silence of the Lambs",
+    "year": "1991",
+    "duration": "1h 58m",
+    "genre": "Crime",
+    "rating": "8.6",
+    "movie_url": "https://www.imdb.com/title/tt0102926/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Interstellar",
+    "year": "2014",
+    "duration": "2h 49m",
+    "genre": "Adventure",
+    "rating": "8.6",
+    "movie_url": "https://www.imdb.com/title/tt0816692/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Star Wars: Episode V - The Empire Strikes Back",
+    "year": "1980",
+    "duration": "2h 4m",
+    "genre": "Action",
+    "rating": "8.7",
+    "movie_url": "https://www.imdb.com/title/tt0080684/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "One Flew Over the Cuckoo's Nest",
+    "year": "1975",
+    "duration": "2h 13m",
+    "genre": "Drama",
+    "rating": "8.7",
+    "movie_url": "https://www.imdb.com/title/tt0073486/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Matrix",
+    "year": "1999",
+    "duration": "2h 16m",
+    "genre": "Action",
+    "rating": "8.7",
+    "movie_url": "https://www.imdb.com/title/tt0133093/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Goodfellas",
+    "year": "1990",
+    "duration": "2h 25m",
+    "genre": "Biography",
+    "rating": "8.7",
+    "movie_url": "https://www.imdb.com/title/tt0099685/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Jai Bhim",
+    "year": "2021",
+    "duration": "2h 44m",
+    "genre": "Crime",
+    "rating": "8.8",
+    "movie_url": "https://www.imdb.com/title/tt15097216/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Good, the Bad and the Ugly",
+    "year": "1966",
+    "duration": "2h 58m",
+    "genre": "Adventure",
+    "rating": "8.8",
+    "movie_url": "https://www.imdb.com/title/tt0060196/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Lord of the Rings: The Two Towers",
+    "year": "2002",
+    "duration": "2h 59m",
+    "genre": "Action",
+    "rating": "8.8",
+    "movie_url": "https://www.imdb.com/title/tt0167261/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Forrest Gump",
+    "year": "1994",
+    "duration": "2h 22m",
+    "genre": "Drama",
+    "rating": "8.8",
+    "movie_url": "https://www.imdb.com/title/tt0109830/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Inception",
+    "year": "2010",
+    "duration": "2h 28m",
+    "genre": "Action",
+    "rating": "8.8",
+    "movie_url": "https://www.imdb.com/title/tt1375666/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Fight Club",
+    "year": "1999",
+    "duration": "2h 19m",
+    "genre": "Drama",
+    "rating": "8.8",
+    "movie_url": "https://www.imdb.com/title/tt0137523/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Lord of the Rings: The Fellowship of the Ring",
+    "year": "2001",
+    "duration": "2h 58m",
+    "genre": "Action",
+    "rating": "8.8",
+    "movie_url": "https://www.imdb.com/title/tt0120737/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Pulp Fiction",
+    "year": "1994",
+    "duration": "2 h 34 m",
+    "genre": "Crime",
+    "rating": "8.9",
+    "movie_url": "https://www.imdb.com/title/tt0110912/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "12 Angry Men",
+    "year": "1957",
+    "duration": "1h 36m",
+    "genre": "Crime",
+    "rating": "9.0",
+    "movie_url": "https://www.imdb.com/title/tt0050083/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Godfather Part II",
+    "year": "1974",
+    "duration": "3h 22m",
+    "genre": "Crime",
+    "rating": "9.0",
+    "movie_url": "https://www.imdb.com/title/tt0071562/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "Schindler's List",
+    "year": "1993",
+    "duration": "3h 15m",
+    "genre": "Biography",
+    "rating": "9.0",
+    "movie_url": "https://www.imdb.com/title/tt0108052/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Lord of the Rings: The Return of the King",
+    "year": "2003",
+    "duration": "3h 21m",
+    "genre": "Action",
+    "rating": "9.0",
+    "movie_url": "https://www.imdb.com/title/tt0167260/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Dark Knight",
+    "year": "2008",
+    "duration": "2h 32m",
+    "genre": "Action",
+    "rating": "9.0",
+    "movie_url": "https://www.imdb.com/title/tt0468569/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  },
+  {
+    "title": "The Godfather",
+    "year": "1972",
+    "duration": "2h 55m",
+    "genre": "Crime",
+    "rating": "9.2",
+    "movie_url": "https://www.imdb.com/title/tt0068646/?ref_=adv_li_tt",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+  }
+]
