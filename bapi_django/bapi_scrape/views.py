@@ -61,7 +61,7 @@ def scrape_movies(request):
 
   context = {'movies': '<p>LALLAA</p>'}
 
-  return render(request, 'bapi_scrape/movies/scrape.html', context)
+  return render(request, 'bapi_scrape/movies/scrape_movies.html', context)
 
 @csrf_exempt
 def run_spider(request):
