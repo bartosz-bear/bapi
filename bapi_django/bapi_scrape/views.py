@@ -5,16 +5,15 @@ from .forms import CourseCategoriesForm
 
 from bapi_scrape.scripts.courses.scrape import scrape
 from bapi_load.scripts.courses.db_operations import insert_values, create_table, delete_table, get_data
+from bapi_load.scripts.movies.db_operations import get_data as get_data_movies
 
 from psycopg2.errors import DuplicateTable
 from psycopg2.errors import UniqueViolation
 
-import scrapy
-from scrapy.crawler import CrawlerRunner
-from bapi_scrape.scrapy.imdb.imdb.spiders.best_movies import BestMoviesSpider
-from scrapy.utils.log import configure_logging
+from scrapyd_api import ScrapydAPI
 
-from twisted.internet import reactor
+from decouple import config
+import time
 
 
 def scrape_courses(request):
@@ -67,28 +66,16 @@ def scrape_movies(request):
 @csrf_exempt
 def run_spider(request):
 
-  configure_logging({'LOG_FORMAT': '%(levelname)s: %(message)s'})
-  runner = CrawlerRunner()
+  scrapyd = ScrapydAPI(config('SCRAPYD_HOST'))
+  scrapyd.schedule('imdb', 'best_movies')
 
-  d = runner.crawl(BestMoviesSpider)
-  d.addBoth(lambda _: reactor.stop())
-  reactor.run()
+  job_id = scrapyd.list_jobs('imdb')['pending'][0]['id']
+  if not job_id:
+    job_id = scrapyd.list_jobs('imdb')['running'][0]['id']
+  
+  while scrapyd.job_status('imdb', job_id) != 'finished':
+    time.sleep(0.5)
 
-  return render(request, 'bapi_scrape/movies/movies_table.html')
-
-
-
-
-
-
-
-
-
-
-def swap_element(request):
-
-  return render(request, 'bapi_scrape/movies/swap.html')
-
-def show_spinner(request):
-
-  return render(request, 'bapi_scrape/movies/show_spinner.html')
+  context = {'scraped': get_data_movies('movies')}
+  
+  return render(request, 'bapi_scrape/movies/movies_table.html', context=context)

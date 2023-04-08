@@ -2,6 +2,7 @@ import scrapy
 from scrapy.linkextractors import LinkExtractor
 from scrapy.spiders import CrawlSpider, Rule
 
+from bapi_scrape.scrapy.imdb.imdb.items import ImdbItem
 
 class BestMoviesSpider(CrawlSpider):
     name = 'best_movies'
@@ -46,6 +47,18 @@ class BestMoviesSpider(CrawlSpider):
 
         rating = container.xpath(".//section/section/div[3]/div[2]/div/div/div//div[2]/div/span/text()").get()
 
+        imdb_item = ImdbItem()
+
+        imdb_item['title'] = title
+        imdb_item['year'] = year
+        imdb_item['duration'] = duration
+        imdb_item['genre'] = genre
+        imdb_item['rating'] = rating
+        imdb_item['movie_url'] = response.url
+
+        yield imdb_item
+
+        '''
         yield {
             'title': title,
             'year': year,
@@ -55,3 +68,4 @@ class BestMoviesSpider(CrawlSpider):
             'movie_url': response.url,
             'user_agent': response.request.headers['User-Agent'].decode('utf-8')
         }
+        '''

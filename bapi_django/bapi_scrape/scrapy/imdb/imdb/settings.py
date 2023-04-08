@@ -62,9 +62,9 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'imdb.pipelines.ImdbPipeline': 300,
-#}
+ITEM_PIPELINES = {
+    'imdb.pipelines.ImdbPipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
@@ -81,14 +81,25 @@ ROBOTSTXT_OBEY = True
 
 # Enable and configure HTTP caching (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html#httpcache-middleware-settings
-#HTTPCACHE_ENABLED = True
-#HTTPCACHE_EXPIRATION_SECS = 0
-#HTTPCACHE_DIR = 'httpcache'
-#HTTPCACHE_IGNORE_HTTP_CODES = []
-#HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+HTTPCACHE_ENABLED = True
+HTTPCACHE_EXPIRATION_SECS = 0
+HTTPCACHE_DIR = 'httpcache'
+HTTPCACHE_IGNORE_HTTP_CODES = []
+HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
 FEED_EXPORT_ENCODING = 'utf-8'
 
-FEEDS = {
-    '%(name)s_%(time)s.json': {'format': 'json'}
-}
+# TWEAK THIS LATER FOR FLEXIBLE FEEDS
+'''
+import os
+from bapi_django.settings.base import BASE_DIR
+
+cwd = os.path.join(BASE_DIR, 'bapi_scrape/scrapy/imdb/imdb/spiders/')
+ps = os.environ['SCRAPY_SETTINGS_MODULE']
+
+# ADD A TWEAKED VERSION OF THIS LINE TO FEEDS:  "file://" + ps + "spiders/imbd_best_movies.json": {"format": "json"}
+
+'''
+#FEEDS = {
+#    "file://C:/Users/Bartosz/Desktop/Python/Projects/bapi/bapi_django/bapi_scrape/scrapy/imdb/imdb/spiders/imbd_best_movies.json": {"format": "json"}
+#}
