@@ -1,12 +1,20 @@
 from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
 
 from .forms import CourseCategoriesForm
 
 from bapi_scrape.scripts.courses.scrape import scrape
 from bapi_load.scripts.courses.db_operations import insert_values, create_table, delete_table, get_data
+from bapi_load.scripts.movies.db_operations import get_data as get_data_movies
 
 from psycopg2.errors import DuplicateTable
 from psycopg2.errors import UniqueViolation
+
+from scrapyd_api import ScrapydAPI
+
+from decouple import config
+import time
+
 
 def scrape_courses(request):
   '''
@@ -48,3 +56,26 @@ def scrape_courses(request):
   context['form'] = form
 
   return render(request, 'bapi_scrape/courses/scrape.html', context)
+
+def scrape_movies(request):
+
+  context = {'movies': '<p>LALLAA</p>'}
+
+  return render(request, 'bapi_scrape/movies/scrape_movies.html', context)
+
+@csrf_exempt
+def run_spider(request):
+
+  scrapyd = ScrapydAPI(config('SCRAPYD_HOST'))
+  scrapyd.schedule('imdb', 'best_movies')
+
+  job_id = scrapyd.list_jobs('imdb')['pending'][0]['id']
+  if not job_id:
+    job_id = scrapyd.list_jobs('imdb')['running'][0]['id']
+  
+  while scrapyd.job_status('imdb', job_id) != 'finished':
+    time.sleep(0.5)
+
+  context = {'scraped': get_data_movies('movies')}
+  
+  return render(request, 'bapi_scrape/movies/movies_table.html', context=context)
