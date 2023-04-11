@@ -8,11 +8,11 @@
     
     <div class="reading">
 
-        <h2 id="books-swap">Scraping books</h2><br>
+        <h2 id="books-swap">Scraping writers</h2><br>
 
-        <button hx-post="/scrape/books/run_books_spider"
+        <button hx-post="/scrape/writers/run_writers_spider"
           hx-trigger="click"
-          hx-target="#books"
+          hx-target="#writers"
           onclick="move()">
           Run spider
         </button>
@@ -25,7 +25,7 @@
         
         <br>
 
-        <div id="books"></div>
+        <div id="writers"></div>
 
     </div>
 
@@ -42,7 +42,7 @@
       i = 1;
       var elem = document.getElementById("myBar");
       var width = 1;
-      var id = setInterval(frame, 170);
+      var id = setInterval(frame, 65);
       function frame() {
         if (width >= 100) {
           clearInterval(id);

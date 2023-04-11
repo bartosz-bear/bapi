@@ -16,3 +16,8 @@ class ImdbItem(Item):
 class BooksItem(Item):
     name = Field()
     price = Field()
+
+class WritersItem(Item):
+    quote = Field()
+    author = Field()
+    tags = Field()
