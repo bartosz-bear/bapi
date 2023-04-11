@@ -10,5 +10,7 @@ urlpatterns = [
   path('scrape/books/', views.scrape_books, name='scrape_books'),
   path('scrape/books/run_books_spider', views.run_books_spider, name='run_books_spider'),
   path('scrape/writers/', views.scrape_writers, name='scrape_writers'),
-  path('scrape/writers/run_writers_spider', views.run_writers_spider, name='run_writers_spider')
+  path('scrape/writers/run_writers_spider', views.run_writers_spider, name='run_writers_spider'),
+  path('scrape/special_offers/', views.scrape_special_offers, name='scrape_special_offers'),
+  path('scrape/special_offers/run_special_offers_spider', views.run_special_offers_spider, name='run_special_offers_spider')
 ]

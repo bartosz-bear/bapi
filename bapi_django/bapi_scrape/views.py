@@ -3,8 +3,6 @@ from django.views.decorators.csrf import csrf_exempt
 
 from .forms import CourseCategoriesForm
 
-
-
 from bapi_scrape.scripts.courses.scrape import scrape
 from bapi_load.scripts.courses.db_operations import insert_values, create_table, delete_table, get_courses_data
 from bapi_load.scripts.db_operations import get_data
@@ -18,6 +16,8 @@ from scrapyd_api import ScrapydAPI
 
 from decouple import config
 import time
+
+SCRAPYD_HOST = config('SCRAPYD_HOST')
 
 
 ## COURSES SCRIPT
@@ -114,11 +114,37 @@ def scrape_writers(request):
 @csrf_exempt
 def run_writers_spider(request):
 
-  scrapy_d = innit_scrapyd(config('SCRAPYD_HOST'), 'imdb', 'writers')
+  scrapy_d = innit_scrapyd(SCRAPYD_HOST, 'imdb', 'writers')
 
   context = {'scraped': get_data('writers')}
 
   return render(request, 'bapi_scrape/writers/writers_table.html', context=context)
+
+# SPECIAL OFFERS SPIDER
+
+def scrape_special_offers(requst):
+
+  return render(requst, 'bapi_scrape/special_offers/scrape_special_offers.html')
+
+@csrf_exempt
+def run_special_offers_spider(request):
+
+  scrapy_d = innit_scrapyd(SCRAPYD_HOST, 'imdb', 'special_offers')
+
+  context = {'scraped': get_data('special_offers')}
+
+  print(context)
+
+  return render(request, 'bapi_scrape/special_offers/special_offers_table.html', context=context)
+
+
+
+
+
+
+
+
+
 
 def innit_scrapyd(host, project_name, spider_name, delay=0.5):
 

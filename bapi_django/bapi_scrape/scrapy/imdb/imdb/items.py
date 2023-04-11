@@ -21,3 +21,9 @@ class WritersItem(Item):
     quote = Field()
     author = Field()
     tags = Field()
+
+class SpecialOffersItem(Item):
+    name = Field()
+    link = Field()
+    special_price = Field()
+    normal_price = Field()

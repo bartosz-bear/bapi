@@ -1,0 +1,24 @@
+<p>SCRAPING IS DONE</p>
+
+<table class="table">
+  <thead class="thead-dark">
+  <tr class="bg-primary">
+    <th>Id</th>
+    <th>Name</th>
+    <th>Link</th>
+    <th>Special price in USD</th>
+    <th>Normal price in USD</th>
+  </tr>
+</thead>
+
+{% for id, name, link, special_price, normal_price in scraped %}
+<tr>
+  <td>{{ id }}</td>
+  <td>{{ name }}</td>
+  <td>{{ link }}</td>
+  <td>{{ special_price }}</td>
+  <td>{{ normal_price }}</td>
+</tr>
+{% endfor %}
+
+</table> 

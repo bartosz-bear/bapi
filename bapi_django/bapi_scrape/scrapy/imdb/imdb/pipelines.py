@@ -10,6 +10,9 @@ from bapi_django.queries.pools import db_cursor
 from bapi_load.scripts.movies.db_operations import create_table as create_movies_table
 from bapi_load.scripts.books.db_operations import create_table as create_books_table
 from bapi_load.scripts.writers.db_operations import create_table as create_writers_table
+from bapi_load.scripts.special_offers.db_operations import create_table as create_special_offers_table
+
+
 
 class ImdbPipeline:
     
@@ -66,6 +69,28 @@ class WritersPipeline:
         item['quote'],
         item['author'],
         item['tags']
+      ))
+
+    return item
+  
+  def close_spider(self, spider):
+    pass
+
+
+class SpecialOffersPipeline:
+
+  def __init__(self):
+    #create_special_offers_table('special_offers')
+    pass
+
+  def process_item(self, item, spider):
+
+    with db_cursor() as cur:
+      cur.execute("""INSERT INTO special_offers (name, link, special_price, normal_price) VALUES (%s, %s, %s, %s);""", (
+        item['name'],
+        item['link'],
+        item['special_price'],
+        item['normal_price']
       ))
 
     return item
