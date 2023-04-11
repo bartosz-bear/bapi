@@ -6,6 +6,7 @@ from .forms import CourseCategoriesForm
 from bapi_scrape.scripts.courses.scrape import scrape
 from bapi_load.scripts.courses.db_operations import insert_values, create_table, delete_table, get_data
 from bapi_load.scripts.movies.db_operations import get_data as get_data_movies
+from bapi_load.scripts.books.db_operations import get_data as get_data_books
 
 from psycopg2.errors import DuplicateTable
 from psycopg2.errors import UniqueViolation
@@ -79,3 +80,25 @@ def run_spider(request):
   context = {'scraped': get_data_movies('movies')}
   
   return render(request, 'bapi_scrape/movies/movies_table.html', context=context)
+
+
+def scrape_books(request):
+
+  return render(request, 'bapi_scrape/books/scrape_books.html')
+
+@csrf_exempt
+def run_books_spider(request):
+
+  scrapyd = ScrapydAPI(config('SCRAPYD_HOST'))
+  scrapyd.schedule('imdb', 'books')
+
+  job_id = scrapyd.list_jobs('imdb')['pending'][0]['id']
+  if not job_id:
+    job_id = scrapyd.list_jobs('imdb')['running'][0]['id']
+
+  while scrapyd.job_status('imdb', job_id) != 'finished':
+    time.sleep(0.5)
+
+  context = {'scraped': get_data_books('books')}
+
+  return render(request, 'bapi_scrape/books/books_table.html', context=context)

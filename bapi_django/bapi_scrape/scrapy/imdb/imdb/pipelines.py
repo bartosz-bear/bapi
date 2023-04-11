@@ -7,7 +7,7 @@
 # useful for handling different item types with a single interface
 from itemadapter import ItemAdapter
 from bapi_django.queries.pools import db_cursor
-from bapi_load.scripts.movies.db_operations import create_table
+from bapi_load.scripts.books.db_operations import create_table
 
 class ImdbPipeline:
     
@@ -31,3 +31,22 @@ class ImdbPipeline:
 
     def close_spider(self, spider):
         pass
+
+class BooksPipeline:
+   
+  def __init__(self):
+    #create_table('books')
+    pass
+   
+  def process_item(self, item, spider):
+      
+    with db_cursor() as cur:
+      cur.execute(""" INSERT INTO books (name, price) VALUES (%s,%s);""", (
+          item["name"],
+          item["price"]
+      ))
+
+    return item
+   
+  def close_spider(self, spider):
+    pass

@@ -12,3 +12,7 @@ class ImdbItem(Item):
     genre = Field()
     rating = Field()
     movie_url = Field()
+
+class BooksItem(Item):
+    name = Field()
+    price = Field()
