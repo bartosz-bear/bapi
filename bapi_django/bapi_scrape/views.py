@@ -121,7 +121,6 @@ def run_writers_spider(request):
   return render(request, 'bapi_scrape/writers/writers_table.html', context=context)
 
 # SPECIAL OFFERS SPIDER
-
 def scrape_special_offers(requst):
 
   return render(requst, 'bapi_scrape/special_offers/scrape_special_offers.html')
@@ -133,15 +132,49 @@ def run_special_offers_spider(request):
 
   context = {'scraped': get_data('special_offers')}
 
-  print(context)
-
   return render(request, 'bapi_scrape/special_offers/special_offers_table.html', context=context)
 
+# FANCY GLASSES SPIDER
+def scrape_fancy_glasses(requst):
 
+  return render(requst, 'bapi_scrape/fancy_glasses/scrape_fancy_glasses.html')
 
+@csrf_exempt
+def run_fancy_glasses_spider(request):
 
+  scrapy_d = innit_scrapyd(SCRAPYD_HOST, 'imdb', 'fancy_glasses')
 
+  context = {'scraped': get_data('fancy_glasses')}
 
+  return render(request, 'bapi_scrape/fancy_glasses/fancy_glasses_table.html', context=context)
+
+# COUNTRIES SPIDER
+def scrape_countries(requst):
+
+  return render(requst, 'bapi_scrape/countries/scrape_countries.html')
+
+@csrf_exempt
+def run_countries_spider(request):
+
+  scrapy_d = innit_scrapyd(SCRAPYD_HOST, 'imdb', 'countries')
+
+  context = {'scraped': get_data('countries')}
+
+  return render(request, 'bapi_scrape/countries/countries_table.html', context=context)
+
+# DEBT-TO-GDP SPIDER
+def scrape_debt_to_gdp(requst):
+
+  return render(requst, 'bapi_scrape/debt_to_gdp/scrape_debt_to_gdp.html')
+
+@csrf_exempt
+def run_debt_to_gdp_spider(request):
+
+  scrapy_d = innit_scrapyd(SCRAPYD_HOST, 'imdb', 'debt_to_gdp')
+
+  context = {'scraped': get_data('debt_to_gdp')}
+
+  return render(request, 'bapi_scrape/debt_to_gdp/debt_to_gdp_table.html', context=context)
 
 
 

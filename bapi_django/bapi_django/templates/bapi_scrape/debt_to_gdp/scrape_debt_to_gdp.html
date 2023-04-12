@@ -8,11 +8,11 @@
     
     <div class="reading">
 
-        <h2 id="books-swap">Scraping special offers</h2><br>
+        <h2 id="books-swap">Scraping Debt-to-GDP</h2><br>
 
-        <button hx-post="/scrape/special_offers/run_special_offers_spider"
+        <button hx-post="/scrape/debt_to_gdp/run_debt_to_gdp_spider"
           hx-trigger="click"
-          hx-target="#special_offers"
+          hx-target="#debt_to_gdp"
           onclick="move()">
           Run spider
         </button>
@@ -25,7 +25,7 @@
         
         <br>
 
-        <div id="special_offers"></div>
+        <div id="debt_to_gdp"></div>
 
     </div>
 
@@ -42,7 +42,7 @@
       i = 1;
       var elem = document.getElementById("myBar");
       var width = 1;
-      var id = setInterval(frame, 85);
+      var id = setInterval(frame, 80);
       function frame() {
         if (width >= 100) {
           clearInterval(id);

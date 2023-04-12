@@ -27,3 +27,18 @@ class SpecialOffersItem(Item):
     link = Field()
     special_price = Field()
     normal_price = Field()
+
+class FancyGlassesItem(Item):
+    name = Field()
+    price = Field()
+    product_url = Field()
+    product_image_url = Field()
+
+class CountriesItem(Item):
+    country = Field()
+    year = Field()
+    population = Field()
+
+class DebtToGDPItem(Item):
+    country = Field()
+    debt_to_gdp = Field()
