@@ -2,6 +2,17 @@ from psycopg2.extras import execute_values
 
 from bapi_django.queries.pools import db_cursor
 
+def table_exists(table_name):
+
+  with db_cursor() as cur:
+
+    cur.execute("SELECT * from information_schema.tables WHERE table_name=%s", (table_name,))
+    if cur.fetchone()[0]:
+      return True
+    else:
+      return False
+
+
 def delete_table(table_name):
 
   with db_cursor() as cur:
@@ -14,7 +25,7 @@ def create_table(table_name):
     cur.execute('''CREATE TABLE %s (
               id SERIAL PRIMARY KEY,
               category VARCHAR(50) NOT NULL,
-              course VARCHAR(150) NOT NULL UNIQUE,
+              course VARCHAR(150) NOT NULL,
               instructor VARCHAR(100) NOT NULL,
               description TEXT,
               enrollment_count INTEGER,

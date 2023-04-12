@@ -4,10 +4,8 @@ from django.views.decorators.csrf import csrf_exempt
 from .forms import CourseCategoriesForm
 
 from bapi_scrape.scripts.courses.scrape import scrape
-from bapi_load.scripts.courses.db_operations import insert_values, create_table, delete_table, get_courses_data
+from bapi_load.scripts.courses.db_operations import table_exists, insert_values, create_table, delete_table, get_courses_data
 from bapi_load.scripts.db_operations import get_data
-from bapi_load.scripts.movies.db_operations import get_data as get_data_movies
-from bapi_load.scripts.books.db_operations import get_data as get_data_books
 
 from psycopg2.errors import DuplicateTable
 from psycopg2.errors import UniqueViolation
@@ -16,6 +14,8 @@ from scrapyd_api import ScrapydAPI
 
 from decouple import config
 import time
+
+from bapi_scrape.scripts.courses.scrape import get_dropdown_choices
 
 SCRAPYD_HOST = config('SCRAPYD_HOST')
 
@@ -38,29 +38,31 @@ def scrape_courses(request):
                                        'Course Description': 'description', '# of Students Enrolled': 'enrollment_count',
                                        '# of Ratings': 'rating'}, inplace=True)
 
-    try:
-      create_table('coursera_courses')
+    if table_exists('coursera_courses'):
       insert_values('coursera_courses', context['courses'])
-    except DuplicateTable or UniqueViolation:
-      delete_table('coursera_courses')
+    else:
       create_table('coursera_courses')
       insert_values('coursera_courses', context['courses'])
 
-      context['scraped'] = get_courses_data('coursera_courses')
+    context['scraped'] = get_courses_data('coursera_courses')
 
-    context['call_to_action'] = '''And there you have it. Imagine how much time it would take to collect this data by hand. If you are quick with your mouse, it would take you probably about 30 seconds
-                                   for one course to copy-paste this information to your Excel. You would need 30 minutes of labor work to collect information about 60 courses. It takes 5-10 seconds
-                                   with web scraping. And another good thing, web scraping scales really well - it doesn't matter if you collect 60 courses, 600 or 6000, it would take about the same 5-10
-                                   seconds to collect.'''
-      
-    context['call_to_action2'] = '''I design web scraping solutions JUST FOR YOUR NEEDS. Curious if I can help you? Email me at <a href="mailto:bartosz.artur.piechnik@gmail.com">bartosz.artur.piechnik@gmail.com</a>'''
+    template = 'bapi_scrape/courses/courses_table.html'
 
   else:
     form = CourseCategoriesForm()
+    template = 'bapi_scrape/courses/scrape.html'
 
   context['form'] = form
 
-  return render(request, 'bapi_scrape/courses/scrape.html', context)
+  return render(request, template, context)
+
+
+#def get_courses_selection(request):
+#
+#  return render(request,
+#                'bapi_scrape/courses/courses_options.html',
+#                context={'options': [{'camel_format': k, 'dash-format': v} for k,v in get_dropdown_choices().items()]})
+
 
 ## MOVIES CRAWLER
 def scrape_movies(request):
@@ -177,7 +179,7 @@ def run_debt_to_gdp_spider(request):
   return render(request, 'bapi_scrape/debt_to_gdp/debt_to_gdp_table.html', context=context)
 
 
-
+## UTIL FUNCTIONS
 
 def innit_scrapyd(host, project_name, spider_name, delay=0.5):
 
