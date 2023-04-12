@@ -81,42 +81,23 @@
   
   <br>
 
-  <form action="" method="post">
+  <form>
     {% csrf_token %}
     {{ form }}
-    <input type="submit" value="Scrape it!">
+    <input hx-post="" hx-trigger="click" hx-target="#courses" onclick="move()" type="submit" value="Scrape it!">
   </form>
 
   <br>
 
+<br><br>
+
+  <div id="myProgress">
+    <div id="myBar"></div>
+  </div>
   
+  <br>
 
-  
-
-  <table class="table">
-    <thead class="thead-dark">
-    <tr class="bg-primary">
-      <th>Category</th>
-      <th>Course Name</th>
-      <th>Instructor</th>
-      <th>Description</th>
-      <th>Enrollments Count</th>
-      <th>Rating</th>
-    </tr>
-  </thead>
-
-  {% for index, category, course, instructor, description, enrollment_count, rating in scraped %}
-  <tr>
-    <td>{{ category }}</td>
-    <td>{{ course }}</td>
-    <td>{{ instructor }}</td>
-    <td class="cell-hyphens">{{ description }}</td>
-    <td>{{ enrollment_count }}</td>
-    <td>{{ rating }}</td>
-  </tr>
-  {% endfor %}
-
-  </table> 
+  <div id="courses"></div>
 
 {{ call_to_action }}<br><br>
 
@@ -125,6 +106,32 @@
   <!--{{ courses }}-->
 
 </main>
+
+
+{% load static %}
+
+<script src="https://unpkg.com/htmx.org@1.8.6"></script>
+
+<script>
+  var i = 0;
+  function move() {
+    if (i == 0) {
+      i = 1;
+      var elem = document.getElementById("myBar");
+      var width = 1;
+      var id = setInterval(frame, 120);
+      function frame() {
+        if (width >= 100) {
+          clearInterval(id);
+          i = 0;
+        } else {
+          width++;
+          elem.style.width = width + "%";
+        }
+      }
+    }
+  }
+  </script>
 
 {% endblock %}
 
@@ -160,9 +167,21 @@
     overflow: hidden;
     text-overflow: ellipsis;
   }
+
   div.reading {
     width: 800px;
     margin: 0 auto;
+  }
+
+  #myProgress {
+    width: 100%;
+    background-color: #ddd;
+  }
+
+  #myBar {
+    width: 1%;
+    height: 30px;
+    background-color: #04AA6D;
   }
 </style>
 

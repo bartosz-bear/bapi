@@ -10,5 +10,3 @@ def format_choices(choices):
 
 class CourseCategoriesForm(forms.Form):
     choice = forms.ChoiceField(choices=format_choices(get_dropdown_choices()))
-
-
