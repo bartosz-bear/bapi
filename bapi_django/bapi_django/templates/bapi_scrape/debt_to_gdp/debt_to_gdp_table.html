@@ -1,0 +1,20 @@
+<p>SCRAPING IS DONE</p>
+
+<table class="table">
+  <thead class="thead-dark">
+  <tr class="bg-primary">
+    <th>Id</th>
+    <th>Country</th>
+    <th>Current Debt-to-GDP</th>
+  </tr>
+</thead>
+
+{% for id, country, debt_to_gdp in scraped %}
+<tr>
+  <td>{{ id }}</td>
+  <td>{{ country }}</td>
+  <td>{{ debt_to_gdp }}</td>
+</tr>
+{% endfor %}
+
+</table> 

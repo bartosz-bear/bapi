@@ -9,6 +9,10 @@ class BooksSpider(CrawlSpider):
 
     user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36'
 
+    custom_settings = {'ITEM_PIPELINES': {
+       'imdb.pipelines.BooksPipeline': 300
+    }}
+
     def start_requests(self):
       yield scrapy.Request(url='http://books.toscrape.com', headers={'User-Agent': self.user_agent})        
 
@@ -23,4 +27,4 @@ class BooksSpider(CrawlSpider):
 
     def parse_item(self, response):
         yield {'name': response.xpath("//h1/text()").get(),
-               'price': response.xpath('//p[@class="price_color"]/text()').get()}
+               'price': float(response.xpath('//p[@class="price_color"]/text()').get().replace('£', ''))}

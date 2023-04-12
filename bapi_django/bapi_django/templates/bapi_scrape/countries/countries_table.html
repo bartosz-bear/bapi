@@ -1,0 +1,22 @@
+<p>SCRAPING IS DONE</p>
+
+<table class="table">
+  <thead class="thead-dark">
+  <tr class="bg-primary">
+    <th>Id</th>
+    <th>Country</th>
+    <th>Year</th>
+    <th>Population</th>
+  </tr>
+</thead>
+
+{% for id, country, year, population in scraped %}
+<tr>
+  <td>{{ id }}</td>
+  <td>{{ country }}</td>
+  <td>{{ year }}</td>
+  <td>{{ population }}</td>
+</tr>
+{% endfor %}
+
+</table> 
