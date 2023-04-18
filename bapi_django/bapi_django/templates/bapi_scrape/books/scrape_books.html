@@ -10,22 +10,71 @@
 
         <h2 id="books-swap">Scraping books</h2><br>
 
-        <button hx-post="/scrape/books/run_books_spider"
-          hx-trigger="click"
-          hx-target="#books"
-          onclick="move()">
-          Run spider
-        </button>
+        <p>'books' crawler, scraping from <a href='http://books.toscrape.com/' target="_blank" rel="noopener">books.toscrape.com</a>. 1000 books. Deals with pagination. 10 pages with 100 books each.
 
-        <br><br>
+           </p>
 
-        <div id="myProgress">
-          <div id="myBar"></div>
-        </div>
-        
-        <br>
+           <div class="box">
 
-        <div id="books"></div>
+           {% load static %}
+           <img src="{% static 'bapi_scrape/books.png' %}" class="box.img" alt="Books"><br><br>
+
+          </div><br>
+
+          <br>
+
+          <p>Data is saved to SQL database and it can be viewed in the Expose section: <a href='/expose/expose_books/'>Scraped books data</a><br><br></p>
+          
+
+          <h2>Crawler code</h2>
+
+          <p>Below you can see the code for the crawler. Alternatively you can see in the GitHub repo.</p>
+
+       <pre><code class="language-python">
+import scrapy
+from scrapy.linkextractors import LinkExtractor
+from scrapy.spiders import CrawlSpider, Rule
+
+
+class BooksSpider(CrawlSpider):
+    name = 'books'
+    allowed_domains = ['books.toscrape.com']
+
+    user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)
+     Chrome/111.0.0.0 Safari/537.36'
+
+    custom_settings = {'ITEM_PIPELINES': {
+        'imdb.pipelines.BooksPipeline': 300
+    }}
+
+    def start_requests(self):
+      yield scrapy.Request(url='http://books.toscrape.com',
+                           headers={'User-Agent': self.user_agent})        
+
+    rules = (
+        Rule(LinkExtractor(restrict_xpaths="//h3/a"), callback='parse_item', follow=True,
+                           process_request='set_user_agent'),
+        Rule(LinkExtractor(restrict_xpaths="//li[@class='next']/a"),
+                           process_request='set_user_agent')
+    )
+
+    def set_user_agent(self, request, spider):
+        request.headers['User-Agent'] = self.user_agent
+        return request
+
+    def parse_item(self, response):
+        yield {'name': response.xpath("//h1/text()").get(),
+                'price': float(response.xpath('//p[@class="price_color"]/text()').get()
+                                                                                 .replace('£', ''))}
+
+       </code></pre>
+
+       <br><br>
+
+       <br>
+
+       <div id="books"></div>
+
 
     </div>
 
@@ -34,27 +83,9 @@
 {% load static %}
 
 <script src="https://unpkg.com/htmx.org@1.8.6"></script>
-
-<script>
-  var i = 0;
-  function move() {
-    if (i == 0) {
-      i = 1;
-      var elem = document.getElementById("myBar");
-      var width = 1;
-      var id = setInterval(frame, 170);
-      function frame() {
-        if (width >= 100) {
-          clearInterval(id);
-          i = 0;
-        } else {
-          width++;
-          elem.style.width = width + "%";
-        }
-      }
-    }
-  }
-  </script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/vs2015.min.css">
+<script>hljs.highlightAll();</script>
 
 {% endblock %}
 

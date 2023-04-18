@@ -7,10 +7,18 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-import os
+import os, sys
+from pathlib import Path
+
+if os.environ['BAPI_DJANGO_ENV'] == 'prod':
+    sys.path.append('/home/bapi/bapi/bapi_django')
+
 from bapi_django.settings.base import BASE_DIR
 
 from decouple import Config, RepositoryEnv
+
+project_dir = os.path.join(BASE_DIR, 'bapi_django/')
+config = Config(RepositoryEnv(project_dir + '.env'))
 
 BOT_NAME = 'imdb'
 
@@ -91,15 +99,16 @@ DUPEFILTER_CLASS = 'scrapy_splash.SplashAwareDupeFilter'
 #AUTOTHROTTLE_DEBUG = False
 
 # SPLASH
-project_dir = os.path.join(BASE_DIR, 'bapi_django/')
-config = Config(RepositoryEnv(project_dir + '.env'))
 SPLASH_URL = config('SPLASH_HOST')
 
 # Enable and configure HTTP caching (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html#httpcache-middleware-settings
 HTTPCACHE_ENABLED = True
 HTTPCACHE_EXPIRATION_SECS = 0
-HTTPCACHE_DIR = 'httpcache'
+if os.environ['BAPI_DJANGO_ENV'] == 'prod':
+    HTTPCACHE_DIR = Path(__file__).resolve().parent.parent.as_posix() + '/.scrapy/httpcache'
+else:
+  HTTPCACHE_DIR = 'httpcache'
 HTTPCACHE_IGNORE_HTTP_CODES = []
 HTTPCACHE_STORAGE = 'scrapy_splash.SplashAwareFSCacheStorage'
 

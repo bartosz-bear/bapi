@@ -1,0 +1,86 @@
+{% extends "base.html" %}   // Inherits all the components from base template, including the header and footer
+
+{% block main %}
+
+<main>
+
+    <div class="reading">
+
+        <h2 id="movies-swap">Exposing fancy glasses</h2><br>
+
+        <button hx-post="/expose/expose_fancy_glasses/"
+          hx-trigger="click"
+          hx-target="#fancy_glasses"
+          onclick="move()">
+          Get data from SQL
+        </button>
+
+        <br><br>
+
+        <br>
+
+        <div id="fancy_glasses"></div>
+
+    </div>
+
+</main>
+
+{% load static %}
+
+<script src="https://unpkg.com/htmx.org@1.8.6"></script>
+
+
+{% endblock %}
+
+
+
+{% block style %}
+
+<style>
+  body {
+    background: white;
+  }
+  .box {
+    width: 100%;
+    height: 100%;
+    border: 1px solid white;
+    display: flex;
+    justify-content: center;
+  }
+  img {
+    width: 80%;
+    height: 100%;
+    margin: 0 auto;
+  }
+
+  .table {
+    table-layout:fixed;
+  }
+
+  .table th {
+    color: white;
+  }
+
+  .table td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  div.reading {
+    width: 800px;
+    margin: 0 auto;
+  }
+
+  #myProgress {
+    width: 100%;
+    background-color: #ddd;
+  }
+
+  #myBar {
+    width: 1%;
+    height: 30px;
+    background-color: #04AA6D;
+  }
+</style>
+
+{% endblock %}

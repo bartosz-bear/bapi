@@ -10,6 +10,10 @@ class BestMoviesSpider(CrawlSpider):
 
     user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36'
 
+    custom_settings = {'ITEM_PIPELINES': {
+       'imdb.pipelines.ImdbPipeline': 300
+    }}
+
     def start_requests(self):
         yield scrapy.Request(url='https://www.imdb.com/search/title/?groups=top_250&sort=user_rating',
                              headers={'User-Agent': self.user_agent})

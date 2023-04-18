@@ -6,55 +6,89 @@
 
 
     
-    <div class="reading">
+  <div class="reading">
 
-        <h2 id="books-swap">Scraping special offers</h2><br>
+    <h2 id="movies-swap">Scraping special offers</h2><br>
 
-        <button hx-post="/scrape/special_offers/run_special_offers_spider"
-          hx-trigger="click"
-          hx-target="#special_offers"
-          onclick="move()">
-          Run spider
-        </button>
+    <p>'special_offers' spider scraping 500 products from archived version, of currently defunct electronics, e-commerce store <a href='https://web.archive.org/web/20190225123327/https://www.tinydeal.com/specials.html' target="_blank" rel="noopener">https://www.tinydeal.com/</a>.
 
-        <br><br>
+       <div class="box">
 
-        <div id="myProgress">
-          <div id="myBar"></div>
-        </div>
-        
-        <br>
+       {% load static %}
+       <img src="{% static 'bapi_scrape/special_offers.png' %}" class="box.img" alt="Best movies"><br><br>
 
-        <div id="special_offers"></div>
+      </div><br>
 
-    </div>
+       <p>Data is saved to SQL database and it can be viewed in the Expose section: <a href='/expose/expose_special_offers/'>Scraped special offers data</a><br><br></p>
+       
+
+       <h2>Crawler code</h2>
+
+       <p>Below you can see the code for the crawler. Alternatively you can see in the GitHub repo.</p>
+
+    <pre><code class="language-python">
+import scrapy
+
+
+class SpecialOffersSpider(scrapy.Spider):
+    name = "special_offers"
+    allowed_domains = ["web.archive.org"]
+
+    custom_settings = {'ITEM_PIPELINES': {
+        'imdb.pipelines.SpecialOffersPipeline': 300
+    }}
+
+    def start_requests(self):
+        yield scrapy.Request(url='https://web.archive.org/web/20190225123327/
+                                  https://www.tinydeal.com/specials.html',
+                              callback=self.parse,
+                              headers={
+                                  'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+                                   AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0
+                                   Safari/537.36'
+                              })
+
+    def parse(self, response):
+
+        products = response.xpath(
+            '//div[@class="r_b_c"]/ul[@class="productlisting-ul"]/div[@class="p_box_wrapper"]
+             /li[@class="productListing-even"]')
+
+        for product in products:
+            name = product.xpath('.//a[@class="p_box_title"]/text()').get()
+            link = product.xpath('.//a[@class="p_box_title"]/@href').get()
+            special_price = product.xpath(
+                './/div[@class="p_box_price"]/span[@class="productSpecialPrice fl"]/text()').get()
+            normal_price = product.xpath(
+                './/div[@class="p_box_price"]/span[@class="normalprice fl"]/text()').get()
+
+            yield {'name': name,
+                    'link': link,
+                    'special_price': float(special_price.replace('$', '')),
+                    'normal_price': float(normal_price.replace('$', ''))}
+
+        next_page = response.xpath("//a[@class='nextPage']/@href").get()
+
+        if next_page:
+            yield scrapy.Request(url=next_page, callback=self.parse, headers={
+                'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+                               AppleWebKit/537.36 (KHTML, like Gecko)
+                               Chrome/111.0.0.0 Safari/537.36'
+            })
+
+    </code></pre>
+
+  </div>
+
 
 </main>
 
 {% load static %}
 
 <script src="https://unpkg.com/htmx.org@1.8.6"></script>
-
-<script>
-  var i = 0;
-  function move() {
-    if (i == 0) {
-      i = 1;
-      var elem = document.getElementById("myBar");
-      var width = 1;
-      var id = setInterval(frame, 85);
-      function frame() {
-        if (width >= 100) {
-          clearInterval(id);
-          i = 0;
-        } else {
-          width++;
-          elem.style.width = width + "%";
-        }
-      }
-    }
-  }
-  </script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/vs2015.min.css">
+<script>hljs.highlightAll();</script>
 
 {% endblock %}
 

@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     "bapi_scrape",
     "bapi_transform",
     "bapi_load",
+    "bapi_expose",
     'svg',
     "django.contrib.admin",
     "django.contrib.auth",

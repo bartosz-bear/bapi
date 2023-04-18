@@ -4,57 +4,74 @@
 
 <main>
 
+  <div class="reading">
 
+    <h2 id="movies-swap">Scraping fancy glasses</h2><br>
+
+    <p>'fancy_glasses' spider scraping 250 products from live eyeware e-commerce store <a href='https://www.glassesshop.com/bestsellers' target="_blank" rel="noopener">www.glassesshop.com</a>
+       </p>
+
+       <div class="box">
+
+       {% load static %}
+       <img src="{% static 'bapi_scrape/fancy_glasses.png' %}" class="box.img" alt="Best movies"><br><br>
+
+      </div><br>
+
+       <p>Data is saved to SQL database and it can be viewed in the Expose section: <a href='/expose/expose_fancy_glasses/'>Scraped fancy glasses data</a><br><br></p>
+       
+
+       <h2>Crawler code</h2>
+
+       <p>Below you can see the code for the crawler. Alternatively you can see in the GitHub repo.</p>
+
+    <pre><code class="language-python">
+import scrapy
+
+class FancyGlasses(scrapy.Spider):
+    name = 'fancy_glasses'
+    allowed_domains = ['www.glassesshop.com']
+
+    custom_settings = {'ITEM_PIPELINES': {
+        'imdb.pipelines.FancyGlassesPipeline': 300
+    }}
+
+    def start_requests(self):
+      yield scrapy.Request(url='https://www.glassesshop.com/bestsellers',
+                            callback=self.parse)
+
+    def parse(self, response):
     
-    <div class="reading">
+        glasses = response.xpath('//div[@id="product-lists"]/div[@class="col-12 pb-5 mb-lg-3
+                                  col-lg-4 product-list-row text-center product-list-item"]')
 
-        <h2 id="books-swap">Scraping fancy glasses</h2><br>
+        for g in glasses:
+          name = g.xpath('.//div[@class="product-img-outer"]/a/@title').get()
+          price = g.xpath('.//div[@class="mt-3"]//div[@class="p-price"]/div/span/text()').get()
+          product_url = g.xpath('.//div[@class="product-img-outer"]/a/@href').get()
+          product_image_url = g.xpath('.//div[1]/div[1]/div/span/@data-try-it-on').get()
 
-        <button hx-post="/scrape/fancy_glasses/run_fancy_glasses_spider"
-          hx-trigger="click"
-          hx-target="#fancy_glasses"
-          onclick="move()">
-          Run spider
-        </button>
-
-        <br><br>
-
-        <div id="myProgress">
-          <div id="myBar"></div>
-        </div>
+          yield {'name': name,
+                'price': float(price.replace('$', '')),
+                'product_url': product_url,
+                'product_image_url': product_image_url}
+          
+        next_page = response.xpath("//a[@class='page-link' and @rel='next']/@href").get()
         
-        <br>
+        if next_page:
+            yield scrapy.Request(url=next_page, callback=self.parse)
+    </code></pre>
 
-        <div id="fancy_glasses"></div>
-
-    </div>
+  </div>
 
 </main>
 
 {% load static %}
 
 <script src="https://unpkg.com/htmx.org@1.8.6"></script>
-
-<script>
-  var i = 0;
-  function move() {
-    if (i == 0) {
-      i = 1;
-      var elem = document.getElementById("myBar");
-      var width = 1;
-      var id = setInterval(frame, 85);
-      function frame() {
-        if (width >= 100) {
-          clearInterval(id);
-          i = 0;
-        } else {
-          width++;
-          elem.style.width = width + "%";
-        }
-      }
-    }
-  }
-  </script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/vs2015.min.css">
+<script>hljs.highlightAll();</script>
 
 {% endblock %}
 

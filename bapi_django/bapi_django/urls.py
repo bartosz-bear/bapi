@@ -23,6 +23,7 @@ urlpatterns = [
     path('', include('bapi_scrape.urls')),
     path('', include('bapi_transform.urls')),
     path('', include('bapi_load.urls')),
+    path('', include('bapi_expose.urls')),
     path('', views.home, name='home'),
     path("admin/", admin.site.urls),
 ]

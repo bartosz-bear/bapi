@@ -4,57 +4,64 @@
 
 <main>
 
+  <div class="reading">
 
-    
-    <div class="reading">
+    <h2 id="movies-swap">Scraping Debt-to-GDP</h2><br>
 
-        <h2 id="books-swap">Scraping Debt-to-GDP</h2><br>
+    <p>'debt_to_gdp' spider scraping current Debt-to-GDP ratio for 173 countries, also from <a href='https://www.tradingeconomics.com/country-list/government-debt-to-gdp' target="_blank" rel="noopener">www.tradingeconomics.com</a>
 
-        <button hx-post="/scrape/debt_to_gdp/run_debt_to_gdp_spider"
-          hx-trigger="click"
-          hx-target="#debt_to_gdp"
-          onclick="move()">
-          Run spider
-        </button>
+       <div class="box">
 
-        <br><br>
+       {% load static %}
+       <img src="{% static 'bapi_scrape/debt_to_gdp.png' %}" class="box.img" alt="Best movies"><br><br>
 
-        <div id="myProgress">
-          <div id="myBar"></div>
-        </div>
+      </div><br>
+
+       <p>Data is saved to SQL database and it can be viewed in the Expose section: <a href='/expose/expose_debt_to_gdp/'>Scraped Debt-to-GDP data</a><br><br></p>
+       
+
+       <h2>Crawler code</h2>
+
+       <p>Below you can see the code for the crawler. Alternatively you can see in the GitHub repo.</p>
+
+    <pre><code class="language-python">
+import scrapy
+
+class DebtToGDPSpider(scrapy.Spider):
+    name = 'debt_to_gdp'
+    allowed_domains = ['www.tradingeconomics.com']
+    start_urls = ['https://www.tradingeconomics.com/country-list/government-debt-to-gdp']
+
+    custom_settings = {'ITEM_PIPELINES': {
+        'imdb.pipelines.DebtToGDPPipeline': 300
+    }}
+
+    def parse(self, response):
         
-        <br>
+        rows = response.xpath('//table/tr')
 
-        <div id="debt_to_gdp"></div>
+        for row in rows:
+            country_name = row.xpath(".//td[1]/a").xpath("normalize-space()").get()
+            debt_to_gdp = row.xpath(".//td[2]/text()").get()
 
-    </div>
+            yield {
+                'country': country_name,
+                'debt_to_gdp': float(debt_to_gdp)
+            }
+
+    </code></pre>
+
+</div>
 
 </main>
 
 {% load static %}
 
 <script src="https://unpkg.com/htmx.org@1.8.6"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/vs2015.min.css">
+<script>hljs.highlightAll();</script>
 
-<script>
-  var i = 0;
-  function move() {
-    if (i == 0) {
-      i = 1;
-      var elem = document.getElementById("myBar");
-      var width = 1;
-      var id = setInterval(frame, 80);
-      function frame() {
-        if (width >= 100) {
-          clearInterval(id);
-          i = 0;
-        } else {
-          width++;
-          elem.style.width = width + "%";
-        }
-      }
-    }
-  }
-  </script>
 
 {% endblock %}
 
