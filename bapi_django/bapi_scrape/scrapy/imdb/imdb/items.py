@@ -42,3 +42,8 @@ class CountriesItem(Item):
 class DebtToGDPItem(Item):
     country = Field()
     debt_to_gdp = Field()
+
+class StackOverflowItem(Item):
+    date = Field()
+    tag = Field()
+    questions = Field()

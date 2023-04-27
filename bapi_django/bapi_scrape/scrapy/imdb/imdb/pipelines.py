@@ -14,7 +14,7 @@ from bapi_load.scripts.special_offers.db_operations import create_table as creat
 from bapi_load.scripts.fancy_glasses.db_operations import create_table as create_fancy_glasses_table
 from bapi_load.scripts.countries.db_operations import create_table as create_countries_table
 from bapi_load.scripts.debt_to_gdp.db_operations import create_table as create_debt_to_gdp_table
-
+from bapi_load.scripts.stackoverflow.db_operations import create_table as create_stackoverflow_table
 
 class ImdbPipeline:
     
@@ -153,6 +153,26 @@ class DebtToGDPPipeline:
       cur.execute("""INSERT INTO debt_to_gdp (country, debt_to_gdp) VALUES (%s, %s);""", (
         item['country'],
         item['debt_to_gdp']
+      ))
+
+    return item
+  
+  def close_spider(self, spider):
+    pass
+
+class StackOverflowPipeline:
+
+  def __init__(self):
+    create_stackoverflow_table('stackoverflow')
+    pass
+
+  def process_item(self, item, spider):
+
+    with db_cursor() as cur:
+      cur.execute("""INSERT INTO stackoverflow (date, tag, questions) VALUES (%s, %s, %s);""", (
+        item['date'],
+        item['tag'],
+        item['questions']
       ))
 
     return item
